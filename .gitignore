@@ -19,6 +19,7 @@
 .env.production.local
 
 # ide
+.idea
 /.idea
 
 npm-debug.log*
