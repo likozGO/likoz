@@ -3,6 +3,6 @@
 
 Вопросы:
 1.  Как разделить бек и фронт и нужно ли это сделать по отдельным папкам;
+2. У чувака видел в бекенд папке отдельно лежали node module
 
-
-16:50 https://www.youtube.com/watch?v=7CqJlxBYj-M
+32:00 https://www.youtube.com/watch?v=7CqJlxBYj-M
