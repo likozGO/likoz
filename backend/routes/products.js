@@ -8,7 +8,7 @@ router.route('/').get((req, res) => {
 })
 
 router.route('/add').post((req, res) => {
-    const author = req.body.author;
+    const username = req.body.username;
     const title = req.body.title;
     const description = req.body.description;
     const quantity = Number(req.body.quantity);
@@ -16,8 +16,8 @@ router.route('/add').post((req, res) => {
     const date = Date.parse(req.body.date);
 
 
-    const newUser = new Products({
-        author,
+    const newProduct = new Products({
+        username,
         title,
         description,
         quantity,
@@ -25,10 +25,39 @@ router.route('/add').post((req, res) => {
         date
     });
 
-    Products.save()
+    newProduct.save()
         .then(() => res.json('New product added!'))
         .catch(err => res.status(400).json(`Error: ${err}`))
-})
+});
+
+router.route('/:id').get((req, res) => {
+    Products.findById(req.params.id)
+        .then(products => res.json(products))
+        .catch(err => res.status(400).json(`Error: ${err}`));
+});
+
+router.route('/:id').delete((req, res) => {
+    Products.findByIdAndDelete(req.params.id)
+        .then(() => res.json('Product deleted'))
+        .catch(err => res.status(400).json(`Error: ${err}`))
+});
+
+router.route('/update/:id').post((req, res) => {
+    Products.findById(req.params.id)
+        .then(products => {
+            products.username = req.body.username;
+            products.title = req.body.title;
+            products.description = req.body.description;
+            products.quantity = Number(req.body.quantity);
+            products.price = Number(req.body.price);
+            products.date = Date.parse(req.body.date);
+
+            products.save()
+                .then(() => res.json('Product updated!'))
+                .catch(err => res.status(400).json(`Error: ${err}`))
+        })
+        .catch(err => res.status(400).json(`Error: ${err}`))
+});
 
 
 module.exports = router;
