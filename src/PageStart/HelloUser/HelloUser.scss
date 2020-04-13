@@ -1,52 +1,15 @@
-.unregister-group {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  background-image: url('images/unregister-girl.svg');
-  background-repeat: no-repeat;
-  -webkit-background-size: 30vw;
-  background-size: 50vw;
-  background-position: 0 100%;
-  align-items: flex-end;
-
-  .section-greetings, .section-answer {
-    width: 50vw;
-    height: 50vh;
-  }
-  .section-greetings {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    .section-greetings__title {
-      font-size: 7.2rem;
-    }
-    .section-greetings__text {
-      font-size: 2.2rem;
-    }
-  }
-
-  .section-answer {
-    flex-direction: column;
-    display: flex;
-    justify-content: space-evenly;
-    padding: 0 15px;
-
-    .section-answer__true,
-    .section-answer__false {
-      width: 100%;
-    }
-  }
+@import '../../MainStuff/css/varibles';
 
 
+.start-group  {
+  background-image: url($user-hello);
 }
 
 /*Buttons*/
 
 .btn {
   border-radius: 25px;
-  display: inline-flex;
-  justify-content: center;
-  flex: 1 1 auto;
+  display: inline-block;
   line-height: 1.5;
   padding: 2rem;
   border: 3px solid #00000070;
@@ -60,10 +23,9 @@
   min-width: 15rem;
   max-width: 70rem;
   min-height: 7rem;
-  text-align: center;
   cursor: pointer;
   outline: 0;
-  
+
   .selected-word {
     background: #000;
     color: #fff;
@@ -102,5 +64,22 @@
       left: 5%;
       right: 5%;
     }
+  }
+}
+
+
+/**Responsive**/
+
+
+@media all and (max-width: 991px) {
+  .xl-screen {
+    display: none;
+  }
+  .btn .selected-word {
+    background: transparent;
+    color: #000;
+  }
+  .btn img {
+    max-width: 35px;
   }
 }

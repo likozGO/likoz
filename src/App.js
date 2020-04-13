@@ -3,11 +3,11 @@ import '../node_modules/normalize.css'
 import './MainStuff/css/main.scss'
 import './MainStuff/css/fonts.css'
 
-import UnregisterUser from './PageStart/UnregisterUser/UnregisterUser';
+import RegisterUser from "./PageStart/RegisterUser/RegisterUser";
 
 function App() {
     return (
-        <UnregisterUser/>
+        <RegisterUser/>
     );
 }
 

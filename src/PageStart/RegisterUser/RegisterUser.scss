@@ -1,0 +1,97 @@
+@import '../../MainStuff/css/varibles';
+
+/*BG*/
+
+.tuna {
+  animation: walk-cycle 1s steps(12) infinite;
+  background: url($user-register--sprite) 0 0 no-repeat;
+  height: 200px;
+  width: 400px;
+  position: absolute;
+  bottom: 1px;
+  left: 50%;
+  margin-left: -200px;
+  transform: translateZ(0); /* offers a bit of a performance boost by pushing some of this processing to the GPU in Safari*/
+}
+
+@keyframes walk-cycle {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 -2391px;
+  }
+}
+
+.foreground, .midground, .background {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translate3d(0, 0, 0);
+}
+
+.foreground {
+  animation: parallax_fg linear 10s infinite both;
+  background: url($user-register--foreground) 0 100% repeat-x;
+  z-index: 3;
+}
+
+@keyframes parallax_fg {
+  0% {
+    background-position: -3584px 100%;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+.midground {
+  animation: parallax_mg linear 20s infinite;
+  background: url($user-register--grass) 0 100% repeat-x;
+  z-index: 2;
+}
+
+@keyframes parallax_mg {
+  0% {
+    background-position: -3000px 100%;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+.background {
+  background-image: url($user-register--bg5),
+  url($user-register--bg4),
+  url($user-register--bg3),
+  url($user-register--bg2),
+  url($user-register--bg1);
+  background-repeat: repeat-x;
+  background-position: 0 100%;
+  z-index: 1;
+  animation: parallax_bg linear 40s infinite;
+}
+
+@keyframes parallax_bg {
+  50% {
+    background-position-x: 2400px;
+  }
+  100% {
+    background-position-x: 1400px;
+  }
+}
+.start-group {
+  .section-greetings {
+    position: absolute;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    height: auto;
+  }
+  .section-body {
+    height: 100%;
+  }
+}
