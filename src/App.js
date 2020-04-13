@@ -1,10 +1,15 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Navigation from "./PageAdmin/Navigation/Navigation";
+import '../node_modules/normalize.css'
+
+
+import './MainStuff/css/main.scss'
+
+
+import UnregisterUser from './PageStart/UnregisterUser/UnregisterUser';
 
 function App() {
     return (
-        <Navigation/>
+        <UnregisterUser/>
     );
 }
 

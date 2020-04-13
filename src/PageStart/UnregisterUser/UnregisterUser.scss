@@ -1,0 +1,105 @@
+.unregister-group {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-image: url('images/unregister-girl.svg');
+  background-repeat: no-repeat;
+  -webkit-background-size: 30vw;
+  background-size: 50vw;
+  background-position: 0 100%;
+  align-items: flex-end;
+
+  .section-greetings, .section-answer {
+    width: 50vw;
+    height: 50vh;
+  }
+  .section-greetings {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    .section-greetings__title {
+      font-size: 7.2rem;
+    }
+    .section-greetings__text {
+      font-size: 2.2rem;
+    }
+  }
+
+  .section-answer {
+    flex-direction: column;
+    display: flex;
+    justify-content: space-evenly;
+
+    .section-answer__true,
+    .section-answer__false {
+      width: 100%;
+    }
+  }
+
+
+}
+
+/*Buttons*/
+
+.btn {
+  border-radius: 25px;
+  display: inline-flex;
+  justify-content: center;
+  flex: 1 1 auto;
+  line-height: 1.5;
+  padding: 2rem;
+  border: 3px solid #00000070;
+  border-bottom-width: 2px;
+  text-align: center;
+  font-weight: 900;
+  text-transform: uppercase;
+  position: relative;
+  transition: .3s ease-in-out;
+  width: 100%;
+  min-width: 15rem;
+  max-width: 70rem;
+  min-height: 7rem;
+  text-align: center;
+  cursor: pointer;
+  outline: 0;
+  
+  .selected-word {
+    background: #000;
+    color: #fff;
+  }
+
+  img {
+    position: absolute;
+    max-width: 50px;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &.dflt:hover {
+    -webkit-box-shadow: inset 0px 0px 0 1px #000;
+    -moz-box-shadow: inset 0px 0px 0 1px #000;
+    box-shadow: inset 0px 0px 0 1px #000;
+  }
+
+  &.btn__bottom-border:after {
+    position: absolute;
+    transition: .3s;
+    content: '';
+    width: 0;
+    left: 50%;
+    bottom: 0;
+    height: 3px;
+    background: #000;
+  }
+
+  &.btn__bottom-border:hover {
+    cursor: pointer;
+
+    &.btn__bottom-border:after {
+      width: 90%;
+      left: 5%;
+      right: 5%;
+    }
+  }
+}
