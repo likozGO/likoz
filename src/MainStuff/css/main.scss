@@ -24,3 +24,24 @@ html, body {
 h1, h2, h3, h4 {
   font-family: 'Raleway', sans-serif;
 }
+
+.form-group {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.input-control {
+  width: 100%;
+  display: block;
+  min-height: 6.5rem;
+}
+
+.btn {
+  width: 100%;
+  display: block;
+  min-height: 6rem;
+}
