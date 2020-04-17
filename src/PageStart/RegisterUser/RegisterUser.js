@@ -3,7 +3,6 @@ import SignupSchema from './RegisterValidation';
 import {ErrorMessage, Field, Form, Formik} from 'formik';
 
 
-import '../style.scss'
 import './RegisterUser.scss'
 import PasswordShow from '../../MainStuff/images/form_password-show.svg';
 import PasswordHide from '../../MainStuff/images/form_password-hide.svg';
@@ -30,9 +29,10 @@ class RegisterUser extends React.Component {
     }
 
     render() {
+        document.body.style.backgroundColor = "#161616";
         return (
             <>
-                <section className="start-group ">
+                <section className="register-group ">
                     <section className="section-greetings">
                         <h1 className="section-greetings__title">
                             Please fill the form
@@ -83,7 +83,7 @@ class RegisterUser extends React.Component {
                                    isSubmitting
                                }) => (
 
-                                <Form>
+                                <Form autoComplete="off">
                                     <div className="form-group">
 
                                         <Field name="login" type="text" placeholder="Frank"
@@ -134,7 +134,8 @@ class RegisterUser extends React.Component {
                                     <div className="form-group">
                                         <button type="submit" className="btn btn-register"
                                                 disabled={!!isSubmitting}>
-                                            Submit
+                                            <span className={!isSubmitting ? 'show' : 'hide'}>Submit</span>
+                                            <span className={!!isSubmitting ? 'show' : 'hide'}>Loading...</span>
                                         </button>
                                     </div>
 

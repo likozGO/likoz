@@ -1,8 +1,47 @@
 @import '../../MainStuff/css/varibles';
 
 
-.start-group  {
+.start-group {
   background-image: url($user-hello);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-repeat: no-repeat;
+  -webkit-background-size: 40%;
+  background-size: 40%;
+  background-position: 0 100%;
+  align-items: flex-end;
+
+  .section-greetings, .section-body {
+    width: 50%;
+    height: 50%;
+    padding: 0 15px;
+  }
+
+  .section-greetings {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    &__title {
+      font-size: 6.6rem;
+    }
+
+    &__text {
+      font-size: 2.2rem;
+    }
+  }
+
+  .section-body {
+    flex-direction: column;
+    display: flex;
+    justify-content: space-evenly;
+
+    &__true,
+    &__false {
+      width: 100%;
+    }
+  }
 }
 
 /*Buttons*/
@@ -81,5 +120,70 @@
   }
   .btn img {
     max-width: 35px;
+  }
+  .start-group {
+    .section-greetings {
+      width: 100%;
+
+      &__title {
+        font-size: 6.6rem;
+        margin: 2rem 0;
+      }
+
+      &__text {
+        font-size: 2.0rem;
+        margin: 1rem 0;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 767px) {
+  .start-group {
+    .section-greetings, .section-body {
+      width: 100%;
+      height: auto;
+    }
+
+    .section-body {
+      flex-direction: row;
+      margin-top: 10%;
+
+      &__true, &__false {
+        width: 40%;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 650px) {
+  .start-group {
+    .section-greetings, .section-body {
+      background: #fff;
+    }
+
+    .section-body {
+      flex-direction: column;
+      align-items: center;
+      margin-top: 5%;
+
+      &__true, &__false {
+        width: 60%;
+      }
+
+      &__true {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 650px) {
+  .start-group {
+    .section-body {
+      &__true, &__false {
+        width: 100%;
+      }
+    }
   }
 }

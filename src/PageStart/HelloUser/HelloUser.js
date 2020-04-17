@@ -1,7 +1,5 @@
 import React from 'react';
 
-import '../style.scss'
-
 import './HelloUser.scss'
 import login from './images/btn-login--account.svg'
 import register from './images/btn-register--account.svg'
