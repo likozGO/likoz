@@ -5,14 +5,31 @@ import {ErrorMessage, Field, Form, Formik} from 'formik';
 
 import '../style.scss'
 import './RegisterUser.scss'
-
+import PasswordShow from '../../MainStuff/images/form_password-show.svg';
+import PasswordHide from '../../MainStuff/images/form_password-hide.svg';
 
 class RegisterUser extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            type: 'password',
+        }
+        this.handleType = this.handleType.bind(this);
+    }
 
-
+    handleType() {
+        if (this.state.type == 'text') {
+            this.setState({
+                type: 'password',
+            })
+        } else {
+            this.setState({
+                type: 'text',
+            })
+        }
+    }
 
     render() {
-
         return (
             <>
                 <section className="start-group ">
@@ -35,6 +52,11 @@ class RegisterUser extends React.Component {
                                         <div className="eye-pupil"></div>
                                     </div>
                                     <div className="muzzle"></div>
+                                </div>
+                                {/*MOUTH*/}
+                                <div className="mouth">
+                                    <div className="teeth"></div>
+                                    <div className="tongue"></div>
                                 </div>
                             </div>
                             {/*Background END*/}
@@ -69,7 +91,9 @@ class RegisterUser extends React.Component {
                                                onChange={handleChange}
                                                onBlur={handleBlur}
                                                value={values.login}/>
-                                        <label htmlFor="login">Login</label>
+                                        <label htmlFor="login">
+                                            Login
+                                        </label>
                                         <div className="error-message">
                                             <ErrorMessage name="login"/>
                                         </div>
@@ -80,28 +104,38 @@ class RegisterUser extends React.Component {
                                                onChange={handleChange}
                                                onBlur={handleBlur}
                                                value={values.email}/>
-                                        <label htmlFor="email">Email</label>
+                                        <label htmlFor="email">
+                                            Email
+                                        </label>
                                         <div className="error-message">
                                             <ErrorMessage name="email"/>
                                         </div>
                                     </div>
                                     <div className="form-group">
-                                        <Field name="password" type="password" className="input-control password" placeholder="Your secret password"
+                                        <Field name="password" type={this.state.type} className="input-control password"
+                                               placeholder="Your secret password"
                                                className={(touched.password && errors.password ? "error" : "") + " input-control password"}
                                                onChange={handleChange}
                                                onBlur={handleBlur}
                                                value={values.password}/>
                                         <label htmlFor="password">
                                             Password
-                                            <span className={values.password.length > 0 ? "show" : "hide"} >/Show password</span>
                                         </label>
-
+                                        <label
+                                            className={"password-type " + (values.password.length > 0 ? "show" : "hide")}
+                                            onClick={this.handleType}>
+                                            <img src={this.state.type == 'password' ? PasswordShow : PasswordHide}
+                                                 alt="Show/Hide password" title="Show or hide your password"/>
+                                        </label>
                                         <div className="error-message">
                                             <ErrorMessage name="password"/>
                                         </div>
                                     </div>
                                     <div className="form-group">
-                                        <button type="submit" className="btn btn-register">Submit</button>
+                                        <button type="submit" className="btn btn-register"
+                                                disabled={!!isSubmitting}>
+                                            Submit
+                                        </button>
                                     </div>
 
                                 </Form>

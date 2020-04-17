@@ -99,6 +99,12 @@ h1, h2, h3, h4 {
     outline: none;
     border-color: rgba(0, 0, 0, 0.5);
   }
+  .password-type {
+    left: 60px;
+    z-index: 0;
+    cursor: pointer;
+    top: -5px;
+  }
 }
 
 .input-control {
@@ -139,6 +145,9 @@ h1, h2, h3, h4 {
   &:focus {
     opacity: 1;
     border-bottom: 3px solid #fff;
+  }
+  &:disabled {
+    cursor: not-allowed;
   }
 }
 
