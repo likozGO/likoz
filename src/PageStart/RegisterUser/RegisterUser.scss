@@ -468,7 +468,8 @@ $size: 170px; // (Fully responsive)
     width: $size;
   }
   .ear {
-    top: -23%;
+    top: -20%;
+    height: 40%;
   }
   .register-group {
     .section-body__left {
@@ -488,7 +489,15 @@ $size: 170px; // (Fully responsive)
     .section-body__left {
       padding-top: 107px;
     }
+
   }
 
 
+}
+
+@media (orientation: landscape) and (max-width: $breakpoint-tablet__landscape) and (max-height: 300px) {
+  .cat {
+    height: 60px;
+    width: 80px;
+  }
 }
