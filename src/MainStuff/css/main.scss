@@ -1,16 +1,8 @@
+@import '../../MainStuff/css/varibles';
 *, *:before, *:after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-}
-
-html {
-  font-size: 10px;
-}
-
-body {
-  font-size: 1.6rem;
-
 }
 
 html, body {
@@ -21,6 +13,16 @@ html, body {
   font-family: 'Lato', sans-serif;
 }
 
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 1.6rem;
+
+}
+
 h1, h2, h3, h4 {
   font-family: 'Raleway', sans-serif;
 }
@@ -28,20 +30,123 @@ h1, h2, h3, h4 {
 .form-group {
   margin-bottom: 1rem;
   width: 100%;
-}
-
-.form-group:last-child {
-  margin-bottom: 0;
+  position: relative;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  .error {
+    border-bottom: 2px solid #f33;
+  }
+  .valid {
+    border-bottom: 2px solid #00ff22;
+  }
+  .error-message {
+    color: #f33;
+    padding: .5rem .2rem;
+    position: absolute;
+    font-size: 0.8rem;
+    top: 3px;
+    right: 0;
+  }
+  label {
+    color: #24B9B6;
+    //font-size: 1.2em;
+    font-weight: 400;
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: text;
+    font-size: 75%;
+    opacity: 1;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+  }
+  .input-control::-webkit-input-placeholder {
+    -webkit-transition: all .2s;
+    transition: all .2s;
+  }
+  .input-control::-moz-placeholder {
+    -webkit-transition: all .2s;
+    transition: all .2s;
+  }
+  .input-control:-ms-input-placeholder {
+    -webkit-transition: all .2s;
+    transition: all .2s;
+  }
+  .input-control::placeholder {
+    -webkit-transition: all .2s;
+    transition: all .2s;
+  }
+  .input-control:placeholder-shown:not(:focus)::-webkit-input-placeholder {
+    opacity: 0;
+  }
+  .input-control:placeholder-shown:not(:focus)::-moz-placeholder {
+    opacity: 0;
+  }
+  .input-control:placeholder-shown:not(:focus):-ms-input-placeholder {
+    opacity: 0;
+  }
+  .input-control:placeholder-shown:not(:focus)::placeholder {
+    opacity: 0;
+  }
+  .input-control:placeholder-shown:not(:focus) + * {
+    font-size: 150%;
+    opacity: .5;
+    top: .25em;
+  }
+  .input-control:focus {
+    outline: none;
+    border-color: rgba(0, 0, 0, 0.5);
+  }
 }
 
 .input-control {
   width: 100%;
   display: block;
   min-height: 6.5rem;
+  color: #fff;
+  font-size:inherit;
+  padding-top:1em;
+  margin-bottom:2px;
+  border:0;
+  border-radius:0;
+  border-bottom:2px solid rgba(0,0,0,.1);
+
+  &.login {
+    background: url('../images/form_login.svg') no-repeat 100% 80%;
+    background-size: 35px;
+  }
+  &.email {
+    background: url('../images/form_email.svg') no-repeat 100% 80%;
+    background-size: 35px;
+  }
+  &.password {
+    background: url('../images/form_password.svg') no-repeat 100% 80%;
+    background-size: 35px;
+  }
 }
+
 
 .btn {
   width: 100%;
   display: block;
   min-height: 6rem;
+  transition: opacity .2s ease-in-out;
+  &:hover {
+    opacity: .8;
+  }
+  &:focus {
+    opacity: 1;
+    border-bottom: 3px solid #fff;
+  }
 }
+
+.hide {
+  display: none !important;
+}
+
+.show {
+  display: block !important;
+}
+

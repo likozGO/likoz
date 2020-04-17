@@ -1,32 +1,18 @@
 import React from 'react';
-import {Field, Form, Formik} from 'formik';
-import * as Yup from 'yup';
+import SignupSchema from './RegisterValidation';
+import {ErrorMessage, Field, Form, Formik} from 'formik';
+
 
 import '../style.scss'
 import './RegisterUser.scss'
 
 
-const SignupSchema = Yup.object().shape({
-    firstName: Yup.string()
-        .min(2, 'Too Short!')
-        .max(50, 'Too Long!')
-        .required('Required'),
-    lastName: Yup.string()
-        .min(2, 'Too Short!')
-        .max(50, 'Too Long!')
-        .required('Required'),
-    email: Yup.string()
-        .email('Invalid email')
-        .required('Required'),
-    password: Yup.string()
-        .min(2, 'Too Short!')
-        .max(50, 'Too Long!')
-        .required('Required'),
-});
-
 class RegisterUser extends React.Component {
 
+
+
     render() {
+
         return (
             <>
                 <section className="start-group ">
@@ -54,44 +40,72 @@ class RegisterUser extends React.Component {
                             {/*Background END*/}
                         </div>
                         <div className="section-body__right">
+
                             <Formik
                                 initialValues={{
-                                    firstName: '',
-                                    lastName: '',
+                                    login: '',
                                     email: '',
                                     password: '',
                                 }}
                                 validationSchema={SignupSchema}
                                 onSubmit={values => {
-                                    // same shape as initial values
                                     console.log(values);
                                 }}
-                            >
-                                {({errors, touched}) => (
-                                    <Form>
-                                        <div className="form-group">
-                                            <Field name="firstName" className="input-control firstName"/>
-                                            {errors.firstName && touched.firstName ? (
-                                                <div>{errors.firstName}</div>) : null}
+                            >{({
+                                   values,
+                                   errors,
+                                   touched,
+                                   handleChange,
+                                   handleBlur,
+                                   handleSubmit,
+                                   isSubmitting
+                               }) => (
+
+                                <Form>
+                                    <div className="form-group">
+
+                                        <Field name="login" type="text" placeholder="Frank"
+                                               className={(touched.login && errors.login ? "error" : "") + " input-control login"}
+                                               onChange={handleChange}
+                                               onBlur={handleBlur}
+                                               value={values.login}/>
+                                        <label htmlFor="login">Login</label>
+                                        <div className="error-message">
+                                            <ErrorMessage name="login"/>
                                         </div>
-                                        <div className="form-group">
-                                            <Field name="lastName" className="input-control lastName"/>
-                                            {errors.lastName && touched.lastName ? (
-                                                <div>{errors.lastName}</div>) : null}
+                                    </div>
+                                    <div className="form-group">
+                                        <Field name="email" type="email" placeholder="example@example.com"
+                                               className={(touched.email && errors.email ? "error" : "") + " input-control email"}
+                                               onChange={handleChange}
+                                               onBlur={handleBlur}
+                                               value={values.email}/>
+                                        <label htmlFor="email">Email</label>
+                                        <div className="error-message">
+                                            <ErrorMessage name="email"/>
                                         </div>
-                                        <div className="form-group">
-                                            <Field name="email" type="email" className="input-control email"/>
-                                            {errors.email && touched.email ? <div>{errors.email}</div> : null}
+                                    </div>
+                                    <div className="form-group">
+                                        <Field name="password" type="password" className="input-control password" placeholder="Your secret password"
+                                               className={(touched.password && errors.password ? "error" : "") + " input-control password"}
+                                               onChange={handleChange}
+                                               onBlur={handleBlur}
+                                               value={values.password}/>
+                                        <label htmlFor="password">
+                                            Password
+                                            <span className={values.password.length > 0 ? "show" : "hide"} >/Show password</span>
+                                        </label>
+
+                                        <div className="error-message">
+                                            <ErrorMessage name="password"/>
                                         </div>
-                                        <div className="form-group">
-                                            <Field name="password" type="password" className="input-control password"/>
-                                            {errors.password && touched.password ? <div>{errors.password}</div> : null}
-                                        </div>
-                                        <div className="form-group">
-                                            <button type="submit" className="btn">Submit</button>
-                                        </div>
-                                    </Form>
-                                )}
+                                    </div>
+                                    <div className="form-group">
+                                        <button type="submit" className="btn btn-register">Submit</button>
+                                    </div>
+
+                                </Form>
+                            )}
                             </Formik>
                         </div>
                     </section>
