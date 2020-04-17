@@ -100,10 +100,10 @@ h1, h2, h3, h4 {
     border-color: rgba(0, 0, 0, 0.5);
   }
   .password-type {
-    left: 60px;
+    left: 90px;
     z-index: 0;
     cursor: pointer;
-    top: -5px;
+    top: 0px;
   }
 }
 
@@ -118,6 +118,8 @@ h1, h2, h3, h4 {
   border:0;
   border-radius:0;
   border-bottom:2px solid rgba(0,0,0,.1);
+  padding-right: 45px;
+  text-overflow: ellipsis;
 
   &.login {
     background: url('../images/form_login.svg') no-repeat 100% 80%;
