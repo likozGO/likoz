@@ -171,11 +171,6 @@ h1, h2, h3, h4 {
     opacity: .8;
   }
 
-  &:focus {
-    opacity: 1;
-    border-bottom: 3px solid #fff;
-  }
-
   &:disabled {
     cursor: not-allowed;
   }
