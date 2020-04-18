@@ -27,9 +27,15 @@ class RegisterUser extends React.Component {
             })
         }
     }
+    componentDidMount() {
+        document.body.style.backgroundColor = "#161616"
+    }
 
+    componentWillUnmount() {
+        document.body.style.backgroundColor = "transparent"
+    }
     render() {
-        document.body.style.backgroundColor = "#161616";
+
         return (
             <>
                 <section className="register-group ">

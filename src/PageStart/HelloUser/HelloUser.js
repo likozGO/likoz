@@ -1,4 +1,8 @@
 import React from 'react';
+import {
+    Link
+} from "react-router-dom";
+
 
 import './HelloUser.scss'
 import login from './images/btn-login--account.svg'
@@ -17,7 +21,7 @@ function HelloUser() {
             </section>
             <section className="section-body">
                 <div className="section-body__true">
-                    <button className="btn btn__bottom-border">
+                    <Link to="/login" className="btn btn__bottom-border">
                                 <span className="xl-screen">
                                     Man what are f***???<br/>
                                     Im alredy have account!<br/>
@@ -25,18 +29,18 @@ function HelloUser() {
                                 </span>
                         <span className="selected-word">Login</span>
                         <img src={login} alt="Login please, or reload the page"/>
-                    </button>
+                    </Link>
 
                 </div>
                 <div className="section-body__false">
-                    <button className="btn btn__bottom-border">
+                    <Link to="/registration" className="btn btn__bottom-border">
                             <span className="xl-screen">
                                 Oi hello mon sir!<br/>
                                 I want&nbsp;
                             </span>
                         <span className="selected-word">Create Account</span>
                         <img src={register} alt="Register please, or reload the page"/>
-                    </button>
+                    </Link>
                 </div>
             </section>
         </section>

@@ -1,16 +1,15 @@
 import React from 'react';
+
 import '../node_modules/normalize.css'
 import './MainStuff/css/main.scss'
 import './MainStuff/css/fonts.css'
+import {ConstRouting} from './Router'
 
-// import RegisterUser from "./PageStart/RegisterUser/RegisterUser";
-import HelloUser from "./PageStart/HelloUser/HelloUser";
 
 function App() {
     return (
         <>
-            {/*<RegisterUser/>*/}
-            <HelloUser/>
+            <ConstRouting/>
         </>
     );
 }
