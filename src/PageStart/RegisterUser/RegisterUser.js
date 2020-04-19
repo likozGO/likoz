@@ -1,11 +1,11 @@
 import React from 'react';
 import SignupSchema from './RegisterValidation';
 import {ErrorMessage, Field, Form, Formik} from 'formik';
-
+import {Link} from "react-router-dom";
 
 import './RegisterUser.scss'
-import PasswordShow from '../../MainStuff/images/form_password-show.svg';
-import PasswordHide from '../../MainStuff/images/form_password-hide.svg';
+import PasswordShow from '../../MainStuff/images/form_password-show__white.svg';
+import PasswordHide from '../../MainStuff/images/form_password-hide__white.svg';
 
 class RegisterUser extends React.Component {
     constructor(props) {
@@ -27,21 +27,19 @@ class RegisterUser extends React.Component {
             })
         }
     }
-    // componentDidMount() {
-    //     document.body.style.backgroundColor = "#161616"
-    // }
-    //
-    // componentWillUnmount() {
-    //     document.body.style.backgroundColor = "transparent"
-    // }
+
     render() {
 
         return (
             <>
                 <section className="register-group ">
+
                     <section className="section-greetings">
                         <h1 className="section-greetings__title">
-                            Please fill the form
+                            Fill the form or&nbsp;
+                            <Link to="/login">
+                                Sign&nbsp;in
+                            </Link>
                         </h1>
                     </section>
                     <section className="section-body">
@@ -93,7 +91,7 @@ class RegisterUser extends React.Component {
                                     <div className="form-group">
 
                                         <Field name="login" type="text" placeholder="Frank"
-                                               className={(touched.login && errors.login ? "error" : "") + " input-control login"}
+                                               className={(touched.login && errors.login ? "error" : "") + " input-control login-fff"}
                                                onChange={handleChange}
                                                onBlur={handleBlur}
                                                value={values.login}/>
@@ -106,7 +104,7 @@ class RegisterUser extends React.Component {
                                     </div>
                                     <div className="form-group">
                                         <Field name="email" type="email" placeholder="example@example.com"
-                                               className={(touched.email && errors.email ? "error" : "") + " input-control email"}
+                                               className={(touched.email && errors.email ? "error" : "") + " input-control email-fff"}
                                                onChange={handleChange}
                                                onBlur={handleBlur}
                                                value={values.email}/>
@@ -120,7 +118,7 @@ class RegisterUser extends React.Component {
                                     <div className="form-group">
                                         <Field name="password" type={this.state.type} className="input-control password"
                                                placeholder="Your secret password"
-                                               className={(touched.password && errors.password ? "error" : "") + " input-control password"}
+                                               className={(touched.password && errors.password ? "error" : "") + " input-control password-fff"}
                                                onChange={handleChange}
                                                onBlur={handleBlur}
                                                value={values.password}/>
@@ -158,3 +156,4 @@ class RegisterUser extends React.Component {
 
 
 export default RegisterUser;
+

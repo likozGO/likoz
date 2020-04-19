@@ -1,11 +1,13 @@
 import React from 'react';
 
 
-function Navigation() {
-    return (
-        <>
-        </>
-    );
+class Navigation extends React.Component {
+    render() {
+        return (
+            <>
+            </>
+        );
+    }
 }
 
 export default Navigation;

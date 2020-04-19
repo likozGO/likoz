@@ -278,6 +278,11 @@ $size: 170px; // (Fully responsive)
     &__title {
       color: #fff;
       font-size: 6rem;
+
+      a {
+        text-decoration: none;
+        color: #24b9b6;
+      }
     }
 
     &__text {
@@ -305,69 +310,69 @@ $size: 170px; // (Fully responsive)
   }
 }
 
-
-.btn.btn-register {
-  color: #fff;
-  background: #24B9B6;
-  border-radius: 25px;
-  display: inline-block;
-  line-height: 1.5;
-  padding: 2rem;
-  border: 3px solid #00000070;
-  border-bottom-width: 2px;
-  text-align: center;
-  font-weight: 900;
-  text-transform: uppercase;
-  position: relative;
-  transition: .3s ease-in-out;
-  width: 100%;
-  min-width: 15rem;
-  max-width: 70rem;
-  min-height: 7rem;
-  cursor: pointer;
-  outline: 0;
-
-  .selected-word {
-    background: #000;
+.register-group {
+  .btn.btn-register {
     color: #fff;
-  }
-
-  img {
-    position: absolute;
-    max-width: 50px;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  &.dflt:hover {
-    -webkit-box-shadow: inset 0px 0px 0 1px #000;
-    -moz-box-shadow: inset 0px 0px 0 1px #000;
-    box-shadow: inset 0px 0px 0 1px #000;
-  }
-
-  &.btn__bottom-border:after {
-    position: absolute;
-    transition: .3s;
-    content: '';
-    width: 0;
-    left: 50%;
-    bottom: 0;
-    height: 3px;
-    background: #000;
-  }
-
-  &.btn__bottom-border:hover {
+    background: #24B9B6;
+    border-radius: 25px;
+    display: inline-block;
+    line-height: 1.5;
+    padding: 2rem;
+    border: 3px solid #00000070;
+    border-bottom-width: 2px;
+    text-align: center;
+    font-weight: 900;
+    text-transform: uppercase;
+    position: relative;
+    transition: .3s ease-in-out;
+    width: 100%;
+    min-width: 15rem;
+    max-width: 70rem;
+    min-height: 7rem;
     cursor: pointer;
+    outline: 0;
+
+    .selected-word {
+      background: #000;
+      color: #fff;
+    }
+
+    img {
+      position: absolute;
+      max-width: 50px;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &.dflt:hover {
+      -webkit-box-shadow: inset 0px 0px 0 1px #000;
+      -moz-box-shadow: inset 0px 0px 0 1px #000;
+      box-shadow: inset 0px 0px 0 1px #000;
+    }
 
     &.btn__bottom-border:after {
-      width: 90%;
-      left: 5%;
-      right: 5%;
+      position: absolute;
+      transition: .3s;
+      content: '';
+      width: 0;
+      left: 50%;
+      bottom: 0;
+      height: 3px;
+      background: #000;
+    }
+
+    &.btn__bottom-border:hover {
+      cursor: pointer;
+
+      &.btn__bottom-border:after {
+        width: 90%;
+        left: 5%;
+        right: 5%;
+      }
     }
   }
 }
-
 
 
 @media (min-width: $breakpoint-desktop__big) { //bigdesktop >
@@ -396,7 +401,7 @@ $size: 170px; // (Fully responsive)
 @media (max-width: $breakpoint-desktop) { //desktop <
   .cat {
     position: absolute;
-    top: 330px;
+    top: 495px;
     height: $size * 1.49;
     width: $size * 1.7;
     right: 90px;
@@ -405,11 +410,7 @@ $size: 170px; // (Fully responsive)
 }
 
 @media (max-width: $breakpoint-tablet__landscape) { //tablet-landscape <
-  input.input-control.login,
-  input.input-control.email,
-  input.input-control.password {
-    background-size: 27px;
-  }
+
   .cat {
     position: relative;
     top: auto;
@@ -420,6 +421,12 @@ $size: 170px; // (Fully responsive)
 
   .register-group {
     height: 100vh;
+
+    input.input-control.login,
+    input.input-control.email,
+    input.input-control.password {
+      background-size: 27px;
+    }
 
     .section-body,
     .section-greetings {
@@ -452,11 +459,7 @@ $size: 170px; // (Fully responsive)
 
 
 @media (max-width: $breakpoint-phone) { //phone <
-  input.input-control.login,
-  input.input-control.email,
-  input.input-control.password {
-    background-size: 17px;
-  }
+
   .password-type.show {
     left: 60px;
 
@@ -476,13 +479,20 @@ $size: 170px; // (Fully responsive)
     height: 40%;
   }
   .register-group {
+    input.input-control.login,
+    input.input-control.email,
+    input.input-control.password {
+      background-size: 17px;
+    }
+
     .section-body__left {
       padding-top: 40px;
     }
 
     .section-greetings__title {
-      font-size: 3.2rem;
+      font-size: 2.7rem;
       text-align: center;
+
     }
   }
 }
@@ -507,6 +517,7 @@ $size: 170px; // (Fully responsive)
 @media (orientation: landscape) and (max-width: $breakpoint-tablet__landscape) and (max-height: 500px) {
   .register-group {
     height: 100%;
+
     .section-body__left {
       padding-top: 107px;
     }
@@ -522,4 +533,6 @@ $size: 170px; // (Fully responsive)
     width: 80px;
   }
 }
+
+
 

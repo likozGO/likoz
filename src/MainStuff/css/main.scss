@@ -124,10 +124,10 @@ h1, h2, h3, h4 {
 
   .password-type {
     pointer-events: initial;
-    left: 90px;
+    left: 60px;
     z-index: 0;
     cursor: pointer;
-    top: 0px;
+    top: -4px;
   }
 }
 
@@ -145,18 +145,33 @@ h1, h2, h3, h4 {
   padding-right: 45px;
   text-overflow: ellipsis;
 
-  &.login {
-    background: url('../images/form_login.svg') no-repeat 100% 80%;
+  &.login-fff {
+    background: url('../images/form_login__white.svg') no-repeat 100% 80%;
     background-size: 35px;
   }
 
-  &.email {
-    background: url('../images/form_email.svg') no-repeat 100% 80%;
+  &.email-fff {
+    background: url('../images/form_email__white.svg') no-repeat 100% 80%;
     background-size: 35px;
   }
 
-  &.password {
-    background: url('../images/form_password.svg') no-repeat 100% 80%;
+  &.password-fff {
+    background: url('../images/form_password__white.svg') no-repeat 100% 80%;
+    background-size: 35px;
+  }
+
+  &.login-000 {
+    background: url('../images/form_login__black.svg') no-repeat 100% 80%;
+    background-size: 35px;
+  }
+
+  &.email-000 {
+    background: url('../images/form_email__black.svg') no-repeat 100% 80%;
+    background-size: 35px;
+  }
+
+  &.password-000 {
+    background: url('../images/form_password__black.svg') no-repeat 100% 80%;
     background-size: 35px;
   }
 }
@@ -168,12 +183,17 @@ h1, h2, h3, h4 {
   min-height: 6rem;
   transition: opacity .2s ease-in-out;
   text-decoration: none;
+
   &:hover {
     opacity: .8;
   }
-  &:visited {color:inherit;}
+
+  &:visited {
+    color: inherit;
+  }
+
   &:disabled {
-    cursor: not-allowed;
+    cursor: not-allowed !important;
   }
 }
 
@@ -183,35 +203,5 @@ h1, h2, h3, h4 {
 
 .show {
   display: block !important;
-}
-
-@media (min-width: $breakpoint-desktop__big) {
-  html {
-    font-size: 20px;
-  }
-}
-
-@media (max-width: $breakpoint-desktop__big) {
-  html {
-    font-size: 14px;
-  }
-}
-
-@media (max-width: $breakpoint-desktop) {
-  html {
-    font-size: 10px;
-  }
-}
-
-@media (max-width: $breakpoint-tablet__landscape) {
-  html {
-    font-size: 8px;
-  }
-}
-
-@media (max-width: $breakpoint-phone) {
-  html {
-    font-size: 6px;
-  }
 }
 

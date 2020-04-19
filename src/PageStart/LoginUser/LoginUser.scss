@@ -1,0 +1,152 @@
+.login-group {
+  .form-group {
+    width: 100%;
+    margin: 0 auto;
+
+    .input-control {
+      margin-bottom: 2rem;
+      color: #000;
+    }
+
+    label {
+      color: #00ad5f;
+    }
+
+    .btn-login {
+      background: #00ad5f;
+      color: #fff;
+    }
+  }
+
+  .form-forgot {
+    padding-top: 27px;
+    padding-bottom: 100px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .form-signup {
+    text-align: center;
+    width: 100%;
+  }
+
+  .txt1 {
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #999999;
+    text-decoration: none;
+  }
+
+  .txt2 {
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #00ad5f;
+    text-decoration: none;
+  }
+
+  .txt3 {
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.4;
+    color: #00ad5f;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+
+  .container-login {
+    width: 100%;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background: #f2f2f2;
+  }
+
+  .wrap-login {
+    width: 1170px;
+    background: #fff;
+    overflow: hidden;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    flex-direction: row-reverse;
+    //min-height: 400px;
+  }
+
+  .login-more {
+    width: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    z-index: 1;
+    background-image: url('./images/form-bg.gif');
+  }
+
+  .login-more::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+
+  .login100-form {
+    width: 50%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 200px 65px 40px 65px;
+  }
+
+  @media (max-width: 992px) {
+    .login100-form {
+      width: 60%;
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+
+    .login-more {
+      width: 40%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .login100-form {
+      width: 100%;
+    }
+
+    .login-more {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .login100-form {
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-top: 150px;
+    }
+  }
+}

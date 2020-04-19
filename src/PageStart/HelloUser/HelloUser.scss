@@ -150,8 +150,8 @@
 
 @media all and (max-width: 767px) {
   .start-group {
-    background-size: 80%, 60%;
-    background-position: 50% 100%, 100% 56%;
+    background-size: 60%, 30%;
+    background-position: 50% 100%, 100% 83%;
     .section-greetings, .section-body {
       width: 100%;
       height: auto;
@@ -171,12 +171,15 @@
 
 @media all and (max-width: 650px) {
   .btn .selected-word {
-    font-size: 3rem;
+    font-size: 1.9rem;
   }
   .start-group {
     .section-greetings {
+      &__title {
+        font-size: 4rem;
+      }
       &__text {
-        font-size: 3rem;
+        font-size: 2rem;
       }
     }
     .section-body {
@@ -198,12 +201,12 @@
 
 @media all and (max-height: 600px) and (orientation: landscape){
  .start-group {
-   background: #ffffff url(https://media.giphy.com/media/3oz8xKrys4zrmApxTO/giphy.gif) no-repeat;
+   background: #ffffff url('./images/user-hello-sm.gif') no-repeat;
    background-size: 50% 100%;
    background-position: 100% 100%;
    color: #000;
    .section-greetings, .section-body {
-     padding-right: 14rem;
+     padding-right: 27rem;
      width: 100%;
    }
    .section-greetings {
@@ -215,15 +218,21 @@
      }
    }
    .section-body {
+     margin-top: 5%;
      flex-direction: column;
+     &__true,
+     &__false {
+       width: 100%;
+     }
+     &__true {
+       margin-bottom: 1rem;
+     }
+
      .btn {
        max-width: 60rem;
        img {
          max-width: 25px;
        }
-     }
-     .section-body__true {
-       margin-bottom: 1rem;
      }
    }
 
@@ -255,3 +264,5 @@
   background: #cce6ed;
   height: 400px;
 }
+
+
