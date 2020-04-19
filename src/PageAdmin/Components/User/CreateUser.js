@@ -1,13 +1,12 @@
 import React from 'react';
 
 
-class Navigation extends React.Component {
+export default class CreateUser extends React.Component {
     render() {
         return (
             <>
+                You are in Create User component
             </>
         );
     }
 }
-
-export default Navigation;

@@ -8,6 +8,7 @@ import HelloUser from "./PageStart/HelloUser/HelloUser";
 import RegisterUser from "./PageStart/RegisterUser/RegisterUser";
 import LoginUser from "./PageStart/LoginUser/LoginUser";
 import RememberUser from "./PageStart/RememberUser/RememberUser";
+import PageAdmin from "./PageAdmin/PageAdmin";
 
 
 /**Routes**/
@@ -24,7 +25,7 @@ function ConstRouting() {
             <Route path="/registration" component={RegisterUser}/>
             <Route path="/login" component={LoginUser}/>
             <Route path="/forget" component={RememberUser}/>
-
+            <Route path="/admin/dashboard" component={PageAdmin}/>
 
         </AnimatedSwitch>
     )

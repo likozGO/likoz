@@ -11,6 +11,8 @@
 
 3. Вынос ErrorMessage с Formik (path: PageStart/RegisterUser/RegisterUser.js)
 
+4. Как перенести библиотеку ( или большой файл) стилей только на один компонент? вот так не возможно input,form {...}?
+
 53:00 https://www.youtube.com/watch?v=7CqJlxBYj-M
 
 
