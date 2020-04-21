@@ -5,14 +5,12 @@ import './MainStuff/css/main.scss'
 
 import './MainStuff/css/fonts.css'
 import {ConstRouting} from './Router'
-import {BrowserRouter} from "react-router-dom";
+
 
 function App() {
     return (
         <>
-            <BrowserRouter>
-                <ConstRouting/>
-            </BrowserRouter>
+            <ConstRouting/>
         </>
     );
 }

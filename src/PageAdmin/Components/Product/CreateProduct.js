@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export default class CreateProduct extends React.Component {
+class CreateProduct extends React.Component {
     render() {
         return (
             <>
@@ -10,3 +10,5 @@ export default class CreateProduct extends React.Component {
         );
     }
 }
+
+export default CreateProduct;

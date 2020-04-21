@@ -1,7 +1,6 @@
 import React from 'react';
 
-
-export default class CreateUser extends React.Component {
+class CreateUser extends React.Component {
     render() {
         return (
             <>
@@ -10,3 +9,6 @@ export default class CreateUser extends React.Component {
         );
     }
 }
+
+
+export default CreateUser;

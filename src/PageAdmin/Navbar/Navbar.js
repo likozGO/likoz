@@ -1,26 +1,37 @@
 import React from 'react';
+import {Link, Route, Switch} from "react-router-dom";
+import {routes} from '../../Router'
+
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Collapse from '@material-ui/core/Collapse';
+import {useTheme, makeStyles, Drawer, AppBar,
+    Collapse, Toolbar, List,
+    CssBaseline, Divider, IconButton,
+    ListItemIcon, ListItemText, ListItem} from '@material-ui/core';
+
+
+
+
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import StarBorder from '@material-ui/icons/StarBorder';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+
+import UsersIcon from '@material-ui/icons/People';
+import ShopIcon from '@material-ui/icons/ShoppingCart';
+import LotteryIcon from '@material-ui/icons/Casino';
+import BlogIcon from '@material-ui/icons/ImportContacts';
+import AddIcon from '@material-ui/icons/Add';
+import EditIcon from '@material-ui/icons/Edit';
+import ListIcon from '@material-ui/icons/List';
+import Remove from '@material-ui/icons/DeleteForever';
+
+import ListProduct from "../Components/Product/ListProduct";
+import CreateProduct from "../Components/Product/CreateProduct";
+import Dashboard from "../Dashboard/Dashboard";
+import EditProduct from "../Components/Product/EditProduct";
+import ListUser from "../Components/User/ListUser";
 
 
 const drawerWidth = 240;
@@ -95,7 +106,9 @@ export default function MiniDrawer() {
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
 
-    const [toggle, setToggle] = React.useState(true); //multi list
+    const [toggle, setToggle] = React.useState(false); //multi list
+
+    const [toggle2, setToggle2] = React.useState(false); //multi list
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -108,10 +121,13 @@ export default function MiniDrawer() {
     const handleTopicSwitch = () => {
         setToggle(!toggle);
     };
+    const handleTopicSwitch2 = () => {
+        setToggle2(!toggle2);
+    };
 
     return (
         <div className={classes.root}>
-            <CssBaseline />
+            <CssBaseline/>
             <AppBar
                 position="fixed"
                 className={clsx(classes.appBar, {
@@ -128,11 +144,18 @@ export default function MiniDrawer() {
                             [classes.hide]: open,
                         })}
                     >
-                        <MenuIcon />
+                        <MenuIcon/>
                     </IconButton>
-                    <Typography variant="h6" noWrap>
-                        Mini variant drawer
-                    </Typography>
+
+                    <Switch>
+                        <Route path={`/admin`} exact children={<h1>Admin page</h1>}/>
+
+                        <Route path={`/admin/users`} children={<h1>Users page</h1>}/>
+
+                        <Route path={`/admin/shop`} exact children={<h1>Shop page</h1>}/>
+                        <Route path={`/admin/shop/add`} children={<h1>Shop page add</h1>}/>
+                        <Route path={`/admin/shop/edit`} children={<h1>Shop page edit</h1>}/>
+                    </Switch>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -150,71 +173,108 @@ export default function MiniDrawer() {
             >
                 <div className={classes.toolbar}>
                     <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+                        {theme.direction === 'rtl' ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
                     </IconButton>
                 </div>
-                <Divider />
+                <Divider/>
                 <List>
-                    {['Shop', 'Blog', 'Send email', 'Drafts'].map((text, index) => (
-
-                        <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                    <ListItem button onClick={handleTopicSwitch}>
+                    {/*USERS START*/}
+                    <ListItem button component={Link} to={'/admin/users'}>
                         <ListItemIcon>
-                            <InboxIcon />
+                            <UsersIcon/>
                         </ListItemIcon>
-                        <ListItemText primary="Inbox" />
-                        {toggle ? <ExpandLess /> : <ExpandMore />}
+                        <ListItemText primary={'Users'}/>
+                    </ListItem>
+                    {/*USERS END*/}
+
+                    {/*SHOP START*/}
+                    <ListItem button component={Link} to={'/admin/shop'} onClick={handleTopicSwitch}>
+                        <ListItemIcon>
+                            <ShopIcon/>
+                        </ListItemIcon>
+                        <ListItemText primary={'Shop'}/>
+                        {toggle ? <ExpandLess/> : <ExpandMore/>}
                     </ListItem>
                     <Collapse in={toggle} timeout="auto" unmountOnExit>
                         <List component="div" disablePadding>
-                            <ListItem button className={classes.nested}>
+                            <ListItem button component={Link} to={'/admin/shop'} className={classes.nested}>
                                 <ListItemIcon>
-                                    <StarBorder />
+                                    <ListIcon/>
                                 </ListItemIcon>
-                                <ListItemText primary="Starred" />
+                                <ListItemText primary="List"/>
                             </ListItem>
+                            <ListItem button component={Link} to={'/admin/shop/add'} className={classes.nested}>
+                                <ListItemIcon>
+                                    <AddIcon/>
+                                </ListItemIcon>
+                                <ListItemText primary="Add"/>
+                            </ListItem>
+                            <ListItem button component={Link} to={'/admin/shop/edit'} className={classes.nested}>
+                                <ListItemIcon>
+                                    <EditIcon/>
+                                </ListItemIcon>
+                                <ListItemText primary="Edit"/>
+                            </ListItem>
+                            <ListItem button onClick={handleTopicSwitch2}>
+                                <ListItemIcon>
+                                    <LotteryIcon/>
+                                </ListItemIcon>
+                                <ListItemText primary="Lottery"/>
+                                {toggle2 ? <ExpandLess/> : <ExpandMore/>}
+                            </ListItem>
+                            <Collapse in={toggle2} timeout="auto" unmountOnExit>
+                                <List component="div" disablePadding>
+                                    <ListItem button className={classes.nested}>
+                                        <ListItemIcon>
+                                            <ListIcon/>
+                                        </ListItemIcon>
+                                        <ListItemText primary="List"/>
+                                    </ListItem>
+                                    <ListItem button className={classes.nested}>
+                                        <ListItemIcon>
+                                            <AddIcon/>
+                                        </ListItemIcon>
+                                        <ListItemText primary="Add"/>
+                                    </ListItem>
+                                    <ListItem button className={classes.nested}>
+                                        <ListItemIcon>
+                                            <EditIcon/>
+                                        </ListItemIcon>
+                                        <ListItemText primary="Edit"/>
+                                    </ListItem>
+                                    <ListItem button className={classes.nested}>
+                                        <ListItemIcon>
+                                            <Remove/>
+                                        </ListItemIcon>
+                                        <ListItemText primary="Remove"/>
+                                    </ListItem>
+                                </List>
+                            </Collapse>
                         </List>
                     </Collapse>
-                </List>
-                <Divider />
-                <List>
-                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
+                    {/*SHOP END*/}
+
+                    {/*BLOG START*/}
+                    <ListItem button>
+                        <ListItemIcon>
+                            <BlogIcon/>
+                        </ListItemIcon>
+                        <ListItemText primary={'Blog'}/>
+                    </ListItem>
+                    {/*BLOG END*/}
                 </List>
             </Drawer>
             <main className={classes.content}>
-                <div className={classes.toolbar} />
-                <Typography paragraph>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                    ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
-                    facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
-                    gravida rutrum quisque non tellus. Convallis convallis tellus id interdum velit laoreet id
-                    donec ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-                    adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra nibh cras.
-                    Metus vulputate eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo quis
-                    imperdiet massa tincidunt. Cras tincidunt lobortis feugiat vivamus at augue. At augue eget
-                    arcu dictum varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
-                    donec massa sapien faucibus et molestie ac.
-                </Typography>
-                <Typography paragraph>
-                    Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla
-                    facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac
-                    tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus sit amet volutpat
-                    consequat mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed
-                    vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra accumsan in. In
-                    hendrerit gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem et
-                    tortor. Habitant morbi tristique senectus et. Adipiscing elit duis tristique sollicitudin
-                    nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra maecenas
-                    accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis orci a.
-                </Typography>
+                <div className={classes.toolbar}/>
+                <Switch>
+                    <Route path={`/admin`} exact component={Dashboard}/>
+
+                    <Route path={`/admin/users`} component={ListUser}/>
+
+                    <Route path={`/admin/shop`} exact component={ListProduct}/>
+                    <Route path={`/admin/shop/add`} component={CreateProduct}/>
+                    <Route path={`/admin/shop/edit`} component={EditProduct}/>
+                </Switch>
             </main>
         </div>
     );

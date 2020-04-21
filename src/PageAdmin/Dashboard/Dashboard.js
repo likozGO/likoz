@@ -1,13 +1,10 @@
 import React from 'react';
 
 
-class Dashboard extends React.Component {
-    render() {
+export default function Dashboard() {
         return (
             <>
+                Dashboard page
             </>
         );
-    }
 }
-
-export default Dashboard;

@@ -15,6 +15,7 @@ function HelloUser() {
                 <p className="section-greetings__text">
                     Its first page if you never been before on my site or clear cookies :)
                     <br/>
+                    <Link to={'/admin'}>В админку брат</Link>
                 </p>
             </section>
             <section className="section-body">

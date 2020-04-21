@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-export default class EditProduct extends React.Component {
+class EditProduct extends React.Component {
     render() {
         return (
             <>
@@ -10,3 +10,6 @@ export default class EditProduct extends React.Component {
         );
     }
 }
+
+
+export default EditProduct;
