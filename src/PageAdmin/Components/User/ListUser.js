@@ -1,14 +1,27 @@
 import React from 'react';
+import {FetchUsers} from "./FetchUsers";
 
 
-class ListUser extends React.Component {
-    render() {
+function ListUser() {
+    const [data, loading] = FetchUsers(
+        "https://jsonplaceholder.typicode.com/photos?albumId=1"
+    );
         return (
             <>
-                You are in List User component
+                <h1>Photos</h1>
+                {loading ? (
+                    "Loading..."
+                ) : (
+                    <ul>
+                        {data.map(({ id, title, url }) => (
+                            <li key={`photo-${id}`}>
+                                <img alt={title} src={url} />
+                            </li>
+                        ))}
+                    </ul>
+                )}
             </>
         );
-    }
 }
 
 export default ListUser;

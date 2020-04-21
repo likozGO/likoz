@@ -3,17 +3,25 @@ import {Link, Route, Switch} from "react-router-dom";
 import {routes} from '../../Router'
 
 import clsx from 'clsx';
-import {useTheme, makeStyles, Drawer, AppBar,
-    Collapse, Toolbar, List,
-    CssBaseline, Divider, IconButton,
-    ListItemIcon, ListItemText, ListItem} from '@material-ui/core';
-
-
+import {
+    makeStyles,
+    AppBar,
+    Collapse,
+    CssBaseline,
+    Divider,
+    Drawer,
+    IconButton,
+    List,
+    ListItem,
+    ListItemIcon,
+    ListItemText,
+    Toolbar,
+    useTheme
+} from '@material-ui/core';
 
 
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import StarBorder from '@material-ui/icons/StarBorder';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
@@ -32,6 +40,7 @@ import CreateProduct from "../Components/Product/CreateProduct";
 import Dashboard from "../Dashboard/Dashboard";
 import EditProduct from "../Components/Product/EditProduct";
 import ListUser from "../Components/User/ListUser";
+import CreateUser from "../Components/User/CreateUser";
 
 
 const drawerWidth = 240;
@@ -110,6 +119,8 @@ export default function MiniDrawer() {
 
     const [toggle2, setToggle2] = React.useState(false); //multi list
 
+    const [toggle3, setToggle3] = React.useState(false); //multi list
+
     const handleDrawerOpen = () => {
         setOpen(true);
     };
@@ -123,6 +134,10 @@ export default function MiniDrawer() {
     };
     const handleTopicSwitch2 = () => {
         setToggle2(!toggle2);
+    };
+
+    const handleTopicSwitch3 = () => {
+        setToggle3(!toggle3);
     };
 
     return (
@@ -150,7 +165,8 @@ export default function MiniDrawer() {
                     <Switch>
                         <Route path={`/admin`} exact children={<h1>Admin page</h1>}/>
 
-                        <Route path={`/admin/users`} children={<h1>Users page</h1>}/>
+                        <Route path={`/admin/users`} exact children={<h1>Users page</h1>}/>
+                        <Route path={`/admin/users/add`} children={<h1>Users page add</h1>}/>
 
                         <Route path={`/admin/shop`} exact children={<h1>Shop page</h1>}/>
                         <Route path={`/admin/shop/add`} children={<h1>Shop page add</h1>}/>
@@ -179,12 +195,29 @@ export default function MiniDrawer() {
                 <Divider/>
                 <List>
                     {/*USERS START*/}
-                    <ListItem button component={Link} to={'/admin/users'}>
+                    <ListItem button component={Link} to={'/admin/users'} onClick={handleTopicSwitch3}>
                         <ListItemIcon>
                             <UsersIcon/>
                         </ListItemIcon>
                         <ListItemText primary={'Users'}/>
+                        {toggle2 ? <ExpandLess/> : <ExpandMore/>}
                     </ListItem>
+                    <Collapse in={toggle3} timeout="auto" unmountOnExit>
+                        <List component="div" disablePadding>
+                            <ListItem button className={classes.nested} component={Link} to={'/admin/users'}>
+                                <ListItemIcon>
+                                    <ListIcon/>
+                                </ListItemIcon>
+                                <ListItemText primary="List"/>
+                            </ListItem>
+                            <ListItem button className={classes.nested} component={Link} to={'/admin/users/add'}>
+                                <ListItemIcon>
+                                    <AddIcon/>
+                                </ListItemIcon>
+                                <ListItemText primary="Add"/>
+                            </ListItem>
+                        </List>
+                    </Collapse>
                     {/*USERS END*/}
 
                     {/*SHOP START*/}
@@ -215,7 +248,7 @@ export default function MiniDrawer() {
                                 </ListItemIcon>
                                 <ListItemText primary="Edit"/>
                             </ListItem>
-                            <ListItem button onClick={handleTopicSwitch2}>
+                            <ListItem button onClick={handleTopicSwitch2} disabled>
                                 <ListItemIcon>
                                     <LotteryIcon/>
                                 </ListItemIcon>
@@ -255,7 +288,7 @@ export default function MiniDrawer() {
                     {/*SHOP END*/}
 
                     {/*BLOG START*/}
-                    <ListItem button>
+                    <ListItem button disabled>
                         <ListItemIcon>
                             <BlogIcon/>
                         </ListItemIcon>
@@ -269,7 +302,8 @@ export default function MiniDrawer() {
                 <Switch>
                     <Route path={`/admin`} exact component={Dashboard}/>
 
-                    <Route path={`/admin/users`} component={ListUser}/>
+                    <Route path={`/admin/users`} exact component={ListUser}/>
+                    <Route path={`/admin/users/add`} component={CreateUser}/>
 
                     <Route path={`/admin/shop`} exact component={ListProduct}/>
                     <Route path={`/admin/shop/add`} component={CreateProduct}/>
