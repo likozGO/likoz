@@ -1,24 +1,25 @@
 import React from 'react';
+
+import {DEV_USER_API} from "../../../const"
 import {FetchUsers} from "./FetchUsers";
 
-
 function ListUser() {
-    const [data, loading] = FetchUsers(
-        "https://jsonplaceholder.typicode.com/photos?albumId=1"
-    );
+    const [data, loading] = FetchUsers(DEV_USER_API + 'users');
         return (
             <>
-                <h1>Photos</h1>
+                <h1>Users</h1>
                 {loading ? (
                     "Loading..."
                 ) : (
-                    <ul>
-                        {data.map(({ id, title, url }) => (
-                            <li key={`photo-${id}`}>
-                                <img alt={title} src={url} />
-                            </li>
+                    <div>
+                        {data.map(({ username, createdAt, updatedAt }) => (
+                            <div key={username}>
+                                    <div>{username}</div>
+                                    <div>{createdAt}</div>
+                                    <div>{updatedAt}</div>
+                            </div>
                         ))}
-                    </ul>
+                    </div>
                 )}
             </>
         );
