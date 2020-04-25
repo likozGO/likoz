@@ -39,8 +39,8 @@ import ListProduct from "../Components/Product/ListProduct";
 import CreateProduct from "../Components/Product/CreateProduct";
 import Dashboard from "../Dashboard/Dashboard";
 import EditProduct from "../Components/Product/EditProduct";
-import ListUser from "../Components/User/ListUser";
-import CreateUser from "../Components/User/CreateUser";
+import ListUser from "../Components/User/ListUser/ListUser";
+import CreateUser from "../Components/User/CreateUser/CreateUser";
 
 
 const drawerWidth = 240;
