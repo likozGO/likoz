@@ -1,7 +1,6 @@
 import React from 'react';
-import {ListUserFetchFunction} from "./ListUser--FetchFunction";
 import {DEV_USER_API} from "../../../../const";
-
+import axios from 'axios'
 
 const headCells = [
     {id: 'username', numeric: false, disablePadding: false, label: 'Username'},
@@ -10,35 +9,28 @@ const headCells = [
 ];
 
 let rows = [];
-
-
-const userList = () => {
+async function UserList() {
     function createData(username, email, password) {
         return {username, email, password};
     }
 
-    try {
-        const [data, loading] = ListUserFetchFunction(
-            DEV_USER_API + 'users'
-        );
-        if (!loading) { //*Когда всё загрузилось добавляем строчки по шаблону*//
-            // for (let i = 0; i < data.length; i++) {
+    let response = await axios.get(DEV_USER_API + 'users');
+    let data = response.data;
+
+
+    if (data) { //*Когда всё загрузилось добавляем строчки по шаблону*//
+        for (var i = 0; i < data.length; i++) {
             rows = [
-                createData(data[0].username, data[0].email, data[0].password)
-            ]
-
-            // }
-            return true
-
-        } else {
-            console.log('Loading')
-            // TODO Some handler loading
+                createData(data[i].username, data[i].email, data[i].password)
+            ];
         }
-    } catch (e) {
-        return e;
-    }
 
+
+    } else {
+        console.log('Loading')
+        // TODO Some handler loading
+    }
 }
 
 
-export {userList, headCells, rows};
+export {UserList, headCells, rows};
