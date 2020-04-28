@@ -1,5 +1,5 @@
 import React from 'react';
-import {UserList} from './ListUser--Fetch'
+import {ListUser__Fetch} from './ListUser--Fetch'
 import ListUser__View from './ListUser--View'
 /*Логика работы:*/
 /*Есть шаблон с Material UI таблицы*/
@@ -8,40 +8,44 @@ import ListUser__View from './ListUser--View'
 /*Пока фетчим данные показывать какой то прелоадер забавный*/
 
 
-/***ListUser__View = собств. таблица***/
+/***ListUser__View = компонент таблицы***/
 /***ListUser__Fetch = функия получения и добавления строчек в таблицу**/
 export default class EnhancedTable extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             loading: true,
-            users: []
+            error: false
         }
     }
 
     componentDidMount() {
-        UserList()
-            .then((users) => {
-                this.setState({
-                    users,
+            ListUser__Fetch()
+                .then(response => {
+                    if(response === 'TableError') {
+                        this.setState({error: true})
+                        console.error(response)
+                    }
+                    this.setState({loading: false})
                 })
-                this.setState({loading: false})
-            })
+
     }
 
     render() {
-        const { loading, users } = this.state;
+        const {loading, error} = this.state;
 
-            if (loading) {
-                return (
-                    <div>loading</div>
-                );
-            } else {
-                return (
-                    <div><ListUser__View/></div>
-                );
-            }
-
-
+        if (loading) {
+            return (
+                <div>loading</div>
+            );
+        } else if (error) {
+            return (
+                <div>ошибка</div>
+            );
+        } else {
+            return (
+                <div><ListUser__View/></div>
+            );
+        }
     }
 }

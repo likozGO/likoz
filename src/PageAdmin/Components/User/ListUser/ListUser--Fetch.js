@@ -9,28 +9,41 @@ const headCells = [
 ];
 
 let rows = [];
-async function UserList() {
+
+async function ListUser__Fetch() {
     function createData(username, email, password) {
         return {username, email, password};
     }
 
-    let response = await axios.get(DEV_USER_API + 'users');
-    let data = response.data;
+    try {
+        const response = await axios.get(DEV_USER_API + 'users');
+        let data = response.data;
 
-
-    if (data) { //*Когда всё загрузилось добавляем строчки по шаблону*//
-        for (var i = 0; i < data.length; i++) {
-            rows = [
-                createData(data[i].username, data[i].email, data[i].password)
-            ];
+        if (data) { //*Когда всё загрузилось добавляем строчки по шаблону*//
+            if (rows.length == 0) { // если колв. строк == 0 тогда заполняем таблицу полученной информацией
+                for (let i = 0; i < data.length; i++) { // проходим по циклу в длинну от полученой информации и заполняем
+                    let newObj = createData(data[i].username, data[i].email, data[i].password);
+                    rows.push(newObj)
+                }
+            } else {
+                if (rows.length !== data.length) { // если колв. строк изменилось, тогда обновляем цикл
+                    rows = [];
+                    for (let i = 0; i < data.length; i++) {
+                        let newObj = createData(data[i].username, data[i].email, data[i].password);
+                        rows.push(newObj)
+                    }
+                }
+            }
+        } else {
+            console.log('Loading')
+            // TODO Some handler loading
         }
-
-
-    } else {
-        console.log('Loading')
-        // TODO Some handler loading
+        return data;
+    } catch (error) {
+        console.log(error)
+        return 'TableError';
     }
 }
 
 
-export {UserList, headCells, rows};
+export {ListUser__Fetch, headCells, rows};
