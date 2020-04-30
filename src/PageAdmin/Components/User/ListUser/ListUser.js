@@ -1,6 +1,6 @@
 import React from 'react';
-import {ListUser__Fetch} from './ListUser--Fetch'
-import ListUser__View from './ListUser--View'
+import {ListUser__Fetch} from './ListUserFetch'
+import ListUser__View from './ListUserView'
 /*Логика работы:*/
 /*Есть шаблон с Material UI таблицы*/
 /*В ней содержаться данные*/
@@ -20,14 +20,13 @@ export default class EnhancedTable extends React.Component {
     }
 
     componentDidMount() {
-            ListUser__Fetch()
-                .then(response => {
-                    if(response === 'TableError') {
-                        this.setState({error: true})
-                        console.error(response)
-                    }
-                    this.setState({loading: false})
-                })
+        ListUser__Fetch()
+            .then(response => {
+                if(response === 'TableError') {
+                    this.setState({error: true})
+                }
+                this.setState({loading: false})
+            })
 
     }
 

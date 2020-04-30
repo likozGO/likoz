@@ -6,7 +6,7 @@ import TableHead from '@material-ui/core/TableHead';
 import Checkbox from '@material-ui/core/Checkbox';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 
-import {headCells} from './ListUser--Fetch';
+import {headCells} from './ListUserFetch';
 
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {

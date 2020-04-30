@@ -17,15 +17,29 @@ import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 import FilterListIcon from '@material-ui/icons/FilterList';
-import {EnhancedTableHead, getComparator, stableSort} from './ListUser--Sorting';
-import {rows} from './ListUser--Fetch';
+import {EnhancedTableHead, getComparator, stableSort} from './ListUserSorting';
+import {rows} from './ListUserFetch';
+import SearchIcon from '@material-ui/icons/Search';
+import AddIcon from '@material-ui/icons/Add';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
 
-// КОЛИЧЕСТВО ВЫБРАНЫХ СТРОЧЕК В ТАБЛИЦЕ (НАЧАЛО)
+
+
+
+
 const useToolbarStyles = makeStyles((theme) => ({
     root: {
         paddingLeft: theme.spacing(2),
         paddingRight: theme.spacing(1),
+    },
+    margin: {
+        margin: theme.spacing(1),
+    },
+    inputSearch: {
+        flexWrap: 'nowrap',
     },
     highlight:
         theme.palette.type === 'light'
@@ -51,6 +65,7 @@ const EnhancedTableToolbar = (props) => {
                 [classes.highlight]: numSelected > 0,
             })}
         >
+
             {numSelected > 0 ? (
                 <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
                     {numSelected} selected
@@ -60,6 +75,25 @@ const EnhancedTableToolbar = (props) => {
                     Nutrition
                 </Typography>
             )}
+            <div className={classes.margin}>
+                <Grid container className={classes.inputSearch} spacing={1} alignItems="flex-end">
+                    <Grid item>
+                        <Tooltip title="Example: Ivan">
+                                <SearchIcon />
+                        </Tooltip>
+                    </Grid>
+                    <Grid item>
+                        <TextField id="input-with-icon-grid" label="Search" />
+                    </Grid>
+                </Grid>
+            </div>
+            {numSelected == 1 ?
+                <Tooltip title="Edit">
+                    <IconButton aria-label="edit">
+                        <EditIcon/>
+                    </IconButton>
+                </Tooltip>
+                : ''}
 
             {numSelected > 0 ? (
                 <Tooltip title="Delete">
@@ -68,11 +102,18 @@ const EnhancedTableToolbar = (props) => {
                     </IconButton>
                 </Tooltip>
             ) : (
+                <>
                 <Tooltip title="Filter list">
                     <IconButton aria-label="filter list">
                         <FilterListIcon/>
                     </IconButton>
                 </Tooltip>
+                <Tooltip title="Add user">
+                    <IconButton aria-label="Add user">
+                        <AddIcon/>
+                    </IconButton>
+                </Tooltip>
+                </>
             )}
         </Toolbar>
     );
@@ -80,11 +121,13 @@ const EnhancedTableToolbar = (props) => {
 EnhancedTableToolbar.propTypes = {
     numSelected: PropTypes.number.isRequired,
 };
-// КОЛИЧЕСТВО ВЫБРАНЫХ СТРОЧЕК В ТАБЛИЦЕ (КОНЕЦ)
 
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
+    },
+    container: {
+        maxHeight: 440,
     },
     paper: {
         width: '100%',
@@ -167,12 +210,12 @@ export default function ListUser__View() {
         <div className={classes.root}>
             <Paper className={classes.paper}>
                 <EnhancedTableToolbar numSelected={selected.length}/>
-                <TableContainer>
+                <TableContainer className={classes.container}>
                     <Table
                         className={classes.table}
                         aria-labelledby="tableTitle"
                         size={dense ? 'small' : 'medium'}
-                        aria-label="enhanced table"
+                        stickyHeader aria-label="sticky table"
                     >
                         <EnhancedTableHead
                             classes={classes}
