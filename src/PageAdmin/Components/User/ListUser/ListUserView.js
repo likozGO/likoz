@@ -55,7 +55,7 @@ const useToolbarStyles = makeStyles((theme) => ({
 const EnhancedTableToolbar = (props) => {
     const classes = useToolbarStyles();
     const {numSelected} = props;
-
+    const {dataSelected} = props;
     return (
         <Toolbar
             className={clsx(classes.root, {
@@ -85,7 +85,7 @@ const EnhancedTableToolbar = (props) => {
             </div>
             {numSelected == 1 ?
                 <Tooltip title="Edit">
-                    <FullScreenDialog modal_type='EditUser'/>
+                    <FullScreenDialog modal_type='EditUser' user_info={dataSelected}/>
                 </Tooltip>
                 : null}
             {numSelected > 0 ? (
@@ -110,7 +110,7 @@ const EnhancedTableToolbar = (props) => {
     );
 };
 EnhancedTableToolbar.propTypes = {
-    numSelected: PropTypes.number.isRequired,
+    numSelected: PropTypes.number.isRequired
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -148,6 +148,7 @@ export default function ListUser__View() {
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('email');
     const [selected, setSelected] = React.useState([]);
+    const [selectedRow, setSelectedRow] = React.useState([]);
     const [page, setPage] = React.useState(0);
     const [dense, setDense] = React.useState(false);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -164,6 +165,7 @@ export default function ListUser__View() {
             setSelected(newSelecteds);
             return;
         }
+        setSelectedRow([])
         setSelected([]);
     };
 
@@ -171,8 +173,7 @@ export default function ListUser__View() {
 
         const selectedIndex = selected.indexOf(name);
         let newSelected = [];
-
-        const SelectedItemData = selected.length == 1 ? console.log(dataSelected) : false;
+        let stateDataSelected = dataSelected;
 
         if (selectedIndex === -1) {
             newSelected = newSelected.concat(selected, name);
@@ -187,6 +188,7 @@ export default function ListUser__View() {
             );
         }
 
+        setSelectedRow(stateDataSelected)
         setSelected(newSelected);
     };
 
@@ -206,7 +208,7 @@ export default function ListUser__View() {
     return (
         <div className={classes.root}>
             <Paper className={classes.paper}>
-                <EnhancedTableToolbar numSelected={selected.length}/>
+                <EnhancedTableToolbar numSelected={selected.length} dataSelected={selectedRow}/>
                 <TableContainer className={classes.container}>
                     <Table
                         className={classes.table}

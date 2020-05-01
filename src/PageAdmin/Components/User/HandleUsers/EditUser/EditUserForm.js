@@ -37,8 +37,23 @@ function handleAddUser(e) {
         .catch(err => console.log(err))
 }
 
-export default function EditUserForm() {
+
+export default function EditUserForm(props) {
     const classes = useStyles();
+    const user_info = props.user_info;
+    const [values, setValues] = React.useState({
+        showPassword: false,
+    });
+    const user = {
+        username: user_info.username,
+        email: user_info.email,
+        password: user_info.password
+    }
+
+    const handleClickShowPassword = () => {
+        setValues({ ...values, showPassword: !values.showPassword });
+    };
+
     return (
         <>
             <Container maxWidth="sm">
@@ -50,6 +65,7 @@ export default function EditUserForm() {
                                 id="username"
                                 name="username"
                                 label="Username"
+                                value={user.username}
                                 fullWidth
                             />
                         </Grid>
@@ -60,6 +76,7 @@ export default function EditUserForm() {
                                 name="email"
                                 label="Email"
                                 type="email"
+                                value={user.email}
                                 fullWidth
                             />
                         </Grid>
@@ -70,6 +87,7 @@ export default function EditUserForm() {
                                 name="password"
                                 label="Password"
                                 type="password"
+                                value={user.password}
                                 fullWidth
                             />
                         </Grid>

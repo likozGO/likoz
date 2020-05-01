@@ -54,7 +54,7 @@ export default function FullScreenDialog(props) {
         tooltipText: 'Edit user',
         icon: <EditIcon/>,
         typography: 'Edit User',
-        form: <EditUserForm/>
+        form: <EditUserForm user_info={props.user_info}/>,
     }
 
     if (type == 'CreateUser') {
