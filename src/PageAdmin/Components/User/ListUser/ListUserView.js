@@ -17,17 +17,14 @@ import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
-import EditIcon from '@material-ui/icons/Edit';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import {EnhancedTableHead, getComparator, stableSort} from './ListUserSorting';
 import {rows} from './ListUserFetch';
 import SearchIcon from '@material-ui/icons/Search';
-import AddIcon from '@material-ui/icons/Add';
+
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-
-
-
+import FullScreenDialog from '../HandleUsers/UserDialog'
 
 
 const useToolbarStyles = makeStyles((theme) => ({
@@ -65,7 +62,6 @@ const EnhancedTableToolbar = (props) => {
                 [classes.highlight]: numSelected > 0,
             })}
         >
-
             {numSelected > 0 ? (
                 <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
                     {numSelected} selected
@@ -79,22 +75,19 @@ const EnhancedTableToolbar = (props) => {
                 <Grid container className={classes.inputSearch} spacing={1} alignItems="flex-end">
                     <Grid item>
                         <Tooltip title="Example: Ivan">
-                                <SearchIcon />
+                            <SearchIcon/>
                         </Tooltip>
                     </Grid>
                     <Grid item>
-                        <TextField id="input-with-icon-grid" label="Search" />
+                        <TextField id="input-with-icon-grid" label="Search"/>
                     </Grid>
                 </Grid>
             </div>
             {numSelected == 1 ?
                 <Tooltip title="Edit">
-                    <IconButton aria-label="edit">
-                        <EditIcon/>
-                    </IconButton>
+                    <FullScreenDialog modal_type='EditUser'/>
                 </Tooltip>
-                : ''}
-
+                : null}
             {numSelected > 0 ? (
                 <Tooltip title="Delete">
                     <IconButton aria-label="delete">
@@ -103,16 +96,14 @@ const EnhancedTableToolbar = (props) => {
                 </Tooltip>
             ) : (
                 <>
-                <Tooltip title="Filter list">
-                    <IconButton aria-label="filter list">
-                        <FilterListIcon/>
-                    </IconButton>
-                </Tooltip>
-                <Tooltip title="Add user">
-                    <IconButton aria-label="Add user">
-                        <AddIcon/>
-                    </IconButton>
-                </Tooltip>
+                    <Tooltip title="Filter list">
+                        <IconButton aria-label="filter list">
+                            <FilterListIcon/>
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title="Add user">
+                        <FullScreenDialog modal_type='CreateUser'/>
+                    </Tooltip>
                 </>
             )}
         </Toolbar>
@@ -125,6 +116,9 @@ EnhancedTableToolbar.propTypes = {
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
+    },
+    idColumn: {
+        display: 'none',
     },
     container: {
         maxHeight: 440,
@@ -166,7 +160,7 @@ export default function ListUser__View() {
 
     const handleSelectAllClick = (event) => {
         if (event.target.checked) {
-            const newSelecteds = rows.map((n) => n.username);
+            const newSelecteds = rows.map((n) => n.userid);
             setSelected(newSelecteds);
             return;
         }
@@ -230,17 +224,17 @@ export default function ListUser__View() {
                             {stableSort(rows, getComparator(order, orderBy))
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map((row, index) => {
-                                    const isItemSelected = isSelected(row.username);
+                                    const isItemSelected = isSelected(row.userid);
                                     const labelId = `enhanced-table-checkbox-${index}`;
 
                                     return (
                                         <TableRow
                                             hover
-                                            onClick={(event) => handleClick(event, row.username)}
+                                            onClick={(event) => handleClick(event, row.userid)}
                                             role="checkbox"
                                             aria-checked={isItemSelected}
                                             tabIndex={-1}
-                                            key={row.username}
+                                            key={row.userid}
                                             selected={isItemSelected}
                                         >
                                             <TableCell padding="checkbox">
@@ -249,9 +243,11 @@ export default function ListUser__View() {
                                                     inputProps={{'aria-labelledby': labelId}}
                                                 />
                                             </TableCell>
-                                            <TableCell component="th" id={labelId} scope="row" padding="none">
-                                                {row.username}
+                                            <TableCell id={labelId} component="th" scope="row" padding="none"
+                                                       className={classes.idColumn}>
+                                                {row.userid}
                                             </TableCell>
+                                            <TableCell>{row.username}</TableCell>
                                             <TableCell>{row.email}</TableCell>
                                             <TableCell>{row.password}</TableCell>
                                         </TableRow>

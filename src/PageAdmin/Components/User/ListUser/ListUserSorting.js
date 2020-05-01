@@ -40,6 +40,7 @@ function EnhancedTableHead(props) {
         onRequestSort(event, property);
     };
 
+
     return (
         <TableHead>
             <TableRow>
@@ -57,6 +58,7 @@ function EnhancedTableHead(props) {
                         align={headCell.numeric ? 'right' : 'left'}
                         padding={headCell.disablePadding ? 'none' : 'default'}
                         sortDirection={orderBy === headCell.id ? order : false}
+                        style={headCell.label == 'User ID' ? {display: 'none'} : {}}
                     >
                         <TableSortLabel
                             active={orderBy === headCell.id}

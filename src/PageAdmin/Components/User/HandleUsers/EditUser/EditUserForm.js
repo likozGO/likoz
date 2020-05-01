@@ -1,13 +1,12 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import TextField from '@material-ui/core/TextField';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from "@material-ui/core/Button";
 import axios from "axios"
-import {DEV_USER_API} from "../../../../const"
+import {DEV_USER_API} from "../../../../../const"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -24,25 +23,25 @@ const useStyles = makeStyles((theme) => ({
 
 function handleAddUser(e) {
     e.preventDefault();
-    const { username, password, email } = e.currentTarget.elements;
+    const {username, password, email} = e.currentTarget.elements;
 
 
     const user = {
         username: username.value,
+        email: email.value,
+        password: password.value,
     }
 
     axios.post(DEV_USER_API + 'users/add', user)
         .then(res => console.log(res.data))
+        .catch(err => console.log(err))
 }
 
-export default function CreateUser() {
+export default function EditUserForm() {
     const classes = useStyles();
     return (
         <>
             <Container maxWidth="sm">
-                <Typography variant="h3" gutterBottom>
-                    Create User
-                </Typography>
                 <form className={classes.root} autoComplete="off" onSubmit={handleAddUser}>
                     <Grid container spacing={3}>
                         <Grid item xs={12} sm={6}>
@@ -80,11 +79,11 @@ export default function CreateUser() {
                                 color="primary"
                                 size="large"
                                 className={classes.button}
-                                startIcon={<PersonAddIcon />}
+                                startIcon={<PersonAddIcon/>}
                                 fullWidth
                                 type='submit'
                             >
-                                Add
+                                Edit
                             </Button>
                         </Grid>
                     </Grid>

@@ -40,7 +40,7 @@ import CreateProduct from "../Components/Product/CreateProduct";
 import Dashboard from "../Dashboard/Dashboard";
 import EditProduct from "../Components/Product/EditProduct";
 import ListUser from "../Components/User/ListUser/ListUser";
-import CreateUser from "../Components/User/CreateUser/CreateUser";
+import CreateUserForm from "../Components/User/HandleUsers/CreateUser/CreateUserForm";
 
 
 const drawerWidth = 240;
@@ -303,7 +303,7 @@ export default function MiniDrawer() {
                     <Route path={`/admin`} exact component={Dashboard}/>
 
                     <Route path={`/admin/users`} exact component={ListUser}/>
-                    <Route path={`/admin/users/add`} component={CreateUser}/>
+                    <Route path={`/admin/users/add`} component={CreateUserForm}/>
 
                     <Route path={`/admin/shop`} exact component={ListProduct}/>
                     <Route path={`/admin/shop/add`} component={CreateProduct}/>
