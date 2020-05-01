@@ -68,7 +68,7 @@ const EnhancedTableToolbar = (props) => {
                 </Typography>
             ) : (
                 <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-                    Nutrition
+                    Users
                 </Typography>
             )}
             <div className={classes.margin}>
@@ -167,9 +167,12 @@ export default function ListUser__View() {
         setSelected([]);
     };
 
-    const handleClick = (event, name) => {
+    const handleClick = (event, name, dataSelected) => {
+
         const selectedIndex = selected.indexOf(name);
         let newSelected = [];
+
+        const SelectedItemData = selected.length == 1 ? console.log(dataSelected) : false;
 
         if (selectedIndex === -1) {
             newSelected = newSelected.concat(selected, name);
@@ -221,16 +224,16 @@ export default function ListUser__View() {
                             rowCount={rows.length}
                         />
                         <TableBody>
+
                             {stableSort(rows, getComparator(order, orderBy))
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map((row, index) => {
                                     const isItemSelected = isSelected(row.userid);
                                     const labelId = `enhanced-table-checkbox-${index}`;
-
                                     return (
                                         <TableRow
                                             hover
-                                            onClick={(event) => handleClick(event, row.userid)}
+                                            onClick={(event) => handleClick(event, row.userid, row)}
                                             role="checkbox"
                                             aria-checked={isItemSelected}
                                             tabIndex={-1}
