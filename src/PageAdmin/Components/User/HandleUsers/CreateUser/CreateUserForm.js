@@ -1,12 +1,17 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
-import TextField from '@material-ui/core/TextField';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import IconButton from '@material-ui/core/IconButton';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from "@material-ui/core/Button";
 import axios from "axios"
 import {DEV_USER_API} from "../../../../../const"
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -39,38 +44,54 @@ function handleAddUser(e) {
 
 export default function CreateUserForm() {
     const classes = useStyles();
+    const [values, setValues] = React.useState({
+        showPassword: false,
+    });
+    const handleClickShowPassword = () => {
+        setValues({ ...values, showPassword: !values.showPassword });
+    };
     return (
         <>
             <Container maxWidth="sm">
                 <form className={classes.root} autoComplete="off" onSubmit={handleAddUser}>
                     <Grid container spacing={3}>
                         <Grid item xs={12} sm={6}>
-                            <TextField
+                            <InputLabel htmlFor="standard-adornment-email">Username</InputLabel>
+                            <Input
                                 required
                                 id="username"
                                 name="username"
-                                label="Username"
                                 fullWidth
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <TextField
+                            <InputLabel htmlFor="standard-adornment-email">Email</InputLabel>
+                            <Input
                                 required
                                 id="email"
                                 name="email"
-                                label="Email"
                                 type="email"
                                 fullWidth
                             />
                         </Grid>
                         <Grid item xs={12} sm={12}>
-                            <TextField
+                            <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
+                            <Input
                                 required
                                 id="password"
                                 name="password"
-                                label="Password"
-                                type="password"
+                                type={values.showPassword ? 'text' : 'password'}
                                 fullWidth
+                                endAdornment={
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={handleClickShowPassword}
+                                        >
+                                            {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                                        </IconButton>
+                                    </InputAdornment>
+                                }
                             />
                         </Grid>
                         <Grid item xs={12} sm={12}>
