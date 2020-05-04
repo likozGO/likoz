@@ -54,8 +54,8 @@ const useToolbarStyles = makeStyles((theme) => ({
 }));
 const EnhancedTableToolbar = (props) => {
     const classes = useToolbarStyles();
-    const {numSelected} = props;
-    const {dataSelected} = props;
+    const {numSelected, dataSelected} = props;
+
     return (
         <Toolbar
             className={clsx(classes.root, {
@@ -85,7 +85,9 @@ const EnhancedTableToolbar = (props) => {
             </div>
             {numSelected == 1 ?
                 <Tooltip title="Edit">
-                    <FullScreenDialog modal_type='EditUser' user_info={dataSelected}/>
+                    <>
+                        <FullScreenDialog modal_type='EditUser' user_info={dataSelected}/>
+                    </>
                 </Tooltip>
                 : null}
             {numSelected > 0 ? (
@@ -101,8 +103,11 @@ const EnhancedTableToolbar = (props) => {
                             <FilterListIcon/>
                         </IconButton>
                     </Tooltip>
+
                     <Tooltip title="Add user">
-                        <FullScreenDialog modal_type='CreateUser'/>
+                        <>
+                            <FullScreenDialog modal_type='CreateUser'/>
+                        </>
                     </Tooltip>
                 </>
             )}

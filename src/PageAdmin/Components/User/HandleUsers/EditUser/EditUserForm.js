@@ -1,7 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
-import TextField from '@material-ui/core/TextField';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
@@ -37,10 +36,11 @@ function handleAddUser(e) {
         email: email.value,
         password: password.value,
     }
-
-    axios.post(DEV_USER_API + 'users/add', user)
-        .then(res => console.log(res.data))
-        .catch(err => console.log(err))
+    console.log(user)
+    //
+    // axios.post(DEV_USER_API + 'users/add', user)
+    //     .then(res => console.log(res.data))
+    //     .catch(err => console.log(err))
 }
 
 
@@ -50,14 +50,14 @@ export default function EditUserForm(props) {
     const [values, setValues] = React.useState({
         showPassword: false,
     });
-    const [inputValue, inputHandler] = React.useState({
-        showPassword: false,
-    });
-    const user = {
-        username: user_info.username,
-        email: user_info.email,
-        password: user_info.password
-    }
+    const [inputValue, handleValue] = React.useState(
+        {
+            username: user_info.username,
+            email: user_info.email,
+            password: user_info.password
+        }
+    );
+
 
     const handleClickShowPassword = () => {
         setValues({ ...values, showPassword: !values.showPassword });
@@ -74,7 +74,8 @@ export default function EditUserForm(props) {
                                 required
                                 id="username"
                                 name="username"
-                                value={user.username}
+                                value={inputValue.username}
+                                onChange={e => handleValue({ username: e.target.value})}
                                 fullWidth
                             />
                         </Grid>
@@ -85,7 +86,8 @@ export default function EditUserForm(props) {
                                 id="email"
                                 name="email"
                                 type="email"
-                                value={user.email}
+                                value={inputValue.email}
+                                onChange={e => handleValue({email: e.target.value})}
                                 fullWidth
                             />
                         </Grid>
@@ -96,8 +98,9 @@ export default function EditUserForm(props) {
                                 id="password"
                                 name="password"
                                 type={values.showPassword ? 'text' : 'password'}
-                                value={user.password}
                                 fullWidth
+                                value={inputValue.password}
+                                onChange={e => handleValue({password: e.target.value})}
                                 endAdornment={
                                     <InputAdornment position="end">
                                         <IconButton
