@@ -12,6 +12,7 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import Button from "@material-ui/core/Button";
 import axios from "axios"
 import {DEV_USER_API} from "../../../../../const"
+import {ListUser__Fetch} from "../../ListUser/ListUserFetch"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -23,24 +24,29 @@ const useStyles = makeStyles((theme) => ({
             margin: theme.spacing(1),
         },
     },
+    InputHidden: {
+        visibility: 'hidden'
+    }
 }));
 
 
 function handleAddUser(e) {
     e.preventDefault();
-    const {username, password, email} = e.currentTarget.elements;
+    const {username, email, password, id} = e.currentTarget.elements;
 
 
     const user = {
         username: username.value,
         email: email.value,
         password: password.value,
+        id: id.value
     }
+
     console.log(user)
-    //
-    // axios.post(DEV_USER_API + 'users/add', user)
-    //     .then(res => console.log(res.data))
-    //     .catch(err => console.log(err))
+
+    axios.post(DEV_USER_API + 'users/update/' + user.id, user)
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err))
 }
 
 
@@ -54,10 +60,10 @@ export default function EditUserForm(props) {
         {
             username: user_info.username,
             email: user_info.email,
-            password: user_info.password
+            password: user_info.password,
+            id: user_info.userid
         }
     );
-
 
     const handleClickShowPassword = () => {
         setValues({ ...values, showPassword: !values.showPassword });
@@ -127,6 +133,7 @@ export default function EditUserForm(props) {
                             </Button>
                         </Grid>
                     </Grid>
+                    <Input id="id" value={inputValue.id} className={classes.InputHidden}/>
                 </form>
             </Container>
         </>
