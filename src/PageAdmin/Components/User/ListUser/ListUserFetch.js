@@ -9,10 +9,9 @@ const headCells = [
     {id: 'password', numeric: false, disablePadding: false, label: 'Password'},
 ];
 
-let rows = [];
 
 async function ListUser__Fetch() {
-    console.log(rows)
+    let rows = [];
     function createData(userid, username, email, password) {
         return {userid, username, email, password};
     }
@@ -26,7 +25,6 @@ async function ListUser__Fetch() {
                 for (let i = 0; i < data.length; i++) { // проходим по циклу в длинну от полученой информации и заполняем
                     let newObj = createData(data[i]._id, data[i].username, data[i].email, data[i].password);
                     rows.push(newObj)
-                    console.log(data[data.length - i])
                 }
             } else {
                 if (rows.length !== data.length) { // если колв. строк изменилось, тогда обновляем цикл
@@ -59,4 +57,4 @@ async function ListUser__Fetch() {
 }
 
 
-export {ListUser__Fetch, headCells, rows};
+export {ListUser__Fetch, headCells};

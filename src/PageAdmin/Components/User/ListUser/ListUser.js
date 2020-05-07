@@ -15,7 +15,8 @@ export default class EnhancedTable extends React.Component {
         super(props)
         this.state = {
             loading: true,
-            error: false
+            error: false,
+            data: []
         }
     }
 
@@ -26,12 +27,13 @@ export default class EnhancedTable extends React.Component {
                     this.setState({error: true})
                 }
                 this.setState({loading: false})
+                this.setState({data: response})
             })
 
     }
 
     render() {
-        const {loading, error} = this.state;
+        const {loading, error, data} = this.state;
 
         if (loading) {
             return (
@@ -43,7 +45,7 @@ export default class EnhancedTable extends React.Component {
             );
         } else {
             return (
-                <div><ListUser__View/></div>
+                <div><ListUser__View users={data}/></div>
             );
         }
     }
