@@ -11,8 +11,8 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import Button from "@material-ui/core/Button";
 import axios from "axios"
-import {DEV_USER_API} from "../../../../../const"
-import {ListUser__Fetch} from "../../ListUser/ListUserFetch"
+import {USER_UPDATE_URL} from "../../../../../const"
+import {ListUser__Fetch, rows} from "../../ListUser/ListUserFetch"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -42,10 +42,8 @@ function handleAddUser(e) {
         id: id.value
     }
 
-    console.log(user)
-
-    axios.post(DEV_USER_API + 'users/update/' + user.id, user)
-        .then(res => console.log(res.data))
+    axios.post(USER_UPDATE_URL + user.id, user)
+        .then(res => console.log(res))
         .catch(err => console.log(err))
 }
 

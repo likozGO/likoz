@@ -12,6 +12,7 @@ const headCells = [
 let rows = [];
 
 async function ListUser__Fetch() {
+    console.log(rows)
     function createData(userid, username, email, password) {
         return {userid, username, email, password};
     }
@@ -25,6 +26,7 @@ async function ListUser__Fetch() {
                 for (let i = 0; i < data.length; i++) { // проходим по циклу в длинну от полученой информации и заполняем
                     let newObj = createData(data[i]._id, data[i].username, data[i].email, data[i].password);
                     rows.push(newObj)
+                    console.log(data[data.length - i])
                 }
             } else {
                 if (rows.length !== data.length) { // если колв. строк изменилось, тогда обновляем цикл
@@ -34,11 +36,21 @@ async function ListUser__Fetch() {
                         rows.push(newObj)
                     }
                 }
+                // if (data.length !== rows.length) {
+                //     for(let i = 1; i <= data.length - rows.length; i++) {
+                //         rows.push(createData(data[data.length - i]))
+                //     }
+                // } else {
+                //     console.log('Length equals:')
+                //     console.log(data.length === rows.length)
+                // }
             }
         } else {
             console.log('Loading')
             // TODO Some handler loading
         }
+
+
         return data;
     } catch (error) {
         console.log(error)

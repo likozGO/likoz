@@ -174,6 +174,7 @@ export default function ListUser__View() {
         setSelected([]);
     };
 
+
     const handleClick = (event, name, dataSelected) => {
 
         const selectedIndex = selected.indexOf(name);
