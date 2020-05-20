@@ -6,7 +6,7 @@ export default function PageAdmin() {
     return (
         <>
             <Navbar/>
-            DEV
+            master
         </>
     );
 }
