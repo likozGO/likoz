@@ -1,16 +1,16 @@
 import React from 'react';
 
 import '../node_modules/normalize.css'
-import './MainStuff/css/main.scss'
+import './Pages/_Common/css/main.scss'
 
-import './MainStuff/css/fonts.css'
-import {ConstRouting} from './Router'
+import './Pages/_Common/css/fonts.css'
+import {CONST_ROUTS} from './Constants/CONST_ROUTS'
 
 
 function App() {
     return (
         <>
-            <ConstRouting/>
+            <CONST_ROUTS/>
         </>
     );
 }
