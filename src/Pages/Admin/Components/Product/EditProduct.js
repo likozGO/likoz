@@ -2,13 +2,13 @@ import React from 'react';
 
 
 class EditProduct extends React.Component {
-    render() {
-        return (
-            <>
-                You are in Edit Product component
-            </>
-        );
-    }
+  render() {
+    return (
+      <>
+        You are in Edit Product component
+      </>
+    );
+  }
 }
 
 
