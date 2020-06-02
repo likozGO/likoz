@@ -255,20 +255,20 @@ export default function ListUserView() {
                       selected={isItemSelected}
                     >
                       <TableCell padding="checkbox">
-                        <Checkbox
-                          checked={isItemSelected}
-                          inputProps={{ 'aria-labelledby': labelId }}
-                        />
-                      </TableCell>
+                          <Checkbox
+                              checked={isItemSelected}
+                              inputProps={{ 'aria-labelledby': labelId }}
+                            />
+                        </TableCell>
                       <TableCell
-                        id={labelId}
-                        component="th"
-                        scope="row"
-                        padding="none"
-                        className={classes.idColumn}
-                      >
-                        {row._id}
-                      </TableCell>
+                          id={labelId}
+                          component="th"
+                          scope="row"
+                          padding="none"
+                          className={classes.idColumn}
+                        >
+                          {row._id}
+                        </TableCell>
                       <TableCell>{row.username}</TableCell>
                       <TableCell>{row.email}</TableCell>
                       <TableCell>{row.password}</TableCell>

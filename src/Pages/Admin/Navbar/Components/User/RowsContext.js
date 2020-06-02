@@ -10,14 +10,11 @@ const RowsProvider = (props) => {
     axios.get(GET_USERS)
       .then((response) => {
         setRows(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
-        // handle error
         console.log(error);
       });
   }, []);
-
   return (
     <RowsContext.Provider value={[rows, setRows]}>
       {props.children}
