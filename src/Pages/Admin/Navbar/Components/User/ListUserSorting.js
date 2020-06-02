@@ -6,7 +6,19 @@ import TableHead from '@material-ui/core/TableHead';
 import Checkbox from '@material-ui/core/Checkbox';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 
-import { headCells } from './ListUserFetch';
+
+const headCells = [
+  { id: '_id', disablePadding: false, label: 'User ID' },
+  {
+    id: 'username', numeric: false, disablePadding: false, label: 'Username',
+  },
+  {
+    id: 'email', numeric: false, disablePadding: false, label: 'Email',
+  },
+  {
+    id: 'password', numeric: false, disablePadding: false, label: 'Password',
+  },
+];
 
 function descendingComparator(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -60,7 +72,7 @@ function EnhancedTableHead(props) {
             align={headCell.numeric ? 'right' : 'left'}
             padding={headCell.disablePadding ? 'none' : 'default'}
             sortDirection={orderBy === headCell.id ? order : false}
-            style={headCell.label == 'User ID' ? { display: 'none' } : {}}
+            style={headCell.label === 'User ID' ? { display: 'none' } : {}}
           >
             <TableSortLabel
               active={orderBy === headCell.id}

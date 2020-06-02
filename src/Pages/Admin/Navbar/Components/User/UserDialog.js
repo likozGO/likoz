@@ -12,8 +12,8 @@ import Slide from '@material-ui/core/Slide';
 import Tooltip from '@material-ui/core/Tooltip';
 import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
-import CreateUserForm from './CreateUser/CreateUserForm';
-import EditUserForm from './EditUser/EditUserForm';
+import UserDialogCreate from './UserDialogCreate';
+import UserDialogEdit from './UserDialogEdit';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -45,13 +45,13 @@ export default function FullScreenDialog(props) {
     tooltipText: 'Add user',
     icon: <AddIcon />,
     typography: 'Create User',
-    form: <CreateUserForm />,
+    form: <UserDialogCreate />,
   };
   const EditUser = {
     tooltipText: 'Edit user',
     icon: <EditIcon />,
     typography: 'Edit User',
-    form: <EditUserForm user_info={props.user_info} />,
+    form: <UserDialogEdit user_info={props.user_info} />,
   };
 
   if (type == 'CreateUser') {
@@ -59,7 +59,7 @@ export default function FullScreenDialog(props) {
   } else if (type == 'EditUser') {
     type = EditUser;
   } else {
-    type = console.log('error');
+    type = console.log('error UserDialog');
   }
 
 

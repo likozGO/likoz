@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { lighten, makeStyles } from '@material-ui/core/styles';
@@ -22,10 +22,11 @@ import SearchIcon from '@material-ui/icons/Search';
 
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-import { rows } from './ListUserFetch';
 import { EnhancedTableHead, getComparator, stableSort } from './ListUserSorting';
-import FullScreenDialog from '../HandleUsers/UserDialog';
+import FullScreenDialog from './UserDialog';
 
+
+import { RowsContext } from './RowsContext';
 
 const useToolbarStyles = makeStyles((theme) => ({
   root: {
@@ -122,6 +123,7 @@ EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
 };
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -152,7 +154,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ListUser__View() {
+export default function ListUserView() {
+  const [rows, setRows] = useContext(RowsContext);
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('email');
@@ -170,7 +173,7 @@ export default function ListUser__View() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n.userid);
+      const newSelecteds = rows.map((n) => n._id);
       setSelected(newSelecteds);
       return;
     }
@@ -239,16 +242,16 @@ export default function ListUser__View() {
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row.userid);
+                  const isItemSelected = isSelected(row._id);
                   const labelId = `enhanced-table-checkbox-${index}`;
                   return (
                     <TableRow
                       hover
-                      onClick={(event) => handleClick(event, row.userid, row)}
+                      onClick={(event) => handleClick(event, row._id, row)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={row.userid}
+                      key={row._id}
                       selected={isItemSelected}
                     >
                       <TableCell padding="checkbox">
@@ -264,7 +267,7 @@ export default function ListUser__View() {
                         padding="none"
                         className={classes.idColumn}
                       >
-                        {row.userid}
+                        {row._id}
                       </TableCell>
                       <TableCell>{row.username}</TableCell>
                       <TableCell>{row.email}</TableCell>

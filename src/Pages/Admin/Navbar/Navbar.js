@@ -35,12 +35,12 @@ import ListIcon from '@material-ui/icons/List';
 import Remove from '@material-ui/icons/DeleteForever';
 import { routes } from '../../../Constants/CONST_ROUTS';
 
-import ListProduct from '../Components/Product/ListProduct';
-import CreateProduct from '../Components/Product/CreateProduct';
+import ListProduct from './Components/Product/ListProduct';
+import CreateProduct from './Components/Product/CreateProduct';
 import Dashboard from '../Dashboard/Dashboard';
-import EditProduct from '../Components/Product/EditProduct';
-import ListUser from '../Components/User/ListUser/ListUser';
-import CreateUserForm from '../Components/User/HandleUsers/CreateUser/CreateUserForm';
+import EditProduct from './Components/Product/EditProduct';
+import ListUser from './Components/User/ListUser';
+import UserDialogCreate from './Components/User/UserDialogCreate';
 
 
 const drawerWidth = 240;
@@ -303,7 +303,7 @@ export default function MiniDrawer() {
           <Route path="/admin" exact component={Dashboard} />
 
           <Route path="/admin/users" exact component={ListUser} />
-          <Route path="/admin/users/add" component={CreateUserForm} />
+          <Route path="/admin/users/add" component={UserDialogCreate} />
 
           <Route path="/admin/shop" exact component={ListProduct} />
           <Route path="/admin/shop/add" component={CreateProduct} />

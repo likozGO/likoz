@@ -3,15 +3,15 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
 import { makeStyles } from '@material-ui/core/styles';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import { DEV_USER_API } from '../../../../../../Constants/CONST_ADMIN';
+import { DEV_USER_API } from '../../../../../Constants/CONST_ADMIN';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,33 +23,53 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1),
     },
   },
+  InputHidden: {
+    visibility: 'hidden',
+  },
 }));
 
 
 function handleAddUser(e) {
   e.preventDefault();
-  const { username, password, email } = e.currentTarget.elements;
+  const {
+    username, email, password, id,
+  } = e.currentTarget.elements;
 
 
   const user = {
     username: username.value,
     email: email.value,
     password: password.value,
+    id: id.value,
   };
 
-  axios.post(`${DEV_USER_API}users/add`, user)
+  console.log(user);
+
+  axios.post(`${DEV_USER_API}users/update/${user.id}`, user)
     .then((res) => console.log(res.data))
     .catch((err) => console.log(err));
 }
 
-export default function CreateUserForm() {
+
+export default function UserDialogEdit(props) {
   const classes = useStyles();
+  const { user_info } = props;
   const [values, setValues] = React.useState({
     showPassword: false,
   });
+  const [inputValue, handleValue] = React.useState(
+    {
+      username: user_info.username,
+      email: user_info.email,
+      password: user_info.password,
+      id: user_info._id,
+    },
+  );
+
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
   };
+
   return (
     <>
       <Container maxWidth="sm">
@@ -61,6 +81,8 @@ export default function CreateUserForm() {
                 required
                 id="username"
                 name="username"
+                value={inputValue.username}
+                onChange={(e) => handleValue({ username: e.target.value })}
                 fullWidth
               />
             </Grid>
@@ -71,6 +93,8 @@ export default function CreateUserForm() {
                 id="email"
                 name="email"
                 type="email"
+                value={inputValue.email}
+                onChange={(e) => handleValue({ email: e.target.value })}
                 fullWidth
               />
             </Grid>
@@ -82,6 +106,8 @@ export default function CreateUserForm() {
                 name="password"
                 type={values.showPassword ? 'text' : 'password'}
                 fullWidth
+                value={inputValue.password}
+                onChange={(e) => handleValue({ password: e.target.value })}
                 endAdornment={(
                   <InputAdornment position="end">
                     <IconButton
@@ -104,10 +130,11 @@ export default function CreateUserForm() {
                 fullWidth
                 type="submit"
               >
-                Add
+                Edit
               </Button>
             </Grid>
           </Grid>
+          <Input id="id" value={inputValue.id} className={classes.InputHidden} />
         </form>
       </Container>
     </>
