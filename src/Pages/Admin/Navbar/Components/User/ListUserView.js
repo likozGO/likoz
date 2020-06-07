@@ -173,8 +173,13 @@ export default function ListUserView() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelecteds = rows.map((n) => n._id);
-      setSelected(newSelecteds);
+      if (event.target.checked && selected.length > 0) {
+        setSelectedRow([]);
+        setSelected([]);
+      } else {
+        const newSelecteds = rows.filter(n => !n.isNew).map((n) => n._id);
+        setSelected(newSelecteds);
+      }
       return;
     }
     setSelectedRow([]);
@@ -198,7 +203,6 @@ export default function ListUserView() {
         selected.slice(selectedIndex + 1),
       );
     }
-
     setSelectedRow(stateDataSelected);
     setSelected(newSelected);
   };
@@ -219,7 +223,7 @@ export default function ListUserView() {
 
   if (loading === true) {
     return (<div>Table loading</div>);
-  } if (error === true && rows.length === 0) {
+  } if (error === true) {
     return (<div>Error</div>);
   }
   return (
@@ -253,7 +257,7 @@ export default function ListUserView() {
                   return (
                     <TableRow
                       hover
-                      onClick={(event) => handleClick(event, row._id, row)}
+                      onClick={row.isNew ? null : (event) => handleClick(event, row._id, row)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
@@ -278,7 +282,7 @@ export default function ListUserView() {
                       <TableCell>{row.username}</TableCell>
                       <TableCell>{row.email}</TableCell>
                       <TableCell>{row.password}</TableCell>
-                      <TableCell>{row.isAdmin + ''}</TableCell>
+                      <TableCell>{`${row.isAdmin}`}</TableCell>
                     </TableRow>
                   );
                 })}

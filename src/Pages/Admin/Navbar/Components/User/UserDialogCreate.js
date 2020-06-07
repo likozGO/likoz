@@ -33,7 +33,7 @@ export default function UserDialogCreate() {
   const [values, setValues] = React.useState({
     showPassword: false,
   });
-  const [rows, setRows] = useContext(RowsContext);
+  const [[rows, setRows], [error, setError], [loading, setLoading]] = useContext(RowsContext);
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
   };
@@ -46,16 +46,21 @@ export default function UserDialogCreate() {
       username: username.value,
       email: email.value,
       password: password.value,
+      isAdmin: 'false',
+      isNew: 'NEW',
     };
 
     axios.post(`${DEV_USER_API}users/add`, user)
-      .then((res) => console.log(res.data))
+      .then((usersAdd) => {
+        console.log(usersAdd);
+        setRows((prevRows) => [
+          ...prevRows,
+          user,
+        ]);
+        axios.get(`${DEV_USER_API}users`)
+          .then((usersGet) => setRows(usersGet.data));
+      })
       .catch((err) => console.log(err));
-
-    setRows((prevRows) => [
-      ...prevRows,
-      user,
-    ]);
   }
   return (
     <>
