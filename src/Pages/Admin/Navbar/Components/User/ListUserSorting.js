@@ -18,6 +18,9 @@ const headCells = [
   {
     id: 'password', numeric: false, disablePadding: false, label: 'Password',
   },
+  {
+    id: 'isAdmin', numeric: false, disablePadding: false, label: 'Admin',
+  },
 ];
 
 function descendingComparator(a, b, orderBy) {

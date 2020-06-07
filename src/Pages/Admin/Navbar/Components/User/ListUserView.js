@@ -155,7 +155,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ListUserView() {
-  const [rows, setRows] = useContext(RowsContext);
+  const [[rows, setRows], [error, setError], [loading, setLoading]] = useContext(RowsContext);
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('email');
@@ -215,7 +215,13 @@ export default function ListUserView() {
   const isSelected = (name) => selected.indexOf(name) !== -1;
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+  console.log(error);
 
+  if (loading === true) {
+    return (<div>Table loading</div>);
+  } if (error === true && rows.length === 0) {
+    return (<div>Error</div>);
+  }
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
@@ -255,23 +261,24 @@ export default function ListUserView() {
                       selected={isItemSelected}
                     >
                       <TableCell padding="checkbox">
-                          <Checkbox
-                              checked={isItemSelected}
-                              inputProps={{ 'aria-labelledby': labelId }}
-                            />
-                        </TableCell>
+                        <Checkbox
+                          checked={isItemSelected}
+                          inputProps={{ 'aria-labelledby': labelId }}
+                        />
+                      </TableCell>
                       <TableCell
-                          id={labelId}
-                          component="th"
-                          scope="row"
-                          padding="none"
-                          className={classes.idColumn}
-                        >
-                          {row._id}
-                        </TableCell>
+                        id={labelId}
+                        component="th"
+                        scope="row"
+                        padding="none"
+                        className={classes.idColumn}
+                      >
+                        {row._id}
+                      </TableCell>
                       <TableCell>{row.username}</TableCell>
                       <TableCell>{row.email}</TableCell>
                       <TableCell>{row.password}</TableCell>
+                      <TableCell>{row.isAdmin + ''}</TableCell>
                     </TableRow>
                   );
                 })}

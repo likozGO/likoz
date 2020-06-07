@@ -12,6 +12,9 @@ const userSchema = new Scheme({
   email: {
     type: String, required: true, unique: true, trim: true, minlength: 3,
   },
+  isAdmin: {
+    type: Boolean, default: false,
+  },
 },
 {
   timestamps: true,
