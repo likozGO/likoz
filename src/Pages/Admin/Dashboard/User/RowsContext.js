@@ -1,6 +1,6 @@
 import React, { useState, createContext, useEffect } from 'react';
 import axios from 'axios';
-import { GET_USERS } from '../../../../../Constants/CONST_ADMIN';
+import { GET_USERS } from '../../../../Constants/CONST_ADMIN';
 
 const RowsContext = createContext();
 

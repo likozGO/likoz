@@ -30,17 +30,19 @@ import ShopIcon from '@material-ui/icons/ShoppingCart';
 import LotteryIcon from '@material-ui/icons/Casino';
 import BlogIcon from '@material-ui/icons/ImportContacts';
 import AddIcon from '@material-ui/icons/Add';
+import AssessmentIcon from '@material-ui/icons/Assessment';
 import EditIcon from '@material-ui/icons/Edit';
 import ListIcon from '@material-ui/icons/List';
 import Remove from '@material-ui/icons/DeleteForever';
 import { routes } from '../../../Constants/CONST_ROUTS';
 
-import ListProduct from './Components/Product/ListProduct';
-import CreateProduct from './Components/Product/CreateProduct';
+import ListProduct from '../Dashboard/Product/ListProduct';
+import CreateProduct from '../Dashboard/Product/CreateProduct';
 import Dashboard from '../Dashboard/Dashboard';
-import EditProduct from './Components/Product/EditProduct';
-import ListUser from './Components/User/ListUser';
-import UserDialogCreate from './Components/User/UserDialogCreate';
+import EditProduct from '../Dashboard/Product/EditProduct';
+
+import ListUser from '../Dashboard/User/ListUser';
+import UserStats from '../Dashboard/User/UsersStats';
 
 
 const drawerWidth = 240;
@@ -166,7 +168,7 @@ export default function MiniDrawer() {
             <Route path="/admin" exact children={<h1>Admin page</h1>} />
 
             <Route path="/admin/users" exact children={<h1>Users page</h1>} />
-            <Route path="/admin/users/add" children={<h1>Users page add</h1>} />
+            <Route path="/admin/users/stats" children={<h1>Users statistics</h1>} />
 
             <Route path="/admin/shop" exact children={<h1>Shop page</h1>} />
             <Route path="/admin/shop/add" children={<h1>Shop page add</h1>} />
@@ -210,11 +212,11 @@ export default function MiniDrawer() {
                 </ListItemIcon>
                 <ListItemText primary="List" />
               </ListItem>
-              <ListItem button className={classes.nested} component={Link} to="/admin/users/add">
+              <ListItem button className={classes.nested} component={Link} to="/admin/users/stats">
                 <ListItemIcon>
-                  <AddIcon />
+                  <AssessmentIcon />
                 </ListItemIcon>
-                <ListItemText primary="Add" />
+                <ListItemText primary="Statistics" />
               </ListItem>
             </List>
           </Collapse>
@@ -303,7 +305,7 @@ export default function MiniDrawer() {
           <Route path="/admin" exact component={Dashboard} />
 
           <Route path="/admin/users" exact component={ListUser} />
-          <Route path="/admin/users/add" component={UserDialogCreate} />
+          <Route path="/admin/users/stats" component={UserStats} />
 
           <Route path="/admin/shop" exact component={ListProduct} />
           <Route path="/admin/shop/add" component={CreateProduct} />
