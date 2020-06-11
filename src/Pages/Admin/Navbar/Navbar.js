@@ -18,7 +18,6 @@ import {
   useTheme,
 } from '@material-ui/core';
 
-
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -43,7 +42,6 @@ import EditProduct from '../Dashboard/Product/EditProduct';
 
 import ListUser from '../Dashboard/User/ListUser';
 import UserStats from '../Dashboard/User/UsersStats';
-
 
 const drawerWidth = 240;
 

@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 class EditProduct extends React.Component {
   render() {
     return (
@@ -10,6 +9,5 @@ class EditProduct extends React.Component {
     );
   }
 }
-
 
 export default EditProduct;

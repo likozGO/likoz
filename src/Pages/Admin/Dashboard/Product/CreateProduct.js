@@ -12,7 +12,6 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
@@ -27,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
   },
 }));
-
 
 function handleAddProduct(e) {
   e.preventDefault();

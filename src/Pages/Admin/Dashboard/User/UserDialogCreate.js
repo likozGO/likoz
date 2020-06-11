@@ -26,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 export default function UserDialogCreate() {
   const classes = useStyles();
 

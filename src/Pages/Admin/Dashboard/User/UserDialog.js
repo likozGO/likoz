@@ -40,7 +40,6 @@ export default function FullScreenDialog(props) {
     setOpen(false);
   };
 
-
   const CreateUser = {
     tooltipText: 'Add user',
     icon: <AddIcon />,
@@ -61,7 +60,6 @@ export default function FullScreenDialog(props) {
   } else {
     type = console.log('error UserDialog');
   }
-
 
   return (
     <div>

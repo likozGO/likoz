@@ -6,7 +6,6 @@ import './Pages/_Common/css/main.scss';
 import './Pages/_Common/css/fonts.css';
 import { CONST_ROUTS } from './Constants/CONST_ROUTS';
 
-
 function App() {
   return (
     <>

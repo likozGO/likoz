@@ -28,13 +28,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 function handleAddUser(e) {
   e.preventDefault();
   const {
     username, email, password, id,
   } = e.currentTarget.elements;
-
 
   const user = {
     username: username.value,
@@ -49,7 +47,6 @@ function handleAddUser(e) {
     .then((res) => console.log(res.data))
     .catch((err) => console.log(err));
 }
-
 
 export default function UserDialogEdit(props) {
   const classes = useStyles();

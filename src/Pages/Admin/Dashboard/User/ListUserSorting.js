@@ -6,7 +6,6 @@ import TableHead from '@material-ui/core/TableHead';
 import Checkbox from '@material-ui/core/Checkbox';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 
-
 const headCells = [
   { id: '_id', disablePadding: false, label: 'User ID' },
   {
@@ -56,7 +55,6 @@ function EnhancedTableHead(props) {
   const createSortHandler = (property) => (event) => {
     onRequestSort(event, property);
   };
-
 
   return (
     <TableHead>

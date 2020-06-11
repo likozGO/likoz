@@ -13,5 +13,4 @@ class RememberUser extends React.Component {
   }
 }
 
-
 export default RememberUser;

@@ -9,14 +9,13 @@ const RowsProvider = (props) => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
 
-
   useEffect(() => {
     setLoading(true);
     axios.get(`${GET_USERS}`)
       .then((response) => {
         setLoading(false);
         setRows(response.data);
-        console.log(response.data)
+        console.log(response.data);
       })
       .catch((error) => {
         setLoading(false);
@@ -29,6 +28,5 @@ const RowsProvider = (props) => {
     </RowsContext.Provider>
   );
 };
-
 
 export { RowsProvider, RowsContext };

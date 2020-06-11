@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
 import './HelloUser.scss';
 import login from './images/btn-login--account.svg';
 import register from './images/btn-register--account.svg';

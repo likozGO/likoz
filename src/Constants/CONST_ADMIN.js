@@ -1,9 +1,7 @@
 const DEV_USER_API = 'http://localhost:5000/';
 
-
 /* Get */
 const GET_USERS = `${DEV_USER_API}users`;
-
 
 /* Post */
 const ADD_USERS = `${DEV_USER_API}users/add`;

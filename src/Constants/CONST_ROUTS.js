@@ -9,7 +9,6 @@ import RememberUser from '../Pages/Authorization/RememberUser/RememberUser';
 import PageAdmin from '../Pages/Admin/PageAdmin';
 import AdressError from '../Errors/AdressError/CreateProduct';
 
-
 /** Routes* */
 function CONST_ROUTS() {
   return (
@@ -30,7 +29,6 @@ function CONST_ROUTS() {
     </BrowserRouter>
   );
 }
-
 
 export { CONST_ROUTS };
 /** Routes End* */

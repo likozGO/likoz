@@ -25,7 +25,6 @@ import TextField from '@material-ui/core/TextField';
 import { EnhancedTableHead, getComparator, stableSort } from './ListUserSorting';
 import FullScreenDialog from './UserDialog';
 
-
 import { RowsContext } from './RowsContext';
 
 const useToolbarStyles = makeStyles((theme) => ({
@@ -123,7 +122,6 @@ EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
 };
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -177,7 +175,7 @@ export default function ListUserView() {
         setSelectedRow([]);
         setSelected([]);
       } else {
-        const newSelecteds = rows.filter(n => !n.isNew).map((n) => n._id);
+        const newSelecteds = rows.filter((n) => !n.isNew).map((n) => n._id);
         setSelected(newSelecteds);
       }
       return;
