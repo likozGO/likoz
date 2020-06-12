@@ -3,7 +3,6 @@ import { Link, Route, Switch } from 'react-router-dom';
 
 import clsx from 'clsx';
 import {
-  makeStyles,
   AppBar,
   Collapse,
   CssBaseline,
@@ -14,6 +13,7 @@ import {
   ListItem,
   ListItemIcon,
   ListItemText,
+  makeStyles,
   Toolbar,
   useTheme,
 } from '@material-ui/core';
@@ -24,6 +24,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
+import DashboardIcon from '@material-ui/icons/Dashboard';
 import UsersIcon from '@material-ui/icons/People';
 import ShopIcon from '@material-ui/icons/ShoppingCart';
 import LotteryIcon from '@material-ui/icons/Casino';
@@ -39,9 +40,9 @@ import CreateProduct from './Shop/CreateProduct';
 import Dashboard from './Dashboard/Dashboard';
 import EditProduct from './Shop/EditProduct';
 
-import DashboardUser from './User/DashboardUser';
-import ListUser from './User/ListUser';
-import UserStats from './User/UsersStats';
+import DashboardUser from './User/UsersList/DashboardUser';
+import ListUser from './User/UsersList/ListUser';
+import UserStats from './User/UsersStats/UsersStats';
 
 const drawerWidth = 240;
 
@@ -195,6 +196,15 @@ export default function MiniDrawer() {
         </div>
         <Divider />
         <List>
+          {/* DASHBOARD START */}
+          <ListItem button component={Link} to="/admin">
+            <ListItemIcon>
+              <DashboardIcon />
+            </ListItemIcon>
+            <ListItemText primary="Dashboard" />
+          </ListItem>
+          {/* DASHBOARD END */}
+
           {/* USERS START */}
           <ListItem button component={Link} to="/admin/users" onClick={handleTopicSwitch3}>
             <ListItemIcon>

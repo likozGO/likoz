@@ -25,7 +25,7 @@ import TextField from '@material-ui/core/TextField';
 import { EnhancedTableHead, getComparator, stableSort } from './ListUserSorting';
 import FullScreenDialog from './UserDialog';
 
-import { RowsContext } from './RowsContext';
+import { RowsContext } from '../RowsContext';
 
 const useToolbarStyles = makeStyles((theme) => ({
   root: {

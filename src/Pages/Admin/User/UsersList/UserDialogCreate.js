@@ -11,8 +11,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import { DEV_USER_API } from '../../../Constants/CONST_ADMIN';
-import { RowsContext } from './RowsContext';
+import { DEV_USER_API } from '../../../../Constants/CONST_ADMIN';
+import { RowsContext } from '../RowsContext';
 
 const useStyles = makeStyles((theme) => ({
   root: {

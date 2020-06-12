@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Input from '@material-ui/core/Input';
@@ -11,7 +11,8 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
-import { DEV_USER_API } from '../../../Constants/CONST_ADMIN';
+import { DEV_USER_API } from '../../../../Constants/CONST_ADMIN';
+import { RowsContext } from '../RowsContext';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,27 +29,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function handleAddUser(e) {
-  e.preventDefault();
-  const {
-    username, email, password, id,
-  } = e.currentTarget.elements;
-
-  const user = {
-    username: username.value,
-    email: email.value,
-    password: password.value,
-    id: id.value,
-  };
-
-  console.log(user);
-
-  axios.post(`${DEV_USER_API}users/update/${user.id}`, user)
-    .then((res) => console.log(res.data))
-    .catch((err) => console.log(err));
-}
-
 export default function UserDialogEdit(props) {
+  const [[rows, setRows], [error, setError], [loading, setLoading]] = useContext(RowsContext);
   const classes = useStyles();
   const { user_info } = props;
   const [values, setValues] = React.useState({
@@ -62,6 +44,29 @@ export default function UserDialogEdit(props) {
       id: user_info._id,
     },
   );
+
+  function handleAddUser(e) {
+    e.preventDefault();
+    const {
+      username, email, password, id,
+    } = e.currentTarget.elements;
+
+    const user = {
+      username: username.value,
+      email: email.value,
+      password: password.value,
+      id: id.value,
+    };
+
+    console.log(user);
+
+    axios.post(`${DEV_USER_API}users/update/${user.id}`, user)
+      .then((userEdit) => {
+        axios.get(`${DEV_USER_API}users`)
+          .then((usersGet) => setRows(usersGet.data));
+      })
+      .catch((err) => console.log(err));
+  }
 
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });

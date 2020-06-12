@@ -7,6 +7,7 @@ import {
   CardMedia,
   Typography,
 } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   card: {
@@ -16,13 +17,18 @@ const useStyles = makeStyles({
   img: {
     objectFit: 'contain',
   },
+  dashboardTitle: {
+    textDecoration: 'underline',
+  }
 });
 
 export default function DashboardCard(props) {
   const classes = useStyles();
-  const { cardTitle, cardPhoto, cardText } = props;
+  const {
+    cardTitle, cardPhoto, cardText, cardLink,
+  } = props;
   return (
-    <Card className={classes.card}>
+    <Card className={classes.card} component={Link} to={cardLink}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -33,7 +39,7 @@ export default function DashboardCard(props) {
           className={classes.img}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography gutterBottom variant="h5" component="h2" className={classes.dashboardTitle}>
             {cardTitle}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
