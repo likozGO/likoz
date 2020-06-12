@@ -222,7 +222,7 @@ export default function MiniDrawer() {
           {/* USERS END */}
 
           {/* SHOP START */}
-          <ListItem button component={Link} to="/admin/shop" onClick={handleTopicSwitch}>
+          <ListItem disabled button component={Link} to="/admin/shop" onClick={handleTopicSwitch}>
             <ListItemIcon>
               <ShopIcon />
             </ListItemIcon>
