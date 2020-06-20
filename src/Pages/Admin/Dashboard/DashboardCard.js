@@ -19,7 +19,7 @@ const useStyles = makeStyles({
   },
   dashboardTitle: {
     textDecoration: 'underline',
-  }
+  },
 });
 
 export default function DashboardCard(props) {

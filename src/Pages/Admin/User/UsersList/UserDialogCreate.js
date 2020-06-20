@@ -28,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function UserDialogCreate() {
   const classes = useStyles();
-
   const [values, setValues] = React.useState({
     showPassword: false,
   });

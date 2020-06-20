@@ -43,6 +43,7 @@ import EditProduct from './Shop/EditProduct';
 import DashboardUser from './User/UsersList/DashboardUser';
 import ListUser from './User/UsersList/ListUser';
 import UserStats from './User/UsersStats/UsersStats';
+import AdressError from '../../Errors/AdressError/CreateProduct';
 
 const drawerWidth = 240;
 
@@ -173,6 +174,8 @@ export default function MiniDrawer() {
             <Route path="/admin/shop" exact children={<h1>Shop page</h1>} />
             <Route path="/admin/shop/add" children={<h1>Shop page add</h1>} />
             <Route path="/admin/shop/edit" children={<h1>Shop page edit</h1>} />
+
+            <Route path="/admin/*" children={<h1>Adress error</h1>} />
           </Switch>
         </Toolbar>
       </AppBar>
@@ -320,6 +323,8 @@ export default function MiniDrawer() {
           <Route path="/admin/shop" exact component={ListProduct} />
           <Route path="/admin/shop/add" component={CreateProduct} />
           <Route path="/admin/shop/edit" component={EditProduct} />
+
+          <Route path="/admin/*" component={AdressError} />
         </Switch>
       </main>
     </div>

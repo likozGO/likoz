@@ -14,31 +14,31 @@ export default function Dashboard() {
       <div className="CardContainer">
         <DashboardCard
           cardPhoto={PhotoUsers}
-          cardTitle="Users tab"
+          cardTitle="Users"
           cardText="Many different features with users like: list of users, statistics, etc."
           cardLink="/admin/users"
         />
         <DashboardCard
           cardPhoto={PhotoShop}
-          cardTitle="Shop tab"
+          cardTitle="Shop"
           cardText="Shop? Why i make it..."
           cardLink="/admin/shop"
         />
         <DashboardCard
           cardPhoto={PhotoStats}
-          cardTitle="Stats tab"
+          cardTitle="Stats"
           cardText="Stats with different usless statistics"
           cardLink="/admin/stats"
         />
         <DashboardCard
           cardPhoto={PhotoBlog}
-          cardTitle="Blog tab"
+          cardTitle="Blog"
           cardText="Some my minds about day and to-do list"
           cardLink="/admin/blog"
         />
         <DashboardCard
           cardPhoto={PhotoLottery}
-          cardTitle="Lottery tab"
+          cardTitle="Lottery"
           cardText="Different spins or some randomizers"
           cardLink="/admin/lottery"
         />

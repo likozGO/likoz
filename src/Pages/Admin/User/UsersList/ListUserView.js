@@ -217,7 +217,6 @@ export default function ListUserView() {
   const isSelected = (name) => selected.indexOf(name) !== -1;
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
-  console.log(error);
 
   if (loading === true) {
     return (<div>Table loading</div>);
