@@ -15,7 +15,6 @@ router.route('/add').post((req, res) => {
   const price = Number(req.body.price);
   const date = Date.parse(req.body.date);
 
-
   const newProduct = new Products({
     username,
     title,
@@ -58,6 +57,5 @@ router.route('/update/:id').post((req, res) => {
     })
     .catch((err) => res.status(400).json(`Error: ${err}`));
 });
-
 
 module.exports = router;

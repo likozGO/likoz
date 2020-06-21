@@ -11,8 +11,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import { useSelector, useDispatch } from 'react-redux';
 import { DEV_USER_API } from '../../../../Constants/CONST_ADMIN';
-import { RowsContext } from '../RowsContext';
+import { PopupAction } from '../../../../StateControl/Admin/Action/UserPopup';
+import { UserList, UserListAdd } from '../../../../StateControl/Admin/Action/UserList';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,7 +33,11 @@ export default function UserDialogCreate() {
   const [values, setValues] = React.useState({
     showPassword: false,
   });
-  const [[rows, setRows], [error, setError], [loading, setLoading]] = useContext(RowsContext);
+
+  const dispatch = useDispatch();
+
+  const userDB = useSelector((state) => state.UserReducer);
+  const { rows, loading, error } = userDB;
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
   };
@@ -51,12 +57,10 @@ export default function UserDialogCreate() {
     axios.post(`${DEV_USER_API}users/add`, user)
       .then((usersAdd) => {
         console.log(usersAdd);
-        setRows((prevRows) => [
-          ...prevRows,
-          user,
-        ]);
+        dispatch(UserListAdd(user));
         axios.get(`${DEV_USER_API}users`)
-          .then((usersGet) => setRows(usersGet.data));
+          .then((usersGet) => dispatch(UserList(usersGet.data)));
+        dispatch(PopupAction());
       })
       .catch((err) => console.log(err));
   }

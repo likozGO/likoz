@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import axios from 'axios';
 import ListUserView from './ListUserView';
-import { RowsProvider } from '../RowsContext';
+
+import { UserError, UserList, UserLoading } from '../../../../StateControl/Admin/Action/UserList';
+import { GET_USERS } from '../../../../Constants/CONST_ADMIN';
 
 export default function EnhancedTable() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(UserLoading());
+    axios.get(`${GET_USERS}`)
+      .then((response) => {
+        dispatch(UserLoading());
+        dispatch(UserList(response.data));
+      })
+      .catch((error) => {
+        dispatch(UserLoading());
+        dispatch(UserError());
+      });
+  }, []);
   return (
-    <RowsProvider>
-      <ListUserView />
-    </RowsProvider>
+    <ListUserView />
   );
 }

@@ -1,7 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-import Button from '@material-ui/core/Button';
+import { useSelector, useDispatch } from 'react-redux';
+
 import Dialog from '@material-ui/core/Dialog';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -12,6 +13,7 @@ import Slide from '@material-ui/core/Slide';
 import Tooltip from '@material-ui/core/Tooltip';
 import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
+import { PopupAction } from '../../../../StateControl/Admin/Action/UserPopup';
 import UserDialogCreate from './UserDialogCreate';
 import UserDialogEdit from './UserDialogEdit';
 
@@ -29,16 +31,10 @@ const Transition = React.forwardRef((props, ref) => <Slide direction="up" ref={r
 
 export default function FullScreenDialog(props) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const UserDB = useSelector((state) => state.UserReducer.isOpen);
+
+  const dispatch = useDispatch();
   let type = props.modal_type;
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   const CreateUser = {
     tooltipText: 'Add user',
@@ -53,9 +49,9 @@ export default function FullScreenDialog(props) {
     form: <UserDialogEdit user_info={props.user_info} />,
   };
 
-  if (type == 'CreateUser') {
+  if (type === 'CreateUser') {
     type = CreateUser;
-  } else if (type == 'EditUser') {
+  } else if (type === 'EditUser') {
     type = EditUser;
   } else {
     type = console.log('error UserDialog');
@@ -64,14 +60,14 @@ export default function FullScreenDialog(props) {
   return (
     <div>
       <Tooltip title={type.tooltipText}>
-        <IconButton aria-label="filter list" onClick={handleClickOpen}>
+        <IconButton aria-label="filter list" onClick={() => dispatch(PopupAction())}>
           {type.icon}
         </IconButton>
       </Tooltip>
-      <Dialog fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
+      <Dialog fullScreen open={UserDB} onClose={() => dispatch(PopupAction())} TransitionComponent={Transition}>
         <AppBar className={classes.appBar}>
           <Toolbar>
-            <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
+            <IconButton edge="start" color="inherit" onClick={() => dispatch(PopupAction())} aria-label="close">
               <CloseIcon />
             </IconButton>
             <Typography variant="h6" className={classes.title}>

@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
-import PopupReducer from './Admin/Reducer/Popup';
+import UserReducer from './Admin/Reducer/User';
 import isLoginReducer from './Authorization/Reducer/isLogin';
 
 const allReducers = combineReducers({
-  PopupReducer,
+  UserReducer,
   isLoginReducer,
 });
 

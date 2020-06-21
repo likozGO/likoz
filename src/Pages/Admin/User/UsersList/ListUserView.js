@@ -22,10 +22,9 @@ import SearchIcon from '@material-ui/icons/Search';
 
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
+import { useSelector } from 'react-redux';
 import { EnhancedTableHead, getComparator, stableSort } from './ListUserSorting';
 import FullScreenDialog from './UserDialog';
-
-import { RowsContext } from '../RowsContext';
 
 const useToolbarStyles = makeStyles((theme) => ({
   root: {
@@ -153,7 +152,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ListUserView() {
-  const [[rows, setRows], [error, setError], [loading, setLoading]] = useContext(RowsContext);
+  const userDB = useSelector((state) => state.UserReducer);
+  const { rows, loading, error } = userDB;
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('email');

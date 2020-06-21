@@ -11,8 +11,10 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { PopupAction } from '../../../../StateControl/Admin/Action/UserPopup';
 import { DEV_USER_API } from '../../../../Constants/CONST_ADMIN';
-import { RowsContext } from '../RowsContext';
+import { UserList } from '../../../../StateControl/Admin/Action/UserList';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,8 +32,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function UserDialogEdit(props) {
-  const [[rows, setRows], [error, setError], [loading, setLoading]] = useContext(RowsContext);
   const classes = useStyles();
+
+  const dispatch = useDispatch();
+  const userDB = useSelector((state) => state.UserReducer);
+  const { rows, loading, error } = userDB;
+
   const { user_info } = props;
   const [values, setValues] = React.useState({
     showPassword: false,
@@ -63,7 +69,8 @@ export default function UserDialogEdit(props) {
     axios.post(`${DEV_USER_API}users/update/${user.id}`, user)
       .then((userEdit) => {
         axios.get(`${DEV_USER_API}users`)
-          .then((usersGet) => setRows(usersGet.data));
+          .then((usersGet) => dispatch(UserList(usersGet.data)));
+        dispatch(PopupAction());
       })
       .catch((err) => console.log(err));
   }
