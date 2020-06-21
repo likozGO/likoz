@@ -40,7 +40,7 @@ import CreateProduct from './Shop/CreateProduct';
 import Dashboard from './Dashboard/Dashboard';
 import EditProduct from './Shop/EditProduct';
 
-import DashboardUser from './User/UsersList/DashboardUser';
+import DashboardUser from './User/UsersDashboard/UsersDashboard';
 import ListUser from './User/UsersList/ListUser';
 import UserStats from './User/UsersStats/UsersStats';
 import AdressError from '../../Errors/AdressError/CreateProduct';
