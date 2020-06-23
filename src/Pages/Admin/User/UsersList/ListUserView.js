@@ -25,6 +25,7 @@ import TextField from '@material-ui/core/TextField';
 import { useSelector } from 'react-redux';
 import { EnhancedTableHead, getComparator, stableSort } from './ListUserSorting';
 import FullScreenDialog from './UserDialog';
+import ListUserSearch from './ListUserSearch';
 
 const useToolbarStyles = makeStyles((theme) => ({
   root: {
@@ -33,9 +34,6 @@ const useToolbarStyles = makeStyles((theme) => ({
   },
   margin: {
     margin: theme.spacing(1),
-  },
-  inputSearch: {
-    flexWrap: 'nowrap',
   },
   highlight:
         theme.palette.type === 'light'
@@ -73,16 +71,7 @@ const EnhancedTableToolbar = (props) => {
         </Typography>
       )}
       <div className={classes.margin}>
-        <Grid container className={classes.inputSearch} spacing={1} alignItems="flex-end">
-          <Grid item>
-            <Tooltip title="Example: Ivan">
-              <SearchIcon />
-            </Tooltip>
-          </Grid>
-          <Grid item>
-            <TextField id="input-with-icon-grid" label="Search" />
-          </Grid>
-        </Grid>
+        <ListUserSearch />
       </div>
       {numSelected == 1
         ? (
