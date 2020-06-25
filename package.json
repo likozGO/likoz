@@ -41,7 +41,7 @@
   "scripts": {
     "start": "react-app-rewired start",
     "export": "next export",
-    "build": "react-app-rewired build",
+    "build": "set \\\"CI=false\\\" && react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
