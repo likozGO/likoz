@@ -5,19 +5,18 @@ import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import { useDispatch, useSelector } from 'react-redux';
-import { UserSearch } from '../../../../StateControl/Admin/Action/UserList';
+import { UserSearch } from '../UsersState/Action/UserList';
 
 export default function ListUserSearch() {
   const dispatch = useDispatch();
-  const userSearch = useSelector((state) => state.UserReducer);
-  const { UserSearch } = userSearch;
+  const userDB = useSelector((state) => state.UserReducer);
 
-  const changeSearch = (e) => {
-    console.log(e.target.value);
-  };
+  const changeSearch = (e) => console.log(e.target.value)
   const dataSearch = () => {
-    console.log(userSearch);
-    console.log('clicked');
+    console.log(changeSearch);
+    // dispatch(UserSearch(changeSearch));
+    // console.log(userDB);
+    // console.log('clicked');
   };
 
   return (

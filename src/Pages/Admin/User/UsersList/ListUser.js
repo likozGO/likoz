@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import ListUserView from './ListUserView';
 
-import { UserError, UserList, UserLoading } from '../../../../StateControl/Admin/Action/UserList';
+import { UserError, UserList, UserLoading } from '../UsersState/Action/UserList';
 import { GET_USERS } from '../../../../Constants/CONST_ADMIN';
 
 export default function EnhancedTable() {

@@ -13,8 +13,8 @@ import axios from 'axios';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { useSelector, useDispatch } from 'react-redux';
 import { DEV_USER_API } from '../../../../Constants/CONST_ADMIN';
-import { PopupAction } from '../../../../StateControl/Admin/Action/UserPopup';
-import { UserList, UserListAdd } from '../../../../StateControl/Admin/Action/UserList';
+import { PopupAction } from '../UsersState/Action/UserPopup';
+import { UserList, UserListAdd } from '../UsersState/Action/UserList';
 
 const useStyles = makeStyles((theme) => ({
   root: {

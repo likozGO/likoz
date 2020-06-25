@@ -6,10 +6,10 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import allReducers from './StateControl/index';
+import appReducers from './AppReducers';
 
 const store = createStore(
-  allReducers,
+  appReducers,
   composeWithDevTools(
     applyMiddleware(thunk),
   ),

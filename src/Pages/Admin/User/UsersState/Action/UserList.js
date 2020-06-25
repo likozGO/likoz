@@ -15,3 +15,8 @@ export const UserError = () => ({
 export const UserLoading = () => ({
   type: 'USER_DATA_LOADING',
 });
+
+export const UserSearch = (data) => ({
+  type: 'USER_DATA_SEARCH',
+  data,
+});

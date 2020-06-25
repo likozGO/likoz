@@ -12,9 +12,9 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { PopupAction } from '../../../../StateControl/Admin/Action/UserPopup';
+import { PopupAction } from '../UsersState/Action/UserPopup';
 import { DEV_USER_API } from '../../../../Constants/CONST_ADMIN';
-import { UserList } from '../../../../StateControl/Admin/Action/UserList';
+import { UserList } from '../UsersState/Action/UserList';
 
 const useStyles = makeStyles((theme) => ({
   root: {
