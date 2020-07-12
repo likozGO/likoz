@@ -42,7 +42,8 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build"
   },
   "browserslist": {
     "production": [
@@ -55,6 +56,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "engines": {
+    "node": "6.9.1",
+    "npm": "3.10.8"
   },
   "devDependencies": {
     "eslint": "^6.6.0",
