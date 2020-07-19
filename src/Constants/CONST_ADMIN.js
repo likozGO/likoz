@@ -1,4 +1,4 @@
-const DEV_USER_API = 'http://localhost:5000/api/';
+const DEV_USER_API = '/api/';
 
 /* Get */
 const GET_USERS = `${DEV_USER_API}users`;
