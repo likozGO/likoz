@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 
 import clsx from 'clsx';
@@ -35,6 +35,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import ListIcon from '@material-ui/icons/List';
 import Remove from '@material-ui/icons/DeleteForever';
 
+import axios from 'axios';
 import ListProduct from './Shop/ListProduct';
 import CreateProduct from './Shop/CreateProduct';
 import Dashboard from './Dashboard/Dashboard';
@@ -113,6 +114,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MiniDrawer() {
+  useEffect(() => {
+    axios
+      .get('/api/users')
+      .then((users) => console.log(users))
+      .catch((err) => console.log(err));
+  }, []);
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
