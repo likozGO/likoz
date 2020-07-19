@@ -1,6 +1,7 @@
 # likoz
 ## Blog-shop/etc `ver: 0.0.1`
 ###TO UPDATE NPM @ncu -u
+       //"start": "react-scripts start",
 
 Вопросы:
 1.  Разделение бека и фронта в рамках одного проекта;

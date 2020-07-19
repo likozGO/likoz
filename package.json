@@ -39,10 +39,11 @@
     "yup": "^0.29.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node backend/server.js",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm && run build",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
+    "eject": "react-scripts eject"
   },
   "browserslist": {
     "production": [
@@ -66,5 +67,9 @@
     "prettier": "^2.0.5",
     "react-app-rewire-scss": "^1.0.2",
     "react-app-rewired": "^2.1.6"
+  },
+  "proxy": "http://localhost:5000",
+  "engines": {
+    "node": "12.14.1"
   }
 }
