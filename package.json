@@ -40,6 +40,8 @@
   },
   "scripts": {
     "start": "node backend/server.js",
+    "dev": "react-scripts start",
+    "server": "cd backend && nodemon dev-server.js",
     "heroku-postbuild": "npm install npm && npm run build",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
