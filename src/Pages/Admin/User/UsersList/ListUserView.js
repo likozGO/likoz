@@ -142,7 +142,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ListUserView() {
   const userDB = useSelector((state) => state.UserReducer);
-  const { rows, loading, error } = userDB;
+  const {
+    rows, loading, error, search,
+  } = userDB;
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('email');

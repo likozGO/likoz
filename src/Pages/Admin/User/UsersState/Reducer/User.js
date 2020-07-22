@@ -1,6 +1,11 @@
-const UserReducer = (state = {
-  isOpen: false, rows: [], error: false, loading: false, search: '',
-}, action) => {
+const initialState = {
+  isOpen: false,
+  rows: [],
+  error: false,
+  loading: false,
+};
+
+const UserReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'POPUP_CONTROL':
       return { ...state, isOpen: !state.isOpen };
@@ -12,8 +17,6 @@ const UserReducer = (state = {
       return { ...state, error: !state.error };
     case 'USER_DATA_LOADING':
       return { ...state, loading: !state.loading };
-    case 'USER_DATA_SEARCH':
-      return { ...state, search: action.data };
     default:
       return state;
   }

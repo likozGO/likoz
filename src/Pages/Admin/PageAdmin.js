@@ -114,12 +114,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function MiniDrawer() {
-  useEffect(() => {
-    axios
-      .get('/api/users')
-      .then((users) => console.log(users))
-      .catch((err) => console.log(err));
-  }, []);
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
