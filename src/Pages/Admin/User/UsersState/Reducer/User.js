@@ -3,6 +3,7 @@ const initialState = {
   rows: [],
   error: false,
   loading: false,
+  search: '',
 };
 
 const UserReducer = (state = initialState, action) => {
@@ -17,6 +18,9 @@ const UserReducer = (state = initialState, action) => {
       return { ...state, error: !state.error };
     case 'USER_DATA_LOADING':
       return { ...state, loading: !state.loading };
+    case 'USER_DATA_SEARCH':
+      return { ...state, search: action.data };
+      // rows.filter((a) => a.username.includes(action.data))
     default:
       return state;
   }

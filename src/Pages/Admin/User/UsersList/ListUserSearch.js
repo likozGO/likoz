@@ -4,9 +4,9 @@ import Grid from '@material-ui/core/Grid';
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
-import {useDispatch, useSelector} from 'react-redux';
-import {UserList, UserSearch} from '../UsersState/Action/UserList';
-import {UserReducer} from '../UsersState/Reducer/User';
+import { useDispatch, useSelector } from 'react-redux';
+import { UserList, UserSearch } from '../UsersState/Action/UserList';
+import { UserReducer } from '../UsersState/Reducer/User';
 
 function ListUserSearch() {
   const dispatch = useDispatch();
@@ -14,28 +14,28 @@ function ListUserSearch() {
 
   const changeSearch = (e) => {
     dispatch(UserSearch(e.target.value));
-    dispatch(UserList(userDB.rows.filter((a) => a.username.includes(e.target.value))));
+    // dispatch(UserList(userDB.rows.filter((a) => a.username.includes(e.target.value))));
   };
   const dataSearch = () => {
     console.log(userDB);
   };
 
   return (
-      <>
-        <Grid container spacing={1} alignItems="flex-end" style={{flexWrap: 'nowrap', marginRight: '125px'}}>
-          <Grid item>
-            <TextField id="input-with-icon-grid" label="Search" onInput={changeSearch}/>
-          </Grid>
-          <Grid item>
-            <Tooltip title="Example: Ivan">
-              <IconButton aria-label="search" style={{padding: '3px 5px'}}>
-                <SearchIcon onClick={dataSearch}/>
-              </IconButton>
-            </Tooltip>
-          </Grid>
-
+    <>
+      <Grid container spacing={1} alignItems="flex-end" style={{ flexWrap: 'nowrap', marginRight: '125px' }}>
+        <Grid item>
+          <TextField id="input-with-icon-grid" label="Search" onInput={changeSearch} />
         </Grid>
-      </>
+        <Grid item>
+          <Tooltip title="Example: Ivan">
+            <IconButton aria-label="search" style={{ padding: '3px 5px' }}>
+              <SearchIcon onClick={dataSearch} />
+            </IconButton>
+          </Tooltip>
+        </Grid>
+
+      </Grid>
+    </>
   );
 }
 

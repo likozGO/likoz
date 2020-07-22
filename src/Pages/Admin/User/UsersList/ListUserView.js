@@ -159,7 +159,6 @@ export default function ListUserView() {
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
   };
-
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
       if (event.target.checked && selected.length > 0) {
@@ -174,7 +173,6 @@ export default function ListUserView() {
     setSelectedRow([]);
     setSelected([]);
   };
-
   const handleClick = (event, name, dataSelected) => {
     const selectedIndex = selected.indexOf(name);
     let newSelected = [];
@@ -195,18 +193,14 @@ export default function ListUserView() {
     setSelectedRow(stateDataSelected);
     setSelected(newSelected);
   };
-
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
-
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-
   const isSelected = (name) => selected.indexOf(name) !== -1;
-
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
   if (loading === true) {
@@ -235,10 +229,11 @@ export default function ListUserView() {
               onRequestSort={handleRequestSort}
               rowCount={rows.length}
             />
-            <TableBody>
+            <TableBody search={search ? rows.filter((a) => a.username.includes(search)) : ''}>
 
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .filter((a) => a.username.includes(search))
                 .map((row, index) => {
                   const isItemSelected = isSelected(row._id);
                   const labelId = `enhanced-table-checkbox-${index}`;
