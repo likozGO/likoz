@@ -13,7 +13,7 @@ import Slide from '@material-ui/core/Slide';
 import Tooltip from '@material-ui/core/Tooltip';
 import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
-import { PopupAction } from '../UsersState/Action/UserPopup';
+import { PopupAction } from './ReduxAction';
 import UserDialogCreate from './UserDialogCreate';
 import UserDialogEdit from './UserDialogEdit';
 

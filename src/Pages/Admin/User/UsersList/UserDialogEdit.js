@@ -12,9 +12,9 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { PopupAction } from '../UsersState/Action/UserPopup';
+import { PopupAction } from './ReduxAction';
 import { DEV_USER_API } from '../../../../Constants/CONST_ADMIN';
-import { UserList } from '../UsersState/Action/UserList';
+import { ReduxAction } from './ReduxAction';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -69,7 +69,7 @@ export default function UserDialogEdit(props) {
     axios.post(`${DEV_USER_API}users/update/${user.id}`, user)
       .then((userEdit) => {
         axios.get(`${DEV_USER_API}users`)
-          .then((usersGet) => dispatch(UserList(usersGet.data)));
+          .then((usersGet) => dispatch(ReduxAction(usersGet.data)));
         dispatch(PopupAction());
       })
       .catch((err) => console.log(err));

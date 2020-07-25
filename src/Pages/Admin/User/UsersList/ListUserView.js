@@ -139,7 +139,6 @@ const useStyles = makeStyles((theme) => ({
     width: 1,
   },
 }));
-
 export default function ListUserView() {
   const userDB = useSelector((state) => state.UserReducer);
   const {
@@ -165,7 +164,7 @@ export default function ListUserView() {
         setSelectedRow([]);
         setSelected([]);
       } else {
-        const newSelecteds = rows.filter((n) => !n.isNew).map((n) => n._id);
+        const newSelecteds = rows.filter((a) => a.username.includes(search)).filter((n) => !n.isNew).map((n) => n._id);
         setSelected(newSelecteds);
       }
       return;
@@ -229,8 +228,7 @@ export default function ListUserView() {
               onRequestSort={handleRequestSort}
               rowCount={rows.length}
             />
-            <TableBody search={search ? rows.filter((a) => a.username.includes(search)) : ''}>
-
+            <TableBody>
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .filter((a) => a.username.includes(search))

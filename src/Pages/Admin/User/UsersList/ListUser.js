@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import ListUserView from './ListUserView';
 
-import { UserError, UserList, UserLoading } from '../UsersState/Action/UserList';
+import { UserError, ReduxAction, UserLoading } from './ReduxAction';
 import { GET_USERS } from '../../../../Constants/CONST_ADMIN';
 
 export default function EnhancedTable() {
@@ -13,7 +13,7 @@ export default function EnhancedTable() {
     axios.get(`${GET_USERS}`)
       .then((response) => {
         dispatch(UserLoading());
-        dispatch(UserList(response.data));
+        dispatch(ReduxAction(response.data));
       })
       .catch((error) => {
         dispatch(UserLoading());

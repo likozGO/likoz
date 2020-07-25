@@ -13,7 +13,6 @@ app.use(express.json());
 
 const db = process.env.MONGODB_URL;
 
-const uri = 'mongodb+srv://admin:4128902@likoz-lyyzf.gcp.mongodb.net/test?retryWrites=true&w=majority';
 mongoose.connect(db, { useNewUrlParser: true, useCreateIndex: true });
 const { connection } = mongoose;
 connection.once('open', () => {

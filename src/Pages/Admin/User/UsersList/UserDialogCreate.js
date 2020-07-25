@@ -13,8 +13,8 @@ import axios from 'axios';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { useSelector, useDispatch } from 'react-redux';
 import { DEV_USER_API } from '../../../../Constants/CONST_ADMIN';
-import { PopupAction } from '../UsersState/Action/UserPopup';
-import { UserList, UserListAdd } from '../UsersState/Action/UserList';
+import { PopupAction } from './ReduxAction';
+import { ReduxAction, UserListAdd } from './ReduxAction';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -59,7 +59,7 @@ export default function UserDialogCreate() {
         console.log(usersAdd);
         dispatch(UserListAdd(user));
         axios.get(`${DEV_USER_API}users`)
-          .then((usersGet) => dispatch(UserList(usersGet.data)));
+          .then((usersGet) => dispatch(ReduxAction(usersGet.data)));
         dispatch(PopupAction());
       })
       .catch((err) => console.log(err));

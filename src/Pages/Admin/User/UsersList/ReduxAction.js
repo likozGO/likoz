@@ -1,4 +1,4 @@
-export const UserList = (data) => ({
+export const ReduxAction = (data) => ({
   type: 'USER_DATA',
   data,
 });
@@ -19,4 +19,8 @@ export const UserLoading = () => ({
 export const UserSearch = (data) => ({
   type: 'USER_DATA_SEARCH',
   data,
+});
+
+export const PopupAction = () => ({
+  type: 'POPUP_CONTROL',
 });

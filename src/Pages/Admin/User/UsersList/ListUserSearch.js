@@ -5,8 +5,8 @@ import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import { useDispatch, useSelector } from 'react-redux';
-import { UserList, UserSearch } from '../UsersState/Action/UserList';
-import { UserReducer } from '../UsersState/Reducer/User';
+import { ReduxAction, UserSearch } from './ReduxAction';
+import { UserReducer } from './ReduxReducer';
 
 function ListUserSearch() {
   const dispatch = useDispatch();
