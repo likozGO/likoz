@@ -13,8 +13,7 @@ import axios from 'axios';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { useSelector, useDispatch } from 'react-redux';
 import { DEV_USER_API } from '../../../../Constants/CONST_ADMIN';
-import { PopupAction } from './ReduxAction';
-import { ReduxAction, UserListAdd } from './ReduxAction';
+import { PopupAction, ReduxAction, UserListAdd } from './ReduxAction';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,7 +32,6 @@ export default function UserDialogCreate() {
   const [values, setValues] = React.useState({
     showPassword: false,
   });
-
   const dispatch = useDispatch();
 
   const userDB = useSelector((state) => state.UserReducer);

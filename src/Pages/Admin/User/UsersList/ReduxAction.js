@@ -21,6 +21,22 @@ export const UserSearch = (data) => ({
   data,
 });
 
+export const UserSelected = (data) => ({
+  type: 'USER_SELECTED',
+  data,
+});
+
+export const FILTER_TYPE = {
+  RESET_FILTER: 'RESET_FILTER',
+  ADMIN_FILTER: 'ADMIN_FILTER',
+  PASSWORD_BIGGER_10: 'PASSWORD_BIGGER_10',
+};
+
+export const UserFilter = (data) => ({
+  type: data,
+  data,
+});
+
 export const PopupAction = () => ({
   type: 'POPUP_CONTROL',
 });

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
-import ListUserView from './ListUserView';
+import ListUserViewBody from './ListUserViewBody';
 
 import { UserError, ReduxAction, UserLoading } from './ReduxAction';
 import { GET_USERS } from '../../../../Constants/CONST_ADMIN';
@@ -21,6 +21,6 @@ export default function EnhancedTable() {
       });
   }, []);
   return (
-    <ListUserView />
+    <ListUserViewBody />
   );
 }

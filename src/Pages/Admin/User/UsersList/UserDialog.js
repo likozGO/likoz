@@ -59,8 +59,8 @@ export default function FullScreenDialog(props) {
 
   return (
     <div>
-      <Tooltip title={type.tooltipText}>
-        <IconButton aria-label="filter list" onClick={() => dispatch(PopupAction())}>
+      <Tooltip title={type.tooltipText} style={{ padding: '0' }}>
+        <IconButton aria-label="filter list" onClick={() => dispatch(PopupAction())} style={{ width: '1.3em', height: '1.3em' }}>
           {type.icon}
         </IconButton>
       </Tooltip>

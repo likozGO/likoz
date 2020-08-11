@@ -4,6 +4,8 @@ const initialState = {
   error: false,
   loading: false,
   search: '',
+  sorted: 'RESET_FILTER',
+  userSelected: [],
 };
 
 const UserReducer = (state = initialState, action) => {
@@ -20,7 +22,14 @@ const UserReducer = (state = initialState, action) => {
       return { ...state, loading: !state.loading };
     case 'USER_DATA_SEARCH':
       return { ...state, search: action.data };
-      // rows.filter((a) => a.username.includes(action.data))
+    case 'RESET_FILTER':
+      return { ...state, sorted: action.data };
+    case 'ADMIN_FILTER':
+      return { ...state, sorted: action.data };
+    case 'PASSWORD_BIGGER_10':
+      return { ...state, sorted: action.data };
+    case 'USER_SELECTED':
+      return { ...state, userSelected: action.data };
     default:
       return state;
   }
