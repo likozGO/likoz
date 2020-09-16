@@ -45,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ListUserViewBody() {
   const dispatch = useDispatch();
   const userDB = useSelector((state) => state.UserReducer);
+  const selectedUserRedux = userDB.userSelected;
   const {
     rows, loading, error, search, sorted,
   } = userDB;
@@ -124,7 +125,7 @@ export default function ListUserViewBody() {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <ListUserViewHeader numSelected={selected.length} dataSelected={selectedRow} />
+        <ListUserViewHeader numSelected={selectedUserRedux.length} dataSelected={selectedUserRedux} setSelected={setSelected} />
         <TableContainer className={classes.container}>
           <Table
             className={classes.table}

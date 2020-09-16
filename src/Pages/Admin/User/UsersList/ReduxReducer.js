@@ -30,6 +30,12 @@ const UserReducer = (state = initialState, action) => {
       return { ...state, sorted: action.data };
     case 'USER_SELECTED':
       return { ...state, userSelected: action.data };
+    case 'USER_DATA_DELETE':
+      return {
+        ...state,
+        rows: state.rows.filter((e) => !action.data.includes(e._id)),
+        userSelected: [],
+      };
     default:
       return state;
   }

@@ -8,6 +8,11 @@ export const UserListAdd = (data) => ({
   data,
 });
 
+export const UserListDelete = (data) => ({
+  type: 'USER_DATA_DELETE',
+  data,
+});
+
 export const UserError = () => ({
   type: 'USER_DATA_ERROR',
 });

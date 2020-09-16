@@ -42,7 +42,7 @@ const useToolbarStyles = makeStyles((theme) => ({
 }));
 export const ListUserViewHeader = (props) => {
   const classes = useToolbarStyles();
-  const { numSelected, dataSelected } = props;
+  const { numSelected, dataSelected, setSelected } = props;
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [selectedIndex, setSelectedIndex] = React.useState(1);
   const dispatch = useDispatch();
@@ -117,7 +117,7 @@ export const ListUserViewHeader = (props) => {
         )
         : null}
       {numSelected > 0 ? (
-        <UserDialogDelete />
+        <UserDialogDelete setSelected={setSelected} />
       ) : (
         <>
           <Tooltip title="Filter list">
