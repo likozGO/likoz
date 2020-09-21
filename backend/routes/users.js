@@ -1,6 +1,9 @@
 const router = require('express').Router();
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const User = require('../models/user.model');
-const { registerValidation } = require('../validation');
+const { registerValidation, loginValidation } = require('../validation');
+const verify = require('../verifyToken');
 
 router.route('/').get((req, res) => {
   User.find()
@@ -18,15 +21,17 @@ router.route('/add').post(async (req, res) => {
   const { error } = registerValidation(req.body);
   if (error) res.status(400).send(error.details[0].message);
   const emailExist = await User.findOne({ email: req.body.email });
-  const usernameExist = await User.findOne({ username: req.body.username });
   if (emailExist) return res.status(400).send('Email already exist');
+  const usernameExist = await User.findOne({ username: req.body.username });
   if (usernameExist) return res.status(400).send('Username already exist');
 
   const { username, password, email } = req.body;
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
 
   const newUser = new User({
     username,
-    password,
+    password: hashedPassword,
     email,
   });
 
@@ -35,7 +40,21 @@ router.route('/add').post(async (req, res) => {
     .catch((err) => res.status(400).json(`Error: ${err}`));
 });
 
-router.route('/update/:id').post((req, res) => {
+router.route('/login').post(async (req, res) => {
+  const { email, password } = req.body;
+  const { error } = loginValidation(req.body);
+  if (error) res.status(400).send(error.details[0].message);
+  const user = await User.findOne({ email });
+  if (!user) return res.status(400).send('Email is not found');
+  const validPassword = await bcrypt.compare(password, user.password);
+  if (!validPassword) return res.status(400).send('Invalid password');
+
+  const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
+
+  res.header('auth-token', token).send(token);
+});
+
+router.route('/update/:id').post(verify, (req, res) => {
   User.findById(req.params.id)
     .then((users) => {
       users.username = req.body.username;
