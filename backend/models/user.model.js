@@ -4,13 +4,13 @@ const Scheme = mongoose.Schema;
 
 const userSchema = new Scheme({
   username: {
-    type: String, required: true, unique: true, trim: true, minlength: 2,
+    type: String, required: true, minlength: 6, maxlength: 255,
   },
   password: {
-    type: String, required: true, unique: false, minlength: 8,
+    type: String, required: true, minlength: 6, maxlength: 1024,
   },
   email: {
-    type: String, required: true, unique: true, trim: true, minlength: 3,
+    type: String, required: true, minlength: 6, maxlength: 255,
   },
   isAdmin: {
     type: Boolean, default: false,

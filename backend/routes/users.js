@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const User = require('../models/user.model');
+const { registerValidation } = require('../validation');
 
 router.route('/').get((req, res) => {
   User.find()
@@ -13,10 +14,15 @@ router.route('/:id').get((req, res) => {
     .catch((err) => res.status(400).json(`Error: ${err}`));
 });
 
-router.route('/add').post((req, res) => {
-  const { username } = req.body;
-  const { password } = req.body;
-  const { email } = req.body;
+router.route('/add').post(async (req, res) => {
+  const { error } = registerValidation(req.body);
+  if (error) res.status(400).send(error.details[0].message);
+  const emailExist = await User.findOne({ email: req.body.email });
+  const usernameExist = await User.findOne({ username: req.body.username });
+  if (emailExist) return res.status(400).send('Email already exist');
+  if (usernameExist) return res.status(400).send('Username already exist');
+
+  const { username, password, email } = req.body;
 
   const newUser = new User({
     username,
