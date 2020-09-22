@@ -17,7 +17,7 @@ router.route('/:id').get((req, res) => {
     .catch((err) => res.status(400).json(`Error: ${err}`));
 });
 
-router.route('/add').post(async (req, res) => {
+router.route('/register').post(async (req, res) => {
   const { error } = registerValidation(req.body);
   if (error) res.status(400).send(error.details[0].message);
   const emailExist = await User.findOne({ email: req.body.email });

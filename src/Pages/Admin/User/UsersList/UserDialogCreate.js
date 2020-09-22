@@ -52,7 +52,7 @@ export default function UserDialogCreate() {
       isNew: 'NEW',
     };
 
-    axios.post(`${DEV_USER_API}users/add`, user)
+    axios.post(`${DEV_USER_API}users/register`, user)
       .then((usersAdd) => {
         console.log(usersAdd);
         dispatch(UserListAdd(user));

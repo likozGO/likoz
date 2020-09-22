@@ -4,7 +4,7 @@ const DEV_USER_API = '/api/';
 const GET_USERS = `${DEV_USER_API}users`;
 
 /* Post */
-const ADD_USERS = `${DEV_USER_API}users/add`;
+const ADD_USERS = `${DEV_USER_API}users/register`;
 const EDIT_USERS = `${DEV_USER_API}users/add`;
 
 export {
