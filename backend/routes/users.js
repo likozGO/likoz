@@ -2,16 +2,21 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user.model');
-const { registerValidation, loginValidation } = require('../validation');
+const { registerValidation, loginValidation, isAdminValidation } = require('../validation');
 const verify = require('../verifyToken');
 
-router.route('/').get((req, res) => {
-  User.find()
-    .then((users) => res.json(users))
-    .catch((err) => res.status(400).json(`Error: ${err}`));
+router.route('/').get(verify, async (req, res) => {
+  const { error } = await isAdminValidation(req.headers['auth-token']);
+  if (error) return res.status(400).send('You are not admin!');
+  try {
+    const userFind = await User.find();
+    return res.json(userFind);
+  } catch (e) {
+    return res.status(400).send('Something went wrong');
+  }
 });
 
-router.route('/:id').get((req, res) => {
+router.route('/:id').get(verify, (req, res) => {
   User.findById(req.params.id)
     .then((users) => res.json(users))
     .catch((err) => res.status(400).json(`Error: ${err}`));
@@ -51,7 +56,11 @@ router.route('/login').post(async (req, res) => {
 
   const token = jwt.sign({ _id: user._id }, process.env.TOKEN_SECRET);
 
-  res.header('auth-token', token).send(token);
+  const credentials = {
+    token, user,
+  };
+
+  res.header('auth-token', token).send(credentials);
 });
 
 router.route('/update/:id').post(verify, (req, res) => {
@@ -69,7 +78,7 @@ router.route('/update/:id').post(verify, (req, res) => {
     .catch((err) => res.status(400).json(`Error: ${err}`));
 });
 
-router.route('/:id').delete((req, res) => {
+router.route('/:id').delete(verify, (req, res) => {
   User.findByIdAndDelete(req.params.id)
     .then(() => res.json('User deleted'))
     .catch((err) => res.status(400).json(`Error: ${err}`));
