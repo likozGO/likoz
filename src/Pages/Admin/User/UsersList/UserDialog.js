@@ -32,7 +32,6 @@ const Transition = React.forwardRef((props, ref) => <Slide direction="up" ref={r
 export default function FullScreenDialog(props) {
   const classes = useStyles();
   const UserDB = useSelector((state) => state.UserReducer.isOpen);
-
   const dispatch = useDispatch();
   let type = props.modal_type;
 

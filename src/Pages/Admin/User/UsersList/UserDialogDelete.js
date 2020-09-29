@@ -13,17 +13,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { DEV_USER_API } from '../../../../Constants/CONST_ADMIN';
 import {
-  PopupAction, ReduxAction, UserListAdd, UserListDelete,
+  PopupAction, ReduxAction, UserListAdd, UserListDelete, UserSelected,
 } from './ReduxAction';
 
 const Transition = React.forwardRef((props, ref) => <Slide direction="up" ref={ref} {...props} />);
 
-export default function UserDialogDelete({ setSelected }) {
+export default function UserDialogDelete() {
   const [open, setOpen] = React.useState(false);
   const userDB = useSelector((state) => state.UserReducer);
   const dispatch = useDispatch();
-  const usersId = userDB.userSelected;
-  const usersAll = userDB.rows;
+  const users = userDB.userSelected;
+  const usersId = users.map((a) => a._id);
+
   const userAmount = userDB.userSelected.length;
   const handleClickOpen = () => {
     setOpen(true);
@@ -44,7 +45,7 @@ export default function UserDialogDelete({ setSelected }) {
     setOpen(false);
     console.log('user deleted');
     dispatch(UserListDelete(usersId));
-    setSelected([]);
+    dispatch(UserSelected([]));
     deleteUser();
   };
 

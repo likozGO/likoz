@@ -12,9 +12,8 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { PopupAction } from './ReduxAction';
+import {PopupAction, ReduxAction, UserSelected} from './ReduxAction';
 import { DEV_USER_API } from '../../../../Constants/CONST_ADMIN';
-import { ReduxAction } from './ReduxAction';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,25 +30,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function UserDialogEdit(props) {
+export default function UserDialogEdit() {
   const classes = useStyles();
-
   const dispatch = useDispatch();
   const userDB = useSelector((state) => state.UserReducer);
-  const { rows, loading, error } = userDB;
+  const user = userDB.userSelected[0];
 
-  const { user_info } = props;
   const [values, setValues] = React.useState({
     showPassword: false,
   });
+  console.log(user);
+
   const [inputValue, handleValue] = React.useState(
     {
-      username: user_info.username,
-      email: user_info.email,
-      password: user_info.password,
-      id: user_info._id,
+      username: user.username,
+      email: user.email,
+      password: user.password,
+      id: user._id,
     },
   );
+  console.log(inputValue);
 
   function handleAddUser(e) {
     e.preventDefault();
@@ -66,11 +66,15 @@ export default function UserDialogEdit(props) {
 
     console.log(user);
 
-    axios.post(`${DEV_USER_API}users/update/${user.id}`, user)
-      .then((userEdit) => {
+    axios.post(`${DEV_USER_API}users/update/${user.id}`, user,
+      {
+        headers: { 'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZjZkZWMzMzY0ZGViMTJhMjRhNjg0NDUiLCJpYXQiOjE2MDEwMzk0NDd9.5UYG6BOOxEcqS2c8y98wHsw3_4v9qdzawfctcfGZEc8' },
+      })
+      .then(() => {
         axios.get(`${DEV_USER_API}users`)
           .then((usersGet) => dispatch(ReduxAction(usersGet.data)));
         dispatch(PopupAction());
+        dispatch(UserSelected([]));
       })
       .catch((err) => console.log(err));
   }

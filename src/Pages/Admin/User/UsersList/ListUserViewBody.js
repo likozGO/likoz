@@ -45,15 +45,13 @@ const useStyles = makeStyles((theme) => ({
 export default function ListUserViewBody() {
   const dispatch = useDispatch();
   const userDB = useSelector((state) => state.UserReducer);
-  const selectedUserRedux = userDB.userSelected;
   const {
     rows, loading, error, search, sorted,
   } = userDB;
+  const selectedUserRedux = userDB.userSelected;
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('email');
-  const [selected, setSelected] = React.useState([]);
-  const [selectedRow, setSelectedRow] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -70,40 +68,32 @@ export default function ListUserViewBody() {
   };
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      if (event.target.checked && selected.length > 0) {
-        setSelectedRow([]);
-        setSelected([]);
+      if (event.target.checked && selectedUserRedux.length > 0) {
         dispatch(UserSelected([]));
       } else {
-        const newSelecteds = rows.filter((a) => userFilter(a)).filter((n) => !n.isNew).map((n) => n._id);
-        setSelected(newSelecteds);
+        const newSelecteds = rows.filter((a) => userFilter(a)).filter((n) => !n.isNew).map((n) => n);
         dispatch(UserSelected(newSelecteds));
       }
       return;
     }
-    setSelectedRow([]);
-    setSelected([]);
     dispatch(UserSelected([]));
   };
-  const handleClick = (event, name, dataSelected) => {
-    const selectedIndex = selected.indexOf(name);
+  const handleClick = (event, dataSelected) => {
+    const selectedIndex = selectedUserRedux.indexOf(dataSelected);
     let newSelected = [];
-    const stateDataSelected = dataSelected;
 
     if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
+      newSelected = newSelected.concat(selectedUserRedux, dataSelected);
     } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
+      newSelected = newSelected.concat(selectedUserRedux.slice(1));
+    } else if (selectedIndex === selectedUserRedux.length - 1) {
+      newSelected = newSelected.concat(selectedUserRedux.slice(0, -1));
     } else if (selectedIndex > 0) {
       newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1),
+        selectedUserRedux.slice(0, selectedIndex),
+        selectedUserRedux.slice(selectedIndex + 1),
       );
     }
-    setSelectedRow(stateDataSelected);
-    setSelected(newSelected);
     dispatch(UserSelected(newSelected));
   };
   const handleChangePage = (event, newPage) => {
@@ -113,7 +103,7 @@ export default function ListUserViewBody() {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-  const isSelected = (name) => selected.indexOf(name) !== -1;
+  const isSelected = (name) => selectedUserRedux.indexOf(name) !== -1;
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
   if (loading === true) {
@@ -122,10 +112,11 @@ export default function ListUserViewBody() {
   if (error === true) {
     return (<div>Error</div>);
   }
+
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <ListUserViewHeader numSelected={selectedUserRedux.length} dataSelected={selectedUserRedux} setSelected={setSelected} />
+        <ListUserViewHeader />
         <TableContainer className={classes.container}>
           <Table
             className={classes.table}
@@ -136,7 +127,7 @@ export default function ListUserViewBody() {
           >
             <EnhancedTableHead
               classes={classes}
-              numSelected={selected.length}
+              numSelected={selectedUserRedux.length}
               order={order}
               orderBy={orderBy}
               onSelectAllClick={handleSelectAllClick}
@@ -148,12 +139,12 @@ export default function ListUserViewBody() {
                 .filter((a) => userFilter(a))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-                  const isItemSelected = isSelected(row._id);
+                  const isItemSelected = isSelected(row);
                   const labelId = `enhanced-table-checkbox-${index}`;
                   return (
                     <TableRow
                       hover
-                      onClick={row.isNew ? null : (event) => handleClick(event, row._id, row)}
+                      onClick={row.isNew ? null : (event) => handleClick(event, row)}
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}

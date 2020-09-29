@@ -48,12 +48,12 @@ export default function UserDialogCreate() {
       username: username.value,
       email: email.value,
       password: password.value,
-      isAdmin: 'false',
-      isNew: 'NEW',
     };
 
     axios.post(`${DEV_USER_API}users/register`, user)
       .then((usersAdd) => {
+        user.isAdmin = 'false';
+        user.isNew = 'NEW';
         console.log(usersAdd);
         dispatch(UserListAdd(user));
         axios.get(`${DEV_USER_API}users`)

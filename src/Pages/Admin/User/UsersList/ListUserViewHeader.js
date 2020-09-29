@@ -1,6 +1,6 @@
 import { lighten, makeStyles } from '@material-ui/core/styles';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Toolbar from '@material-ui/core/Toolbar';
 import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
@@ -40,12 +40,16 @@ const useToolbarStyles = makeStyles((theme) => ({
     flex: '1 1 100%',
   },
 }));
-export const ListUserViewHeader = (props) => {
+export const ListUserViewHeader = () => {
   const classes = useToolbarStyles();
-  const { numSelected, dataSelected, setSelected } = props;
+  const userDB = useSelector((state) => state.UserReducer);
+  const users = userDB.userSelected;
+  const dispatch = useDispatch();
+  const numSelected = users.length;
+  const dataSelected = users;
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [selectedIndex, setSelectedIndex] = React.useState(1);
-  const dispatch = useDispatch();
   const handleSortItemClick = (event, index) => {
     switch (index) {
       case 1:
@@ -67,7 +71,6 @@ export const ListUserViewHeader = (props) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
   const handleClickListItem = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -117,7 +120,7 @@ export const ListUserViewHeader = (props) => {
         )
         : null}
       {numSelected > 0 ? (
-        <UserDialogDelete setSelected={setSelected} />
+        <UserDialogDelete />
       ) : (
         <>
           <Tooltip title="Filter list">
