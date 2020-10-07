@@ -9,8 +9,7 @@ import './Pages/_Common/css/fonts.css';
 import './Pages/_Common/css/animation-router.scss';
 
 import HelloUser from './Pages/Authorization/HelloUser/HelloUser';
-import RegisterUser from './Pages/Authorization/RegisterUser/RegisterUser';
-import LoginUser from './Pages/Authorization/LoginUser/LoginUser';
+import Auth from './Pages/Authorization/AuthUser/Auth';
 import RememberUser from './Pages/Authorization/RememberUser/RememberUser';
 import PageAdmin from './Pages/Admin/PageAdmin';
 import AdressError from './Errors/AdressError/CreateProduct';
@@ -26,8 +25,8 @@ function App() {
           className="switch-wrapper"
         >
           <Route path="/" exact component={HelloUser} />
-          <Route path="/registration" component={RegisterUser} />
-          <Route path="/login" component={LoginUser} />
+          <Route path="/auth/registration" component={Auth} />
+          <Route path="/auth/login" component={Auth} />
           <Route path="/forget" component={RememberUser} />
           <Route path="/admin" component={PageAdmin} />
           <Route path="*" component={AdressError} />

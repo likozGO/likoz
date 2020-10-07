@@ -145,7 +145,7 @@ h1, h2, h3, h4 {
   padding-right: 45px;
   text-overflow: ellipsis;
 
-  &.login-fff {
+  &.auth-fff {
     background: url('../images/form_login__white.svg') no-repeat 100% 80%;
     background-size: 35px;
   }
@@ -160,7 +160,7 @@ h1, h2, h3, h4 {
     background-size: 35px;
   }
 
-  &.login-000 {
+  &.auth-000 {
     background: url('../images/form_login__black.svg') no-repeat 100% 80%;
     background-size: 35px;
   }

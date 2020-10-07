@@ -1,4 +1,4 @@
-.login-group {
+.auth-group {
   .form-group {
     width: 100%;
     margin: 0 auto;
@@ -86,7 +86,7 @@
     //min-height: 400px;
   }
 
-  .login-more {
+  .auth-more {
     width: 50%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -96,7 +96,7 @@
     background-image: url('images/form-bg.gif');
   }
 
-  .login-more::before {
+  .auth-more::before {
     content: "";
     display: block;
     position: absolute;
@@ -127,7 +127,7 @@
       padding-right: 30px;
     }
 
-    .login-more {
+    .auth-more {
       width: 40%;
     }
   }
@@ -137,7 +137,7 @@
       width: 100%;
     }
 
-    .login-more {
+    .auth-more {
       width: 100%;
     }
   }

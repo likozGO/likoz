@@ -18,7 +18,7 @@ function HelloUser() {
       </section>
       <section className="section-body">
         <div className="section-body__true">
-          <Link to="/login" className="btn btn__bottom-border">
+          <Link to="/auth/login" className="btn btn__bottom-border">
             <span className="xl-screen">
               Man what are f***???
               <br />
@@ -32,7 +32,7 @@ function HelloUser() {
 
         </div>
         <div className="section-body__false">
-          <Link to="/registration" className="btn btn__bottom-border">
+          <Link to="/auth/registration" className="btn btn__bottom-border">
             <span className="xl-screen">
               Oi hello mon sir!
               <br />
