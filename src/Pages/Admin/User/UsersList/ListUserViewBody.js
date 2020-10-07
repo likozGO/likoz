@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { EnhancedTableHead, getComparator, stableSort } from './ListUserSorting';
 import { ListUserViewHeader } from './ListUserViewHeader';
 import { UserSelected } from './ReduxAction';
+import SwitchAdmin from './SwitchAdmin';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -169,7 +170,9 @@ export default function ListUserViewBody() {
                       <TableCell>{row.username}</TableCell>
                       <TableCell>{row.email}</TableCell>
                       <TableCell>{row.password}</TableCell>
-                      <TableCell>{`${row.isAdmin}`}</TableCell>
+                      <TableCell onClick={(e) => e.stopPropagation()}>
+                        <SwitchAdmin disable edit={row.isAdmin} />
+                      </TableCell>
                     </TableRow>
                   );
                 })}

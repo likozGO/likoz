@@ -50,13 +50,17 @@ export default function UserDialogCreate() {
       password: password.value,
     };
 
-    axios.post(`${DEV_USER_API}users/register`, user)
+    axios.post(`${DEV_USER_API}users/register`, user, {
+      headers: { 'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Zjc0NTJhYzI4ZDEzNzJmZmNjYjYxOTciLCJpYXQiOjE2MDE0NTg4NjN9.HKoAj9Txw4pQ0FBJf0m8SKN2_LVGkq3oYAS7KagR3sI' },
+    })
       .then((usersAdd) => {
         user.isAdmin = 'false';
         user.isNew = 'NEW';
         console.log(usersAdd);
         dispatch(UserListAdd(user));
-        axios.get(`${DEV_USER_API}users`)
+        axios.get(`${DEV_USER_API}users`, {
+          headers: { 'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Zjc0NTJhYzI4ZDEzNzJmZmNjYjYxOTciLCJpYXQiOjE2MDE0NTg4NjN9.HKoAj9Txw4pQ0FBJf0m8SKN2_LVGkq3oYAS7KagR3sI' },
+        })
           .then((usersGet) => dispatch(ReduxAction(usersGet.data)));
         dispatch(PopupAction());
       })

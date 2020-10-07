@@ -24,6 +24,17 @@ const isAdminValidation = async (data) => {
   return schema.validate(result.isAdmin);
 };
 
+const updateValidation = (data) => {
+  const schema = Joi.object({
+    username: Joi.string().min(6),
+    email: Joi.string().min(6).email(),
+    password: Joi.string().min(6),
+    isAdmin: Joi.boolean(),
+  });
+  return schema.validate(data);
+};
+
 module.exports.registerValidation = registerValidation;
 module.exports.loginValidation = loginValidation;
 module.exports.isAdminValidation = isAdminValidation;
+module.exports.updateValidation = updateValidation;

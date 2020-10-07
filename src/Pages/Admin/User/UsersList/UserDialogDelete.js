@@ -35,7 +35,9 @@ export default function UserDialogDelete() {
 
   const deleteUser = () => {
     for (let i = 0; i < userAmount; i++) {
-      axios.delete(`${DEV_USER_API}users/${usersId[i]}`)
+      axios.delete(`${DEV_USER_API}users/${usersId[i]}`, {
+        headers: { 'auth-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Zjc0NTJhYzI4ZDEzNzJmZmNjYjYxOTciLCJpYXQiOjE2MDE0NTg4NjN9.HKoAj9Txw4pQ0FBJf0m8SKN2_LVGkq3oYAS7KagR3sI' },
+      })
         .then((resp) => console.log(resp))
         .catch((err) => console.log(err));
     }
