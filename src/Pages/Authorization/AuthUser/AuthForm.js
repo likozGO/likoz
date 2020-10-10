@@ -1,170 +1,96 @@
-import React, { useState } from 'react';
-import {
-  ErrorMessage, Field, Form, Formik,
-} from 'formik';
+import React from 'react';
+import { Field, Form, Formik } from 'formik';
 import { Link } from 'react-router-dom';
-import PasswordShow from '../../_Common/images/form_password-show__black.svg';
-import PasswordHide from '../../_Common/images/form_password-hide__black.svg';
-import { LoginInitial } from './LoginValidation';
-import AuthInput from './AuthInput';
+import { Input, PasswordInput } from './AuthInput';
+import { LoginInitial, LoginSchema } from './LoginValidation';
+import { RegisterInitial, RegisterSchema } from './RegisterValidation';
 
-function AuthForm(props) {
-  const [type, setType] = useState('password');
-  const { form } = props;
-
-  const changeType = () => {
-    if (type === 'password') {
-      setType('text');
-    } else {
-      setType('password');
-    }
-  };
+function AuthForm({ location }) {
   return (
     <>
       <Formik
-        initialValues={form.initial}
-        validationSchema={form.schema}
+        initialValues={location === 'login' ? LoginInitial : RegisterInitial}
+        validationSchema={location === 'login' ? LoginSchema : RegisterSchema}
         onSubmit={(values) => {
-          console.log(form.initial);
+          console.log(values);
         }}
       >
         {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
           isSubmitting,
-        }) => (form.type === 'login' ? (
-          <Form autoComplete="off" className="login100-form">
-            <div className="form-group">
-
-              <Field
-                name="login"
-                type="text"
-                placeholder="Frank"
-                className={`${touched.login && errors.login ? 'error' : ''} input-control auth-000`}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.login}
-              />
-              <label htmlFor="login">
-                Login
-              </label>
-              <div className="error-message">
-                <ErrorMessage name="login" />
-              </div>
-            </div>
-            <div className="form-group">
-              <Field
-                name="password"
-                type={type}
-                placeholder="Your secret password"
-                className={`${touched.password && errors.password ? 'error' : ''} input-control password-000`}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.password}
-              />
-              <label htmlFor="password">
-                Password
-              </label>
-              <label
-                className={`password-type ${values.password && values.password.length > 0 ? 'show' : 'hide'}`}
-                onClick={changeType}
-              >
-                <img
-                  src={type == 'password' ? PasswordShow : PasswordHide}
-                  alt="Show/Hide password"
-                  title="Show or hide your password-000"
-                />
-              </label>
-              <div className="error-message">
-                <ErrorMessage name="password" />
-              </div>
-            </div>
-            <div className="form-group">
-              <button
-                type="submit"
-                className="btn btn-login"
-                disabled={!!isSubmitting}
-              >
-                <span className={!isSubmitting ? 'show' : 'hide'}>Submit</span>
-                <span className={isSubmitting ? 'show' : 'hide'}>Loading...</span>
-              </button>
-            </div>
-            <div className="form-forgot">
-              <span className="txt1">
-                Forgot&nbsp;
-              </span>
-
-              <Link to="/forget" href="#" className="txt2">
-                User name / password?
-              </Link>
-            </div>
-            <div className="form-signup">
-              <Link to="/auth/registration" href="#" className="txt3">
-                Sign Up
-              </Link>
-            </div>
-          </Form>
+        }) => (location === 'login' ? (
+          <LoginForm isSubmitting={isSubmitting} />
         ) : (
-          <Form autoComplete="off" className="login100-form">
-            <AuthInput name="login" />
-            <div className="form-group">
-              <Field
-                name="password"
-                type={type}
-                placeholder="Your secret password"
-                className={`${touched.password && errors.password ? 'error' : ''} input-control password-000`}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.password}
-              />
-              <label htmlFor="password">
-                Password
-              </label>
-              <label
-                className={`password-type ${values.password && values.password.length > 0 ? 'show' : 'hide'}`}
-                onClick={changeType}
-              >
-                <img
-                  src={type == 'password' ? PasswordShow : PasswordHide}
-                  alt="Show/Hide password"
-                  title="Show or hide your password-000"
-                />
-              </label>
-              <div className="error-message">
-                <ErrorMessage name="password" />
-              </div>
-            </div>
-            <div className="form-group">
-              <button
-                type="submit"
-                className="btn btn-login"
-                disabled={!!isSubmitting}
-              >
-                <span className={!isSubmitting ? 'show' : 'hide'}>Submit</span>
-                <span className={isSubmitting ? 'show' : 'hide'}>Loading...</span>
-              </button>
-            </div>
-            <div className="form-forgot">
-              <span className="txt1">
-                Forgot&nbsp;
-              </span>
-
-              <Link to="/forget" href="#" className="txt2">
-                User name / password?
-              </Link>
-            </div>
-            <div className="form-signup">
-              <Link to="/auth/login" href="#" className="txt3">
-                Login
-              </Link>
-            </div>
-          </Form>
+          <RegistrationForm isSubmitting={isSubmitting} />
         ))}
       </Formik>
     </>
+  );
+}
+
+function LoginForm({ isSubmitting }) {
+  return (
+    <Form autoComplete="off" className="login100-form">
+      <Field name="login" placeholder="e.g. Ares228" component={Input} />
+      <Field name="password" component={PasswordInput} />
+      <div className="form-group">
+        <button
+          type="submit"
+          className="btn btn-login"
+          disabled={!!isSubmitting}
+        >
+          <span className={!isSubmitting ? 'show' : 'hide'}>Login</span>
+          <span className={isSubmitting ? 'show' : 'hide'}>Loading...</span>
+        </button>
+      </div>
+      <div className="form-forgot">
+        <span className="txt1">
+          Forgot&nbsp;
+        </span>
+
+        <Link to="/forget" className="txt2">
+          User name / password?
+        </Link>
+      </div>
+      <div className="form-signup">
+        <Link to="/auth/registration" className="txt3">
+          To Register
+        </Link>
+      </div>
+    </Form>
+  );
+}
+
+function RegistrationForm({ isSubmitting }) {
+  return (
+    <Form autoComplete="off" className="register100-form">
+      <Field name="login" placeholder="e.g. Ares228" component={Input} />
+      <Field name="email" placeholder="e.g. email@gmail.com" component={Input} />
+      <Field name="password" component={PasswordInput} />
+      <div className="form-group">
+        <button
+          type="submit"
+          className="btn btn-register"
+          disabled={!!isSubmitting}
+        >
+          <span className={!isSubmitting ? 'show' : 'hide'}>Register</span>
+          <span className={isSubmitting ? 'show' : 'hide'}>Loading...</span>
+        </button>
+      </div>
+
+      <div className="form-forgot">
+        <span className="txt1">
+          Forgot&nbsp;
+        </span>
+        <Link to="/forget" className="txt2">
+          User name / password?
+        </Link>
+      </div>
+      <div className="form-signup">
+        <Link to="/auth/login" className="txt3">
+          To Login
+        </Link>
+      </div>
+    </Form>
   );
 }
 

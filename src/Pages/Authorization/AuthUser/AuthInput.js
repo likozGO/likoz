@@ -1,30 +1,74 @@
-import React from 'react';
-import { ErrorMessage, Field } from 'formik';
+import React, { useState } from 'react';
+import { ErrorMessage } from 'formik';
+import PasswordShow from '../../_Common/images/form_password-show__black.svg';
+import PasswordHide from '../../_Common/images/form_password-hide__black.svg';
 
-function AuthInput({
-  field, touched, errors, handleChange, handleBlur, values,
+const Input = ({
+  field,
+  form: { touched, errors },
+  ...props
+}) => (
+  <div className="form-group">
+    <input
+      name={field.name}
+      type="text"
+      className={`${touched[field.name] && errors[field.name] ? 'error' : ''} input-control auth-000`}
+      value={field.value || ''}
+      {...field}
+      {...props}
+    />
+    <label htmlFor={field.name}>
+      {field.name.charAt(0).toUpperCase() + field.name.slice(1)}
+    </label>
+    <div className="error-message">
+      <ErrorMessage name={field.name} />
+    </div>
+  </div>
+);
+
+function PasswordInput({
+  field,
+  values,
+  form: { touched, errors },
+  ...props
 }) {
+  const [type, setType] = useState('password');
+  const changeType = () => {
+    if (type === 'password') {
+      setType('text');
+    } else {
+      setType('password');
+    }
+  };
   return (
-    <>
-      <div className="form-group">
-        <Field
-          name={field.name}
-          type="text"
-          placeholder="Frank"
-          className={`${touched[field.name] && errors[field.name] ? 'error' : ''} input-control auth-000`}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values[field.name]}
+    <div className="form-group">
+      <input
+        name={field.name}
+        type={type}
+        placeholder="Your secret password"
+        className={`${touched.password && errors.password ? 'error' : ''} input-control password-000`}
+        value={field.value || ''}
+        {...field}
+        {...props}
+      />
+      <label htmlFor={field.name}>
+        Password
+      </label>
+      <label
+        className={`password-type ${field.value && field.value.length > 0 ? 'show' : 'hide'}`}
+        onClick={changeType}
+      >
+        <img
+          src={type == 'password' ? PasswordShow : PasswordHide}
+          alt="Show/Hide password"
+          title="Show or hide your password-000"
         />
-        <label htmlFor={field.name}>
-          {field.name}
-        </label>
-        <div className="error-message">
-          <ErrorMessage name={field.name} />
-        </div>
+      </label>
+      <div className="error-message">
+        <ErrorMessage name={field.name} />
       </div>
-    </>
+    </div>
   );
 }
 
-export default AuthInput;
+export { Input, PasswordInput };

@@ -12,7 +12,7 @@
       color: #00ad5f;
     }
 
-    .btn-login {
+    .btn-login, .btn-register {
       background: #00ad5f;
       color: #fff;
     }
@@ -56,7 +56,8 @@
   }
 
 
-  .container-login {
+  .container-login,
+  .container-registration {
     width: 100%;
     min-height: 100vh;
     display: -webkit-box;
@@ -67,11 +68,11 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 15px;
+    padding: 10px;
     background: #f2f2f2;
   }
 
-  .wrap-login {
+  .wrap-auth {
     width: 1170px;
     background: #fff;
     overflow: hidden;
@@ -93,7 +94,13 @@
     background-position: center;
     position: relative;
     z-index: 1;
-    background-image: url('images/form-bg.gif');
+  }
+  .container-login .auth-more {
+      background-image: url('images/form-login.gif');
+  }
+
+  .container-registration .auth-more {
+      background-image: url('images/form-register.gif');
   }
 
   .auth-more::before {
@@ -109,7 +116,8 @@
   }
 
 
-  .login100-form {
+  .login100-form,
+  .register100-form {
     width: 50%;
     display: -webkit-box;
     display: -webkit-flex;
@@ -117,11 +125,12 @@
     display: -ms-flexbox;
     display: flex;
     flex-wrap: wrap;
-    padding: 200px 65px 40px 65px;
+    padding: 160px 65px 40px 65px;
   }
 
   @media (max-width: 992px) {
-    .login100-form {
+    .login100-form,
+    .register100-form{
       width: 60%;
       padding-left: 30px;
       padding-right: 30px;
@@ -133,7 +142,8 @@
   }
 
   @media (max-width: 768px) {
-    .login100-form {
+    .login100-form,
+    .register100-form{
       width: 100%;
     }
 
@@ -143,7 +153,8 @@
   }
 
   @media (max-width: 576px) {
-    .login100-form {
+    .login100-form,
+    .register100-form{
       padding-left: 15px;
       padding-right: 15px;
       padding-top: 150px;

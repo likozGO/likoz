@@ -112,9 +112,9 @@ h1, h2, h3, h4 {
   }
 
   .input-control:placeholder-shown:not(:focus) + * {
-    font-size: 150%;
+    font-size: 120%;
     opacity: .5;
-    top: .25em;
+    top: 1.05em;
   }
 
   .input-control:focus {
@@ -127,9 +127,14 @@ h1, h2, h3, h4 {
     left: 60px;
     z-index: 0;
     cursor: pointer;
-    top: -4px;
+    top: 0;
+    img {
+      width: 16px;
+      height: auto;
+    }
   }
 }
+
 
 .input-control {
   width: 100%;
@@ -142,37 +147,38 @@ h1, h2, h3, h4 {
   border: 0;
   border-radius: 0;
   border-bottom: 2px solid rgba(0, 0, 0, .1);
-  padding-right: 45px;
+  padding-right: 35px;
   text-overflow: ellipsis;
+
 
   &.auth-fff {
     background: url('../images/form_login__white.svg') no-repeat 100% 80%;
-    background-size: 35px;
+    background-size: 25px;
   }
 
   &.email-fff {
     background: url('../images/form_email__white.svg') no-repeat 100% 80%;
-    background-size: 35px;
+    background-size: 25px;
   }
 
   &.password-fff {
     background: url('../images/form_password__white.svg') no-repeat 100% 80%;
-    background-size: 35px;
+    background-size: 25px;
   }
 
   &.auth-000 {
     background: url('../images/form_login__black.svg') no-repeat 100% 80%;
-    background-size: 35px;
+    background-size: 25px;
   }
 
   &.email-000 {
     background: url('../images/form_email__black.svg') no-repeat 100% 80%;
-    background-size: 35px;
+    background-size: 25px;
   }
 
   &.password-000 {
     background: url('../images/form_password__black.svg') no-repeat 100% 80%;
-    background-size: 35px;
+    background-size: 25px;
   }
 }
 
