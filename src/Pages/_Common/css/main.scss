@@ -203,13 +203,10 @@ h1, h2, h3, h4 {
   min-height: 6rem;
   transition: opacity .2s ease-in-out;
   text-decoration: none;
+  color: inherit;
 
   &:hover {
     opacity: .8;
-  }
-
-  &:visited {
-    color: inherit;
   }
 
   &:disabled {

@@ -114,6 +114,8 @@
 
 
 
+
+
 @media all and (max-width: 991px) {
   .xl-screen {
     display: none;
@@ -147,10 +149,16 @@
     }
   }
 }
+@media (min-width: 767px) and (max-width: 991px) {
+  .start-group {
+    background-size: 27%,15%;
+    background-position: 50% 100%,95% 80%;
+  }
+}
 
 @media all and (max-width: 767px) {
   .start-group {
-    background-size: 60%, 30%;
+    background-size: 50%, 30%;
     background-position: 50% 100%, 100% 83%;
     .section-greetings, .section-body {
       width: 100%;
