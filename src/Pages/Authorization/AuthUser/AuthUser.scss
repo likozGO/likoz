@@ -12,7 +12,7 @@
       color: #00ad5f;
     }
 
-    .btn-login, .btn-register {
+    .btn-login, .btn-register, .btn-forget {
       background: #00ad5f;
       color: #fff;
     }
@@ -57,6 +57,7 @@
 
 
   .container-login,
+  .container-forget,
   .container-registration {
     width: 100%;
     min-height: 100vh;
@@ -70,6 +71,10 @@
     align-items: center;
     padding: 10px;
     background: #f2f2f2;
+  }
+
+  .container-forget {
+    background: #b2a601;
   }
 
   .wrap-auth {
@@ -103,6 +108,72 @@
       background-image: url('images/form-register.gif');
   }
 
+  .container-forget .auth-more {
+    background-image: url('images/form-forget.gif');
+  }
+  .container-forget {
+    .form-animation-enter {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    .form-animation-enter-active {
+      opacity: 1;
+      transform: translateX(0);
+      transition: opacity 300ms, transform 300ms;
+    }
+    .form-animation-exit {
+      opacity: 1;
+    }
+    .form-animation-exit-active {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 300ms, transform 300ms;
+    }
+    .btn-choose {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      &:hover {
+        box-shadow: inset 0 -2px #000;
+      }
+      &:focus {
+        box-shadow: inset 0 -6px #000;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+      span.btn-choose--name {
+        color: #fff;
+        background: #000;
+      }
+      span[role="img"] {
+        display: flex;
+        justify-content: center;
+        img {
+          position: relative;
+          top: unset;
+          right: unset;
+          transform: unset;
+          max-width: 100px;
+        }
+      }
+    }
+    .form-signup {
+      margin-top: 30px;
+
+      .txt3 {
+        transition: .2s linear box-shadow;
+      }
+
+      .txt3:hover {
+        box-shadow: inset 0px -1px 0px 0px #b2a601;
+      }
+
+      .txt3:first-child {
+        margin-right: 50px;
+      }
+    }
+  }
+
   .auth-more::before {
     content: "";
     display: block;
@@ -117,7 +188,8 @@
 
 
   .login100-form,
-  .register100-form {
+  .register100-form,
+  .forget100-form{
     width: 50%;
     display: -webkit-box;
     display: -webkit-flex;
@@ -128,9 +200,14 @@
     padding: 160px 65px 40px 65px;
   }
 
+  .forget100-chooser {
+    padding: 40px 65px 40px 65px;
+  }
+
   @media (max-width: 992px) {
     .login100-form,
-    .register100-form{
+    .register100-form,
+    .forget100-form{
       width: 60%;
       padding-left: 30px;
       padding-right: 30px;
@@ -143,7 +220,8 @@
 
   @media (max-width: 768px) {
     .login100-form,
-    .register100-form{
+    .register100-form,
+    .forget100-form{
       width: 100%;
     }
 
@@ -154,10 +232,15 @@
 
   @media (max-width: 576px) {
     .login100-form,
-    .register100-form{
+    .register100-form,
+    .forget100-form{
       padding-left: 15px;
       padding-right: 15px;
-      padding-top: 150px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+    .forget100-form .btn.btn-choose {
+      font-size: 2.4rem;
     }
   }
 }

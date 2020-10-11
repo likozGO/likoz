@@ -71,4 +71,29 @@ function PasswordInput({
   );
 }
 
-export { Input, PasswordInput };
+const InputTextArea = ({
+  field,
+  form: { touched, errors },
+  ...props
+}) => (
+  <div className="form-group">
+    <textarea
+      name={field.name}
+      type="text"
+      className={`${touched[field.name] && errors[field.name] ? 'error' : ''} input-control description-000`}
+      value={field.value || ''}
+      rows="10"
+      cols="30"
+      {...field}
+      {...props}
+    />
+    <label htmlFor={field.name}>
+      {field.name.charAt(0).toUpperCase() + field.name.slice(1)}
+    </label>
+    <div className="error-message">
+      <ErrorMessage name={field.name} />
+    </div>
+  </div>
+);
+
+export { Input, PasswordInput, InputTextArea };

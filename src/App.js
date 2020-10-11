@@ -10,7 +10,6 @@ import './Pages/_Common/css/animation-router.scss';
 
 import HelloUser from './Pages/Authorization/HelloUser/HelloUser';
 import Auth from './Pages/Authorization/AuthUser/Auth';
-import RememberUser from './Pages/Authorization/RememberUser/RememberUser';
 import PageAdmin from './Pages/Admin/PageAdmin';
 import AdressError from './Errors/AdressError/CreateProduct';
 
@@ -27,7 +26,7 @@ function App() {
           <Route path="/" exact component={HelloUser} />
           <Route path="/auth/registration" component={Auth} />
           <Route path="/auth/login" component={Auth} />
-          <Route path="/forget" component={RememberUser} />
+          <Route path="/auth/forget" component={Auth} />
           <Route path="/admin" component={PageAdmin} />
           <Route path="*" component={AdressError} />
         </AnimatedSwitch>
