@@ -123,9 +123,7 @@ const ForgetForm = ({ isSubmitting, choose }) => (
   <Form autoComplete="off" className="forget100-form">
     {
           (choose === 'email' || choose === 'password') ? (
-            (choose === 'email'
-                && <Field name="email" placeholder="e.g. email@gmail.com" component={Input} />)(choose === 'password'
-                && <Field name="password" component={PasswordInput} />)
+            (choose === 'email' ? <Field name="email" placeholder="e.g. email@gmail.com" component={Input} /> : <Field name="password" component={PasswordInput} />)
           )
             : (
               <>
