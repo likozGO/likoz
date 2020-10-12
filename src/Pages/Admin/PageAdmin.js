@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 
 import clsx from 'clsx';
@@ -34,8 +34,6 @@ import AssessmentIcon from '@material-ui/icons/Assessment';
 import EditIcon from '@material-ui/icons/Edit';
 import ListIcon from '@material-ui/icons/List';
 import Remove from '@material-ui/icons/DeleteForever';
-
-import axios from 'axios';
 import ListProduct from './Shop/ListProduct';
 import CreateProduct from './Shop/CreateProduct';
 import Dashboard from './Dashboard/Dashboard';
@@ -274,26 +272,26 @@ export default function MiniDrawer() {
                 <List component="div" disablePadding>
                   <ListItem button className={classes.nested}>
                     <ListItemIcon>
-                      <ListIcon />
-                    </ListItemIcon>
+                        <ListIcon />
+                      </ListItemIcon>
                     <ListItemText primary="List" />
                   </ListItem>
                   <ListItem button className={classes.nested}>
                     <ListItemIcon>
-                      <AddIcon />
-                    </ListItemIcon>
+                        <AddIcon />
+                      </ListItemIcon>
                     <ListItemText primary="Add" />
                   </ListItem>
                   <ListItem button className={classes.nested}>
                     <ListItemIcon>
-                      <EditIcon />
-                    </ListItemIcon>
+                        <EditIcon />
+                      </ListItemIcon>
                     <ListItemText primary="Edit" />
                   </ListItem>
                   <ListItem button className={classes.nested}>
                     <ListItemIcon>
-                      <Remove />
-                    </ListItemIcon>
+                        <Remove />
+                      </ListItemIcon>
                     <ListItemText primary="Remove" />
                   </ListItem>
                 </List>

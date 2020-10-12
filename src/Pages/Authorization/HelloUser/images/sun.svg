@@ -1,4 +1,5 @@
-<svg id="svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 250 200" enable-background="new 0 0 250 200" xml:space="preserve">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" id="svg" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px"
+     y="0px" viewBox="0 0 250 200" enable-background="new 0 0 250 200" xml:space="preserve">
 
   <!-- Sun SVG -->
     <g id="thesuncontainer" transform="translate(180,85)">
@@ -7,11 +8,12 @@
 
       <g id="Rays">
         <radialGradient id="SVGID_1_" cx="-6.585598e-002" cy="6.532764e-002" r="60.6013" gradientUnits="userSpaceOnUse">
-          <stop  offset="0.3673" style="stop-color:#E99A00"/>
-            <stop  offset="0.7143" style="stop-color:#F7FFC7;stop-opacity:0.5"/>
-            <stop  offset="1" style="stop-color:#F7FFC7;stop-opacity:0"/>
+          <stop offset="0.3673" style="stop-color:#E99A00"/>
+            <stop offset="0.7143" style="stop-color:#F7FFC7;stop-opacity:0.5"/>
+            <stop offset="1" style="stop-color:#F7FFC7;stop-opacity:0"/>
         </radialGradient>
-          <circle fill="none" stroke="url(#SVGID_1_)" stroke-width="60" stroke-miterlimit="10" stroke-dasharray="8.0093,4.0047" cx="-0.1" cy="0.1" r="30.6"/>
+          <circle fill="none" stroke="url(#SVGID_1_)" stroke-width="60" stroke-miterlimit="10"
+                  stroke-dasharray="8.0093,4.0047" cx="-0.1" cy="0.1" r="30.6"/>
       </g>
 
         <image overflow="visible" width="164" height="164" id="Blur" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKUAAACnCAYAAABw45zRAAAACXBIWXMAABCbAAAQmwF0iZxLAAAA
@@ -434,7 +436,8 @@
                                                                                                        4PALzIA3Dxl834ERgOVWgvByIL6UYHzpQflIAN0H0suAesmm6sBa8as4e+tLhbh92LYNwG0Q/hwB
                                                                                                        8ecOlJcC1JVR+H9Frm+9cB9Y92x/ygD+VQawqJp/Id4ZBtpbbz3CgWyDT7b/lvf/0ZTD8pB/3k7S
                                                                                                        zx0oHwmo+xj1qrcpA/7cAvAalI8L1Cv+iuvFv96ut+vterverrfr7Xq73q636+16u96ut+vterve
-                                                                                                       rrfr7Xq73q636+16u96ut+vteruS7f8XYAD94bOCIBPGkwAAAABJRU5ErkJggg==" transform="matrix(0.6667 0 0 0.6667 -54.6667 -54.6667)">
+                                                                                                       rrfr7Xq73q636+16u96ut+vteruS7f8XYAD94bOCIBPGkwAAAABJRU5ErkJggg=="
+               transform="matrix(0.6667 0 0 0.6667 -54.6667 -54.6667)">
       </image>
 
         <circle id="SunCircle" fill="#FBB03B" cx="-0.1" cy="0.1" r="30.6"/>
@@ -445,8 +448,9 @@
 
     <!-- Cloud -->
     <g id="thecloud">
-    <path id="Cloud" fill="#7700c2" d="M184.5,117.6c0-11.1-5-21-12.9-27.2c0.3-1.8,0.5-3.6,0.5-5.5c0-20.1-16.4-36.5-36.6-36.5 c-16.5,0-30.5,10.9-35,25.9c-4-6.2-11-10.3-19-10.3c-11.9,0-21.7,9.1-22.4,20.7c-2.8-0.7-5.7-1.1-8.8-1.1 c-19.2,0-34.8,15.2-34.8,33.9s15.3,33.9,34.5,33.9c0.9,0,1.7,0,2.4-0.1l0,0l99.3,0.1l0,0C169.7,151.4,184.5,136.3,184.5,117.6z">
-      <animate attributeName="dx" from="0" to="200" repeatCount="indefinite" dur="3s" />
+    <path id="Cloud" fill="#7700c2"
+          d="M184.5,117.6c0-11.1-5-21-12.9-27.2c0.3-1.8,0.5-3.6,0.5-5.5c0-20.1-16.4-36.5-36.6-36.5 c-16.5,0-30.5,10.9-35,25.9c-4-6.2-11-10.3-19-10.3c-11.9,0-21.7,9.1-22.4,20.7c-2.8-0.7-5.7-1.1-8.8-1.1 c-19.2,0-34.8,15.2-34.8,33.9s15.3,33.9,34.5,33.9c0.9,0,1.7,0,2.4-0.1l0,0l99.3,0.1l0,0C169.7,151.4,184.5,136.3,184.5,117.6z">
+      <animate attributeName="dx" from="0" to="200" repeatCount="indefinite" dur="3s"/>
     </path>
   </g>
 

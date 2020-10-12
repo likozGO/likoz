@@ -58,9 +58,9 @@ export default function ListUserViewBody() {
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const userFilter = (a) => (
     a.username.toLowerCase().includes(search)
-      && ((sorted === 'ADMIN_FILTER' ? a.isAdmin : '')
-      || (sorted === 'PASSWORD_BIGGER_10' ? a.password.length >= 10 : '')
-      || (sorted === 'RESET_FILTER' ? a : '')));
+        && ((sorted === 'ADMIN_FILTER' ? a.isAdmin : '')
+        || (sorted === 'PASSWORD_BIGGER_10' ? a.password.length >= 10 : '')
+        || (sorted === 'RESET_FILTER' ? a : '')));
 
   const handleRequestSort = (event, property) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -153,26 +153,26 @@ export default function ListUserViewBody() {
                       selected={isItemSelected}
                     >
                       <TableCell padding="checkbox">
-                        <Checkbox
-                          checked={isItemSelected}
-                          inputProps={{ 'aria-labelledby': labelId }}
-                        />
-                      </TableCell>
+                          <Checkbox
+                              checked={isItemSelected}
+                              inputProps={{ 'aria-labelledby': labelId }}
+                            />
+                        </TableCell>
                       <TableCell
-                        id={labelId}
-                        component="th"
-                        scope="row"
-                        padding="none"
-                        className={classes.idColumn}
-                      >
-                        {row._id}
-                      </TableCell>
+                          id={labelId}
+                          component="th"
+                          scope="row"
+                          padding="none"
+                          className={classes.idColumn}
+                        >
+                          {row._id}
+                        </TableCell>
                       <TableCell>{row.username}</TableCell>
                       <TableCell>{row.email}</TableCell>
                       <TableCell>{row.password}</TableCell>
                       <TableCell onClick={(e) => e.stopPropagation()}>
-                        <SwitchAdmin disable edit={row.isAdmin} />
-                      </TableCell>
+                          <SwitchAdmin disable edit={row.isAdmin} />
+                        </TableCell>
                     </TableRow>
                   );
                 })}

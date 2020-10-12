@@ -6,13 +6,14 @@ import PasswordHide from '../../_Common/images/form_password-hide__black.svg';
 const Input = ({
   field,
   form: { touched, errors },
+  classInput,
   ...props
 }) => (
   <div className="form-group">
     <input
       name={field.name}
       type="text"
-      className={`${touched[field.name] && errors[field.name] ? 'error' : ''} input-control auth-000`}
+      className={`${touched[field.name] && errors[field.name] ? 'error' : ''} input-control ${classInput}`}
       value={field.value || ''}
       {...field}
       {...props}

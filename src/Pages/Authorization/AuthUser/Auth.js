@@ -48,36 +48,36 @@ const ForgetChoose = ({ location }) => {
   return (
     <>
       {showChooser && (
-      <div className="forget100-form forget100-chooser">
-        <button type="button" className="btn btn-choose" onClick={() => hideChooser('password')}>
-          I can remember my
-          {' '}
-          <br />
-          <span className="btn-choose--name">password</span>
-          <span role="img" aria-label="pass">🔑</span>
-        </button>
-        <button type="button" className="btn btn-choose" onClick={() => hideChooser('email')}>
-          I can remember my
-          {' '}
-          <br />
-          <span className="btn-choose--name">email</span>
-          <span role="img" aria-label="login">📧</span>
-        </button>
-        <button type="button" className="btn btn-choose" onClick={() => hideChooser('anything')}>
-          I forget everything
-          <span role="img" aria-label="login">
-            <img src={RalphWiggum} alt="Ralph wiggum" />
-          </span>
-        </button>
-        <div className="form-signup">
-          <Link to="/auth/login" className="txt3">
-            To Login
-          </Link>
-          <Link to="/auth/registration" className="txt3">
-            To Register
-          </Link>
+        <div className="forget100-form forget100-chooser">
+          <button type="button" className="btn btn-choose" onClick={() => hideChooser('password')}>
+            I can remember my
+            {' '}
+            <br />
+            <span className="btn-choose--name">password</span>
+            <span role="img" aria-label="pass">🔑</span>
+          </button>
+          <button type="button" className="btn btn-choose" onClick={() => hideChooser('email')}>
+            I can remember my
+            {' '}
+            <br />
+            <span className="btn-choose--name">email</span>
+            <span role="img" aria-label="login">📧</span>
+          </button>
+          <button type="button" className="btn btn-choose" onClick={() => hideChooser('anything')}>
+            I forget everything
+            <span role="img" aria-label="login">
+              <img src={RalphWiggum} alt="Ralph wiggum" />
+            </span>
+          </button>
+          <div className="form-signup">
+            <Link to="/auth/login" className="txt3">
+              To Login
+            </Link>
+            <Link to="/auth/registration" className="txt3">
+              To Register
+            </Link>
+          </div>
         </div>
-      </div>
       )}
 
       <CSSTransition

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Input from '@material-ui/core/Input';
@@ -11,7 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { DEV_USER_API } from '../../../../Constants/CONST_ADMIN';
 import { PopupAction, ReduxAction, UserListAdd } from './ReduxAction';
 
@@ -66,6 +66,7 @@ export default function UserDialogCreate() {
       })
       .catch((err) => console.log(err));
   }
+
   return (
     <>
       <Container maxWidth="sm">
@@ -101,13 +102,13 @@ export default function UserDialogCreate() {
                 endAdornment={(
                   <InputAdornment position="end">
                     <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                    >
-                      {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                    </IconButton>
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                      >
+                        {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
                   </InputAdornment>
-                                  )}
+                                )}
               />
             </Grid>
             <Grid item xs={12} sm={12}>

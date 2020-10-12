@@ -1,0 +1,75 @@
+$time-animation-name-1: 2s;
+$time-animation-name-2: 3s;
+
+.after-auth {
+    @import url('https://fonts.googleapis.com/css2?family=Knewave&display=block');
+    background-color: #111111;
+    margin: 0;
+    position: fixed;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    padding: 1rem;
+    font-family: 'Knewave', cursive;
+}
+
+.user-name {
+    position: absolute;
+    display: block;
+    bottom: -170px;
+    .user-name--word {
+        line-height: 1.4;
+        font-size: 8rem;
+        display: block;
+        bottom: -200px;
+        &.slide-top-1 {
+            animation: slide-top $time-animation-name-1 cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        }
+        &.slide-top-2 {
+            animation: slide-top-right $time-animation-name-2 cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        }
+
+        @keyframes slide-top {
+            0% {
+                transform: translateY(0);
+            }
+            80% {
+                transform: translateY(-200px);
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+        @keyframes slide-top-right {
+            0% {
+                transform: translate(0);
+            }
+            50% {
+                transform: translate(0, -200px);
+            }
+            75% {
+                transform: translate(90px, -200px);
+            }
+            90% {
+                transform: translate(100px, -200px);
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @media (max-width:600px) {
+            & {
+                line-height: 1.2;
+                font-size: 6rem;
+            }
+        }
+    }
+}
+
+.end-point {
+    display: none;
+}
+
+

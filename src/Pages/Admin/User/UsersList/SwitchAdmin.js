@@ -24,7 +24,7 @@ export default function SwitchAdmin({
               name="isAdmin"
               value={edit}
             />
-          )}
+                    )}
           label={edit ? 'Admin' : 'User'}
           labelPlacement="end"
         />

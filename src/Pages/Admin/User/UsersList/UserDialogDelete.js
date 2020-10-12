@@ -2,8 +2,6 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -12,9 +10,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { DEV_USER_API } from '../../../../Constants/CONST_ADMIN';
-import {
-  PopupAction, ReduxAction, UserListAdd, UserListDelete, UserSelected,
-} from './ReduxAction';
+import { UserListDelete, UserSelected } from './ReduxAction';
 
 const Transition = React.forwardRef((props, ref) => <Slide direction="up" ref={ref} {...props} />);
 

@@ -100,54 +100,66 @@
     position: relative;
     z-index: 1;
   }
+
   .container-login .auth-more {
-      background-image: url('images/form-login.gif');
+    background-image: url('images/form-login.gif');
   }
 
   .container-registration .auth-more {
-      background-image: url('images/form-register.gif');
+    background-image: url('images/form-register.gif');
   }
 
   .container-forget .auth-more {
     background-image: url('images/form-forget.gif');
   }
+
   .container-forget {
     .form-animation-enter {
       opacity: 0;
       transform: scale(0.9);
     }
+
     .form-animation-enter-active {
       opacity: 1;
       transform: translateX(0);
       transition: opacity 300ms, transform 300ms;
     }
+
     .form-animation-exit {
       opacity: 1;
     }
+
     .form-animation-exit-active {
       opacity: 0;
       transform: scale(0.9);
       transition: opacity 300ms, transform 300ms;
     }
+
     .btn-choose {
       font-size: 2.5rem;
       margin-bottom: 1.5rem;
+
       &:hover {
         box-shadow: inset 0 -2px #000;
       }
+
       &:focus {
         box-shadow: inset 0 -6px #000;
       }
+
       &:last-child {
         margin-bottom: 0;
       }
+
       span.btn-choose--name {
         color: #fff;
         background: #000;
       }
+
       span[role="img"] {
         display: flex;
         justify-content: center;
+
         img {
           position: relative;
           top: unset;
@@ -157,6 +169,7 @@
         }
       }
     }
+
     .form-signup {
       margin-top: 30px;
 
@@ -189,7 +202,7 @@
 
   .login100-form,
   .register100-form,
-  .forget100-form{
+  .forget100-form {
     width: 50%;
     display: -webkit-box;
     display: -webkit-flex;
@@ -211,7 +224,7 @@
   @media (max-width: 992px) {
     .login100-form,
     .register100-form,
-    .forget100-form{
+    .forget100-form {
       width: 60%;
       padding-left: 30px;
       padding-right: 30px;
@@ -225,7 +238,7 @@
   @media (max-width: 768px) {
     .login100-form,
     .register100-form,
-    .forget100-form{
+    .forget100-form {
       width: 100%;
     }
 
@@ -237,7 +250,7 @@
   @media (max-width: 576px) {
     .login100-form,
     .register100-form,
-    .forget100-form{
+    .forget100-form {
       padding-left: 15px;
       padding-right: 15px;
       padding-top: 20px;

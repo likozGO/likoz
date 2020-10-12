@@ -1,0 +1,66 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,800);
+body{
+  margin: 0px;
+  position: relative;
+  margin-top: 400px;
+  margin-bottom: 400px;
+  font-family: 'Open Sans';
+}
+header{
+  background: #90EE90;
+  position: fixed;
+  top: 0;
+  padding-top: 60px;
+  height: 400px;
+  width: 100%;
+  z-index: 10;
+  font-size: 60px;
+  font-weight: 800;
+  text-align: center;
+  background: url('https://images.unsplash.com/photo-1444858345149-8ff40887589b?crop=entropy&fit=crop&fm=jpg&h=1325&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1700') center center / cover no-repeat;
+}
+#title {
+  color: #fff;
+  font-weight: 300;
+}
+h4.title {
+  font-size: 14px;
+  color: #fff;
+  font-weight: 300;
+  letter-spacing: 10px;
+}
+.content {
+  width: 80%;
+  padding:  10%;
+  background: #999;
+  position: relative;
+  z-index: 50;
+}
+footer {
+  background: #333;
+  position: fixed;
+  bottom: 0;
+  padding: 0px;
+  height: 400px;
+  width: 100%;
+  z-index: 5;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.colheader {
+  font-size: 1.5em;
+  position: absolute;
+  bottom: 10px;
+}
+.col {
+  background: #90EE90;
+  width: 20%;
+  min-height: 300px;
+  padding: 10px;
+  position: relative;
+  min-width: 150px;
+}
+.topper {
+  z-index: 20;
+}

@@ -1,11 +1,6 @@
 import React from 'react';
 import {
-  makeStyles,
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  Typography,
+  Card, CardActionArea, CardContent, CardMedia, makeStyles, Typography,
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 

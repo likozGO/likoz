@@ -12,6 +12,8 @@ import HelloUser from './Pages/Authorization/HelloUser/HelloUser';
 import Auth from './Pages/Authorization/AuthUser/Auth';
 import PageAdmin from './Pages/Admin/PageAdmin';
 import AdressError from './Errors/AdressError/CreateProduct';
+import AfterAuth from './Pages/Main/AfterAuth/AfterAuth';
+import Blog from './Pages/Main/Blog/Blog';
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
           <Route path="/auth/registration" component={Auth} />
           <Route path="/auth/login" component={Auth} />
           <Route path="/auth/forget" component={Auth} />
+          <Route path="/main" component={AfterAuth} exact />
+          <Route path="/main/blog" component={Blog} />
           <Route path="/admin" component={PageAdmin} />
           <Route path="*" component={AdressError} />
         </AnimatedSwitch>

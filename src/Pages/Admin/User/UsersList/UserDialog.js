@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Dialog from '@material-ui/core/Dialog';
 import AppBar from '@material-ui/core/AppBar';
@@ -59,14 +59,23 @@ export default function FullScreenDialog(props) {
   return (
     <div>
       <Tooltip title={type.tooltipText} style={{ padding: '0' }}>
-        <IconButton aria-label="filter list" onClick={() => dispatch(PopupAction())} style={{ width: '1.3em', height: '1.3em' }}>
+        <IconButton
+          aria-label="filter list"
+          onClick={() => dispatch(PopupAction())}
+          style={{ width: '1.3em', height: '1.3em' }}
+        >
           {type.icon}
         </IconButton>
       </Tooltip>
       <Dialog fullScreen open={UserDB} onClose={() => dispatch(PopupAction())} TransitionComponent={Transition}>
         <AppBar className={classes.appBar}>
           <Toolbar>
-            <IconButton edge="start" color="inherit" onClick={() => dispatch(PopupAction())} aria-label="close">
+            <IconButton
+              edge="start"
+              color="inherit"
+              onClick={() => dispatch(PopupAction())}
+              aria-label="close"
+            >
               <CloseIcon />
             </IconButton>
             <Typography variant="h6" className={classes.title}>

@@ -113,9 +113,6 @@
 /**Responsive**/
 
 
-
-
-
 @media all and (max-width: 991px) {
   .xl-screen {
     display: none;
@@ -132,27 +129,32 @@
     -webkit-background-size: 60%, 30%;
     background-size: 60%, 30%;
     background-position: 50% 100%, 105% 80%;
+
     .section-greetings {
       width: 100%;
+
       &__title {
         font-size: 6.6rem;
         margin: 2rem 0;
       }
+
       &__text {
         font-size: 2.0rem;
         margin: 1rem 0;
       }
     }
+
     .section-body {
       flex-direction: row;
       width: 100%;
     }
   }
 }
+
 @media (min-width: 767px) and (max-width: 991px) {
   .start-group {
-    background-size: 27%,15%;
-    background-position: 50% 100%,95% 80%;
+    background-size: 27%, 15%;
+    background-position: 50% 100%, 95% 80%;
   }
 }
 
@@ -160,6 +162,7 @@
   .start-group {
     background-size: 50%, 30%;
     background-position: 50% 100%, 100% 83%;
+
     .section-greetings, .section-body {
       width: 100%;
       height: auto;
@@ -186,10 +189,12 @@
       &__title {
         font-size: 4rem;
       }
+
       &__text {
         font-size: 2rem;
       }
     }
+
     .section-body {
       flex-direction: column;
       align-items: center;
@@ -207,62 +212,70 @@
   }
 }
 
-@media all and (max-height: 600px) and (orientation: landscape){
- .start-group {
-   background: #ffffff url('images/user-hello-sm.gif') no-repeat;
-   background-size: 50% 100%;
-   background-position: 100% 100%;
-   color: #000;
-   .section-greetings, .section-body {
-     padding-right: 27rem;
-     width: 100%;
-   }
-   .section-greetings {
-     &__title {
-       font-size: 5.6rem;
-     }
-     &__text {
-       font-size: 2.2rem;
-     }
-   }
-   .section-body {
-     margin-top: 5%;
-     flex-direction: column;
-     &__true,
-     &__false {
-       width: 100%;
-     }
-     &__true {
-       margin-bottom: 1rem;
-     }
-
-     .btn {
-       max-width: 60rem;
-       img {
-         max-width: 25px;
-       }
-     }
-   }
-
- }
-}
-
-@media all and (max-width: 640px) and (max-height: 600px) and (orientation: landscape) {
+@media all and (max-height: 600px) and (orientation: landscape) {
   .start-group {
-   .section-greetings, .section-body {
-     padding-right: 34rem;
-   }
+    background: #ffffff url('images/user-hello-sm.gif') no-repeat;
+    background-size: 50% 100%;
+    background-position: 100% 100%;
+    color: #000;
+
+    .section-greetings, .section-body {
+      padding-right: 27rem;
+      width: 100%;
+    }
+
     .section-greetings {
       &__title {
         font-size: 5.6rem;
       }
+
+      &__text {
+        font-size: 2.2rem;
+      }
+    }
+
+    .section-body {
+      margin-top: 5%;
+      flex-direction: column;
+
+      &__true,
+      &__false {
+        width: 100%;
+      }
+
+      &__true {
+        margin-bottom: 1rem;
+      }
+
+      .btn {
+        max-width: 60rem;
+
+        img {
+          max-width: 25px;
+        }
+      }
+    }
+
+  }
+}
+
+@media all and (max-width: 640px) and (max-height: 600px) and (orientation: landscape) {
+  .start-group {
+    .section-greetings, .section-body {
+      padding-right: 34rem;
+    }
+
+    .section-greetings {
+      &__title {
+        font-size: 5.6rem;
+      }
+
       &__text {
         font-size: 2.2rem;
       }
     }
   }
 }
-
 
 
 //**SUN ANIMATION**//
