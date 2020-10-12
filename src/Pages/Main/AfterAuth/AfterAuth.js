@@ -3,20 +3,23 @@ import './BgAnimation.css';
 import './AfterAuth.scss';
 import { Link } from 'react-router-dom';
 import ShowName from './ShowName';
+import ShowEndPoint from './ShowEndPoint';
 
 const AfterAuth = () => {
-  const [ready, setReady] = useState(false);
+  const [showName, setShowName] = useState(false);
+  const [endPoint, setEndPoint] = useState(false);
   useEffect(() => {
-    setReady(true);
+    setShowName(true);
+    const timer = setTimeout(() => {
+      setEndPoint(true);
+    }, 3000);
+    return () => clearTimeout(timer);
   }, []);
   return (
     <section className="after-auth">
       <div className="bg" />
-      <ShowName ready={ready} />
-      <div className="end-point">
-        <Link>Blog</Link>
-        <Link>Admin</Link>
-      </div>
+      <ShowName ready={showName} />
+      <ShowEndPoint endPoint={endPoint} />
     </section>
   );
 };

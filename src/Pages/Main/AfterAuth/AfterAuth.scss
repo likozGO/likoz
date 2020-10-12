@@ -1,5 +1,6 @@
 $time-animation-name-1: 2s;
 $time-animation-name-2: 3s;
+$time-animation-end-point: 1.5s;
 
 .after-auth {
     @import url('https://fonts.googleapis.com/css2?family=Knewave&display=block');
@@ -19,6 +20,7 @@ $time-animation-name-2: 3s;
     display: block;
     bottom: -170px;
     .user-name--word {
+        text-transform: uppercase;
         line-height: 1.4;
         font-size: 8rem;
         display: block;
@@ -69,7 +71,18 @@ $time-animation-name-2: 3s;
 }
 
 .end-point {
-    display: none;
+    opacity: 0;
+    &.fadeEndPoint {
+        animation: fadeEndPoint $time-animation-end-point cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+    @keyframes fadeEndPoint {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
 }
 
 
