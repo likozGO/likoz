@@ -1,88 +1,38 @@
 import React from 'react';
-import CMS from './category/page-admin.jpg';
+import Slider from './Slider';
 
 function ShowEndPoint({ endPoint }) {
+  const slideData = [
+    {
+      index: 0,
+      headline: 'New Fashion Apparel New Fashion Apparel New Fashion Apparel',
+      button: 'SADasdASd aD ASD ASDasdasdasda sda sdas das das asd',
+      src: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/fashion.jpg',
+    },
+    {
+      index: 1,
+      headline: 'In The Wilderness',
+      button: 'Book travel',
+      src: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/forest.jpg',
+    },
+    {
+      index: 2,
+      headline: 'For Your Current Mood',
+      button: 'Listen',
+      src: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/guitar.jpg',
+    },
+    {
+      index: 3,
+      headline: 'Focus On The Writing',
+      button: 'Get Focused',
+      src: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/225363/typewriter.jpg',
+    },
+  ];
   return (
-    <>
-      <div className={`end-point ${endPoint && 'fadeEndPoint'}`}>
-        <CardEndPoint
-          imgComponent={CMS}
-          title="CMS"
-          descr="available only for admins"
-          TitleColor=""
-          DescrColor=""
-        />
-        <CardEndPoint
-            imgComponent={CMS}
-            title="CMS"
-            descr="available only for admins"
-            TitleColor=""
-            DescrColor=""
-        />
-      </div>
-    </>
+    <div className={`end-point ${endPoint && 'fadeEndPoint'}`}>
+      <Slider heading="Example Slider" slides={slideData} />
+    </div>
   );
 }
-
-const CardEndPoint = ({
-  imgComponent, title, descr, TitleColor, DescrColor,
-}) => (
-  <>
-    <input type="radio" name="slider" id="item-1" checked />
-    <input type="radio" name="slider" id="item-2" />
-    <input type="radio" name="slider" id="item-3" />
-    <div className="cards">
-      <label className="card" htmlFor="item-1" id="song-1">
-        <img
-          src={imgComponent}
-          alt={title}
-        />
-      </label>
-    </div>
-    <div className="player">
-      <div className="upper-part">
-        <div className="play-icon">
-          <svg
-            width="20"
-            height="20"
-            fill="#2992dc"
-            stroke="#2992dc"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            className="feather feather-play"
-            viewBox="0 0 24 24"
-          >
-            <defs />
-            <path d="M5 3l14 9-14 9V3z" />
-          </svg>
-        </div>
-        <div className="info-area" id="test">
-          <label className="song-info" id="song-info-1">
-            <div className="title">Bunker</div>
-            <div className="sub-line">
-              <div className="subtitle">Balthazar</div>
-              <div className="time">4.05</div>
-            </div>
-          </label>
-          <label className="song-info" id="song-info-2">
-            <div className="title">Words Remain</div>
-            <div className="sub-line">
-              <div className="subtitle">Moderator</div>
-              <div className="time">4.05</div>
-            </div>
-          </label>
-          <label className="song-info" id="song-info-3">
-            <div className="title">Falling Out</div>
-            <div className="sub-line">
-              <div className="subtitle">Otzeki</div>
-              <div className="time">4.05</div>
-            </div>
-          </label>
-        </div>
-      </div>
-    </div>
-  </>
-);
 
 export default ShowEndPoint;

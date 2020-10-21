@@ -169,7 +169,9 @@ $time-animation-end-point: 1.5s;
     overflow: hidden;
   }
 
-  .play-icon{ margin-right: 10px; }
+  .play-icon {
+    margin-right: 10px;
+  }
 
   .song-info {
     width: calc(100% - 32px);
@@ -231,11 +233,11 @@ $time-animation-end-point: 1.5s;
     transform: translateY(0);
   }
 
-  #item-2:checked ~ .player #test  {
+  #item-2:checked ~ .player #test {
     transform: translateY(-40px);
   }
 
-  #item-3:checked ~ .player #test  {
+  #item-3:checked ~ .player #test {
     transform: translateY(-80px);
   }
 }

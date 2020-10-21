@@ -129,11 +129,11 @@ export default function UserDialogEdit() {
                 endAdornment={(
                   <InputAdornment position="end">
                     <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={handleClickShowPassword}
-                      >
-                        {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                      </IconButton>
+                      aria-label="toggle password visibility"
+                      onClick={handleClickShowPassword}
+                    >
+                      {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                    </IconButton>
                   </InputAdornment>
                                 )}
               />

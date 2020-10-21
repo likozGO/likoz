@@ -272,26 +272,26 @@ export default function MiniDrawer() {
                 <List component="div" disablePadding>
                   <ListItem button className={classes.nested}>
                     <ListItemIcon>
-                        <ListIcon />
-                      </ListItemIcon>
+                      <ListIcon />
+                    </ListItemIcon>
                     <ListItemText primary="List" />
                   </ListItem>
                   <ListItem button className={classes.nested}>
                     <ListItemIcon>
-                        <AddIcon />
-                      </ListItemIcon>
+                      <AddIcon />
+                    </ListItemIcon>
                     <ListItemText primary="Add" />
                   </ListItem>
                   <ListItem button className={classes.nested}>
                     <ListItemIcon>
-                        <EditIcon />
-                      </ListItemIcon>
+                      <EditIcon />
+                    </ListItemIcon>
                     <ListItemText primary="Edit" />
                   </ListItem>
                   <ListItem button className={classes.nested}>
                     <ListItemIcon>
-                        <Remove />
-                      </ListItemIcon>
+                      <Remove />
+                    </ListItemIcon>
                     <ListItemText primary="Remove" />
                   </ListItem>
                 </List>
